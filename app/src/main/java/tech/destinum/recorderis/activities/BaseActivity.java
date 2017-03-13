@@ -52,31 +52,30 @@ public class BaseActivity extends AppCompatActivity {
         setupNavDrawer();
 
         //AuthO
-
-        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
-        // The process to reclaim an UserProfile is preceded by an Authentication call.
-        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
-        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
-                .start(new BaseCallback<UserProfile, AuthenticationException>() {
-                    @Override
-                    public void onSuccess(final UserProfile payload) {
-                        BaseActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                mUserProfile = payload;
-                                refreshScreenInformation();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onFailure(AuthenticationException error) {
-                        BaseActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(BaseActivity.this, "Profile Request Failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
+//        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
+//        // The process to reclaim an UserProfile is preceded by an Authentication call.
+//        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
+//        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
+//                .start(new BaseCallback<UserProfile, AuthenticationException>() {
+//                    @Override
+//                    public void onSuccess(final UserProfile payload) {
+//                        BaseActivity.this.runOnUiThread(new Runnable() {
+//                            public void run() {
+//                                mUserProfile = payload;
+//                                refreshScreenInformation();
+//                            }
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onFailure(AuthenticationException error) {
+//                        BaseActivity.this.runOnUiThread(new Runnable() {
+//                            public void run() {
+//                                Toast.makeText(BaseActivity.this, "Profile Request Failed", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                });
 
     }
 
@@ -141,6 +140,7 @@ public class BaseActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
                 mDrawerLayout.closeDrawers();
 
+                item.setChecked(true);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -148,35 +148,30 @@ public class BaseActivity extends AppCompatActivity {
                             case R.id.nav_home:
                                 Intent intent0 = new Intent(BaseActivity.this, Home.class);
                                 startActivity(intent0.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                mNavigationView.setCheckedItem(R.id.nav_home);
 
                                 break;
 
                             case R.id.nav_settings:
                                 Intent intent1 = new Intent(BaseActivity.this, Settings.class);
                                 startActivity(intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                mNavigationView.setCheckedItem(R.id.nav_settings);
 
                                 break;
 
                             case R.id.nav_selection:
                                 Intent intent2 = new Intent(BaseActivity.this, Selection.class);
                                 startActivity(intent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                mNavigationView.setCheckedItem(R.id.nav_selection);
 
                                 break;
 
                             case R.id.nav_privacy_policy:
                                 Intent intent3 = new Intent(BaseActivity.this, PrivacyPolicy.class);
                                 startActivity(intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
 
                                 break;
 
                             default:
                                 Intent intent4 = new Intent(BaseActivity.this, Home.class);
                                 startActivity(intent4.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                                mNavigationView.setCheckedItem(R.id.nav_home);
 
                                 break;
                         }
@@ -185,6 +180,20 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        setNavigationViewCheckedItem();
+    }
+
+    private void setNavigationViewCheckedItem() {
+        if (this.getClass().equals(Home.class)) {
+            mNavigationView.setCheckedItem(R.id.nav_home);
+        } else if (this.getClass().equals(Settings.class)) {
+            mNavigationView.setCheckedItem(R.id.nav_settings);
+        } else if (this.getClass().equals(Selection.class)){
+            mNavigationView.setCheckedItem(R.id.nav_selection);
+        } else if (this.getClass().equals(PrivacyPolicy.class)){
+            mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
+        }
     }
 
     @Override

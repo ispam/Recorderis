@@ -50,7 +50,7 @@
         </activity>
         <activity
             android:name=".activities.Form"
-            android:parentActivityName=".activities.Selection">
+            android:parentActivityName=".activities.BaseActivity">
         </activity>
         <activity android:name=".activities.Home">
             <intent-filter>
