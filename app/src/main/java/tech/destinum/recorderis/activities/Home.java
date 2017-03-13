@@ -1,16 +1,10 @@
 package tech.destinum.recorderis.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
 import tech.destinum.recorderis.R;
 
 public class Home extends BaseActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +12,4 @@ public class Home extends BaseActivity {
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
     }
-
-
 }
