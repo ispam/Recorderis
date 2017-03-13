@@ -2,13 +2,56 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tech.destinum.recorderis">
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <data
+        android:host="@string/auth0_domain"
+        android:pathPrefix="/android/tech.destinum.carmemo/callback"
+        android:scheme="https"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name="com.auth0.android.lock.LockActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyLockTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="ispam.auth0.com"
+                    android:pathPrefix="/android/tech.destinum.carmemo/callback"
+                    android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.auth0.android.provider.WebAuthActivity"></activity>
+        <activity
+            android:name=".activities.Login"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
+        <activity
+            android:name=".activities.Form"
+            android:parentActivityName=".activities.Selection">
+        </activity>
         <activity android:name=".activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

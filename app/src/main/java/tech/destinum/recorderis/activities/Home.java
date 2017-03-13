@@ -11,5 +11,7 @@ public class Home extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
+
+
     }
 }
