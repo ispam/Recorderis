@@ -52,30 +52,30 @@ public class BaseActivity extends AppCompatActivity {
         setupNavDrawer();
 
         //AuthO
-//        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
-//        // The process to reclaim an UserProfile is preceded by an Authentication call.
-//        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
-//        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
-//                .start(new BaseCallback<UserProfile, AuthenticationException>() {
-//                    @Override
-//                    public void onSuccess(final UserProfile payload) {
-//                        BaseActivity.this.runOnUiThread(new Runnable() {
-//                            public void run() {
-//                                mUserProfile = payload;
-//                                refreshScreenInformation();
-//                            }
-//                        });
-//                    }
-//
-//                    @Override
-//                    public void onFailure(AuthenticationException error) {
-//                        BaseActivity.this.runOnUiThread(new Runnable() {
-//                            public void run() {
-//                                Toast.makeText(BaseActivity.this, "Profile Request Failed", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }
-//                });
+        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
+        // The process to reclaim an UserProfile is preceded by an Authentication call.
+        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
+        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
+                .start(new BaseCallback<UserProfile, AuthenticationException>() {
+                    @Override
+                    public void onSuccess(final UserProfile payload) {
+                        BaseActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                mUserProfile = payload;
+                                refreshScreenInformation();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(AuthenticationException error) {
+                        BaseActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(BaseActivity.this, "Profile Request Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
 
     }
 

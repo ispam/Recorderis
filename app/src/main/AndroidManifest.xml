@@ -14,7 +14,7 @@
 
     <data
         android:host="@string/auth0_domain"
-        android:pathPrefix="/android/tech.destinum.carmemo/callback"
+        android:pathPrefix="/android/tech.destinum.recorderis/callback"
         android:scheme="https"/>
 
     <application
@@ -37,7 +37,7 @@
 
                 <data
                     android:host="ispam.auth0.com"
-                    android:pathPrefix="/android/tech.destinum.carmemo/callback"
+                    android:pathPrefix="/android/tech.destinum.recorderis/callback"
                     android:scheme="https"/>
             </intent-filter>
         </activity>
@@ -45,19 +45,19 @@
         <activity
             android:name=".activities.Login"
             android:theme="@style/AppTheme.NoActionBar">
-
-
-        </activity>
-        <activity
-            android:name=".activities.Form"
-            android:parentActivityName=".activities.BaseActivity">
-        </activity>
-        <activity android:name=".activities.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activities.Form"
+            android:theme="@style/MyTheme"
+            android:parentActivityName=".activities.Selection">
+        </activity>
+        <activity android:name=".activities.Home">
         </activity>
         <activity android:name=".activities.Settings">
         </activity>

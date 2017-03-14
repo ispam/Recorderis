@@ -32,7 +32,7 @@ public class Selection extends BaseActivity {
         setContentView(R.layout.activity_selection);
         super.onCreateDrawer();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_selection);
 
         int[] covers = new int[]{
                 R.drawable.moto,
