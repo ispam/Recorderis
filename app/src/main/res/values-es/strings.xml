@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Recorderis</string>
-    <string name="app_version">Version 1.0</string>
+    <string name="app_version">Versión 1.0</string>
 
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Inicio</string>
@@ -10,6 +10,7 @@
     <string name="nav_info">Información</string>
     <string name="navigation_drawer_open">Drawer Abierto</string>
     <string name="navigation_drawer_close">Drawer Cerrado</string>
+    <string name="logout">Desconectarse</string>
 
     <!--Links About Page-->
     <string name="privacy_policy_link">Política de Privacidad</string>
@@ -32,4 +33,86 @@
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
 
+
+    <string name="privacy_policy_text">
+        <![CDATA[
+            <h1>Pol&iacute;tica de privacidad de <strong>Recorderis</strong></h1>
+            <p><strong>Resumen de la pol&iacute;tica de privacidad</strong></p>
+            <p>Datos Personales recogidos para las siguientes finalidades y utilizando los siguientes servicios:</p>
+            <p>Acceso a las cuentas de servicios de terceros</p>
+            <p>Acceso a la cuenta de Facebook</p>
+            <p>Permisos: Acerca de m&iacute; y Correo electr&oacute;nico de contacto</p>
+            <p>Acceso a la cuenta de Twitter</p>
+            <p>Datos Personales: distintas clases de Datos, seg&uacute;n se especifica en la Pol&iacute;tica de Privacidad del servicio</p>
+            <h5>Datos de contacto</h5>
+            <p>Recorderis</p>
+            <p>Calle 43 # 1 - 348, Caldas - Colombia</p>
+            <p>Correo electr&oacute;nico de contacto del Titular: diegoug@gmail.com</p>
+            <h1>Clases de Datos recogidos</h1>
+            <p>Recorderis recolecta t&uacute; informaci&oacute;n personal a traves de prestadores de servicio como Facebook, Google, Twitter.</p>
+            <p>Otros Datos Personales recogidos pueden encontrarse descritos en otros apartados de la presente pol&iacute;tica de privacidad o en un texto explicativo espec&iacute;fico mostrado contextualmente en el momento de la recogida de dichos Datos.<br /> Los Datos Personales pueden ser proporcionados por el Usuario por su propia voluntad, o bien ser recogidos autom&aacute;ticamente durante la utilizaci&oacute;n de esta Aplicaci&oacute;n.<br /> Salvo que se indique lo contrario, el uso de Cookies &ndash; o de otras medios de seguimiento &ndash; por esta Aplicaci&oacute;n o por los propietarios de servicios de terceros utilizados por esta Aplicaci&oacute;n tiene como finalidad la identificaci&oacute;n de los Usuarios y el registro de sus preferencias, con la &uacute;nica finalidad de prestar el servicio solicitado por el Usuario.<br /> La negativa del Usuario a proporcionar ciertos Datos Personales podr&iacute;a imposibilitar a esta Aplicaci&oacute;n la prestaci&oacute;n de sus servicios.</p>
+            <p>El Usuario asume la responsabilidad por los Datos Personales de terceros publicados o compartidos mediante esta Aplicaci&oacute;n y declara que tiene el consentimiento de dichos terceros para proporcionar los Datos al Titular.</p>
+            <h2>Modalidad y lugar del Tratamiento de los Datos recogidos</h2>
+            <h5>Modalidades de Tratamiento</h5>
+            <p>El Responsable de Tratamiento tratar&aacute; los Datos de los Usuarios de manera adecuada y adoptar&aacute; las medidas de seguridad apropiadas para impedir el acceso, la revelaci&oacute;n, alteraci&oacute;n o destrucci&oacute;n no autorizados de los Datos.<br /> El tratamiento de Datos se realiza mediante ordenadores y/o herramientas inform&aacute;ticas, siguiendo procedimientos y modalidades organizativas estrictamente relacionadas con las finalidades se&ntilde;aladas. Adem&aacute;s del Responsable de Tratamiento, en algunos casos podr&aacute;n acceder a los Datos ciertas categor&iacute;as de personas encargadas relacionadas con el funcionamiento de la p&aacute;gina (administraci&oacute;n, ventas, marketing, departamento jur&iacute;dico y de administraci&oacute;n de sistemas) o contratistas externos que presten servicios al Responsable de Tratamiento (tales como proveedores externos de servicios t&eacute;cnicos, empresas de mensajer&iacute;a, &ldquo;hosting providers&rdquo;, empresas de inform&aacute;tica, agencias de comunicaci&oacute;n) que ser&aacute;n nombrados por el Titular como Encargados del Tratamiento, si fuera necesario. Se podr&aacute; solicitar al Responsable de Tratamiento en cualquier momento una lista actualizada de dichas personas.</p>
+            <h5>Lugar</h5>
+            <p>Los Datos ser&aacute;n tratados en la sede operativa del Responsable de Tratamiento, as&iacute; como en otros lugares en los que se encuentren situadas las partes que tambi&eacute;n est&eacute;n involucradas en dicho tratamiento. Para m&aacute;s informaci&oacute;n, por favor p&oacute;ngase en contacto con el Responsable de Tratamiento.</p>
+            <h5>Per&iacute;odo de conservaci&oacute;n</h5>
+            <p>Los Datos ser&aacute;n tratados durante el plazo necesario para prestar el servicio solicitado por el Usuario, o el que se requiera en funci&oacute;n de las finalidades descritas en este documento, y el Usuario tendr&aacute; en todo momento la facultad de solicitar la interrupci&oacute;n de su Tratamiento o la cancelaci&oacute;n de los Datos.</p>
+            <h2>Finalidad del Tratamiento de los Datos recogidos</h2>
+            <p>Los Datos relativos al Usuario son recogidos para permitir al Titular la prestaci&oacute;n de sus servicios, as&iacute; como para las siguientes finalidades: Acceso a las cuentas de servicios de terceros.</p>
+            <p>Los Datos Personales utilizados para cada finalidad son descritos en los apartados espec&iacute;ficos de este documento.</p>
+            <h2>Permisos de Facebook solicitados por esta Aplicaci&oacute;n</h2>
+            <p>Esta Aplicaci&oacute;n podr&aacute; solicitar permisos de Facebook que le permitan realizar acciones en la cuenta de Facebook del Usuario y recuperar informaci&oacute;n de &eacute;sta, incluyendo Datos Personales.</p>
+            <p>Para obtener m&aacute;s informaci&oacute;n acerca de los siguientes permisos, dir&iacute;janse a ladocumentaci&oacute;n de los permisos de Facebooky a lapol&iacute;tica de privacidad de Facebook.</p>
+            <p>Los permisos solicitados son los siguientes: Acerca de m&iacute;, Correo electr&oacute;nico de contacto y Informaci&oacute;n b&aacute;sica.</p>
+            <h2>Informaci&oacute;n detallada del tratamiento de los Datos Personales</h2>
+            <p>Se recogen Datos Personales para las siguientes finalidades y utilizando los siguientes servicios:</p>
+            <h5>&middot; Acceso a las cuentas de servicios de terceros</h5>
+            <p>Este tipo de servicios permiten a esta Aplicaci&oacute;n acceder a los Datos de tus cuentas en servicios de terceros y realizar accciones con estos.<br /> Estos servicios no se activan autom&aacute;ticamente sino que requieren la autorizaci&oacute;n expresa del Usuario.</p>
+            <h4>Acceso a la cuenta de Facebook (Esta Aplicaci&oacute;n)</h4>
+            <p>Este servicio permite a esta Aplicaci&oacute;n conectarse con la cuenta del Usuario en la red social Facebook, proporcionada por Facebook, Inc.</p>
+            <p>Permisos solicitados: Acerca de m&iacute; y Correo electr&oacute;nico de contacto.</p>
+            <p>Lugar de tratamiento: EE.UU. &ndash;Pol&iacute;tica de privacidad</p>
+            <h4>Acceso a la cuenta de Twitter (Twitter, Inc.)</h4>
+            <p>Este servicio permite a esta Aplicaci&oacute;n conectarsecon la cuenta del Usuario en la red social Twitter, proporcionada por Twitter, Inc.</p>
+            <p>Datos Personales recogidos: distintas clases de Datos, seg&uacute;n se especifica en la Pol&iacute;tica de Privacidad del servicio.</p>
+            <p>Lugar de tratamiento: EE.UU. &ndash;Pol&iacute;tica de privacidad</p>
+            <h2>Informaci&oacute;n adicional sobre la recogida de Datos y su tratamiento</h2>
+            <h5>Defensa jur&iacute;dica</h5>
+            <p>Los Datos Personales del Usuario podr&aacute;n ser utilizados para la defensa jur&iacute;dica del Titular en juicio o en las fases prejudiciales previas a un posible pleito derivado del uso abusivo por parte del Usuario de esta Aplicaci&oacute;n o de los servicios relacionados.<br /> El Usuario es consciente de que el Titular puede ser requerido por autoridades p&uacute;blicas a fin de revelar Datos Personales.</p>
+            <h5>Informaci&oacute;n adicional acerca de los Datos Personales del Usuario</h5>
+            <p>Adem&aacute;s de las informaciones contenidas en esta pol&iacute;tica de privacidad, esta Aplicaci&oacute;n podr&aacute; proporcionar al Usuario informaci&oacute;n contextual relativa a servicios espec&iacute;ficos o a la recogida y tratamiento de los Datos Personales.</p>
+            <h5>Log del sistema y mantenimiento</h5>
+            <p>Por motivos relativos al funcionamiento y el mantenimiento, esta Aplicaci&oacute;n y cualesquiera otros servicios de terceros que se utilicen podr&aacute;n recoger un Log del sistema, esto es, archivos que registren las interacciones y que pueden contener Datos Personales, tales como la direcci&oacute;n IP del Usuario.</p>
+            <h5>Informaci&oacute;n no contenida en esta pol&iacute;tica de privacidad</h5>
+            <p>Se podr&aacute; solicitar en cualquier momento informaci&oacute;n adicional sobre la recogida y el tratamiento de los Datos Personales al Responsable de Tratamiento. Encontrar&aacute; la informaci&oacute;n de contacto al inicio del presente documento.</p>
+            <h5>Ejercicio de los derechos por los Titulares de los Datos</h5>
+            <p>Los titulares a los que se refieren los Datos Personales tienen derecho a obtener en cualquier momento la confirmaci&oacute;n de que estos han sido almacenados por el Responsable de Tratamiento, a conocer su contenido y origen, a verificar su exactitud o solicitar que sean completados, cancelados, actualizados o rectificados, a que sean anonimizados o a que se bloqueen aquellos Datos Personales que est&aacute;n siendo tratados en contravenci&oacute;n de las leyes, as&iacute; como a oponerse a su tratamiento por cualquier motivo leg&iacute;timo. Las solicitudes deber&aacute;n remitirse al Responsable de Tratamiento utilizando los datos de contacto indicados anteriormente.</p>
+            <p>Esta Aplicaci&oacute;n no permite solicitudes &ldquo;Do Not Track&rdquo;.<br /> Para determinar si cualquiera de los servicios de terceros que utiliza acepta solicitudes &ldquo;Do Not Track&rdquo;, por favor lea sus pol&iacute;ticas de privacidad.</p>
+            <h5>Modificaci&oacute;n de esta pol&iacute;tica de privacidad</h5>
+            <p>El Responsable de Tratamiento se reserva el derecho de modificar esta pol&iacute;tica de privacidad en cualquier momento notific&aacute;ndolo a los Usuarios a trav&eacute;s de esta p&aacute;gina. Se recomienda encarecidamente que revisen esta p&aacute;gina con frecuencia, tomando como referencia la fecha de la &uacute;ltima modificaci&oacute;n indicada al final. En el caso de que un Usuario est&eacute; en desacuerdo con alguna de las modificaciones realizadas a esta Pol&iacute;tica, el Usuario deber&aacute; cesar en el uso de esta Aplicaci&oacute;n y podr&aacute; solicitar al Responsable de Tratamiento que elimine sus Datos Personales. Salvo que se indique lo contrario, la pol&iacute;tica de privacidad vigente en cada momento ser&aacute; de aplicaci&oacute;n a todos los Datos Personales que el Responsable de Tratamiento haya recogido hasta entonces.</p>
+            <h5>Informaci&oacute;n acerca de esta pol&iacute;tica de privacidad</h5>
+            <p>El Responsable de Tratamiento es responsable de esta pol&iacute;tica de privacidad, que ha sido redactada a partir de los m&oacute;dulos proporcionados por Iubenda y almacenados en los servidores de Iubenda.</p>
+            <h5>Definiciones y referencias legales</h5>
+            <h4>Datos Personales (o Datos)</h4>
+            <p>Constituye un dato personal cualquier informaci&oacute;n relativa a una persona f&iacute;sica, identificada o identificable, aunque sea indirectamente, mediante referencia a cualquier otra informaci&oacute;n, inclusive a un n&uacute;mero de identificaci&oacute;n personal.</p>
+            <h4>Datos de Uso</h4>
+            <p>Las informaciones recogidas de forma autom&aacute;tica por esta Aplicaci&oacute;n (o por servicios de terceros utilizados por esta Aplicaci&oacute;n), que podr&aacute;n incluir: las direcciones IP o nombres de dominio de los ordenadores utilizados por el Usuario que se conecte a esta Aplicaci&oacute;n, las direcciones URI (Uniform Resource Identifier), la hora de la solicitud, el m&eacute;todo utilizado para realizar la solicitud al servidor, las dimensiones del archivo obtenido en respuesta, el c&oacute;digo num&eacute;rico indicando el estado de la respuesta del servidor (resultado satisfactorio, error, etc&hellip;), el pa&iacute;s de origen, las caracter&iacute;sticas del navegador y del sistema operativo utilizados por el visitante, las diversas coordenadas temporales de la visita (por ejemplo, el tiempo de permanencia en cada una de las p&aacute;ginas) y los detalles relativos al itinerario seguido dentro de la Aplicaci&oacute;n, con especial referencia a la secuencia de p&aacute;ginas consultadas, a los par&aacute;metros relativos al sistema operativo y al entorno inform&aacute;tico del Usuario.</p>
+            <h4>Usuario</h4>
+            <p>El individuo que utiliza esta Aplicaci&oacute;n, que debe coincidir con el Titular de los Datos o bien haber sido autorizado por &eacute;ste y cuyos Datos Personales son objeto de tratamiento.</p>
+            <h4>Titular de los Datos</h4>
+            <p>La persona f&iacute;sica o jur&iacute;dica a la que se refieren los Datos Personales.</p>
+            <h4>Encargado del Tratamiento</h4>
+            <p>La persona f&iacute;sica, jur&iacute;dica, administraci&oacute;n p&uacute;blica o cualquier otra instituci&oacute;n, asociaci&oacute;n u organizaci&oacute;n autorizada por el Responsable de Tratamiento a tratar los Datos Personales de conformidad con esta pol&iacute;tica de privacidad.</p>
+            <h4>Responsable de Tratamiento (o Titular)</h4>
+            <p>La persona f&iacute;sica, jur&iacute;dica, administraci&oacute;n p&uacute;blica o cualquier otra instituci&oacute;n, asociaci&oacute;n u organizaci&oacute;n con la facultad, incluso solidariamente con otro Responsable de Tratamiento, de tomar decisiones relativas a la finalidad, los m&eacute;todos de tratamiento de los Datos Personales y los medios utilizados, incluyendo las medidas de seguridad relativas al funcionamiento y el uso de esta Aplicaci&oacute;n. A menos que se especifique lo contrario, el Responsable de Tratamiento es el Titular de esta Aplicaci&oacute;n.</p>
+            <h4>Esta Aplicaci&oacute;n</h4>
+            <p>La herramienta de hardware o software mediante la cual se han recogidos los Datos Personales del Usuario.</p>
+            <h4>Informaci&oacute;n legal</h4>
+            <p>Aviso a los Usuarios europeos: la presente declaraci&oacute;n de privacidad ha sido redactada en cumplimiento de las obligaciones previstas en el Art. 10 de la Directiva 95/46/CE, y de acuerdo con las disposiciones de la Directiva 2002/58/CE, modificada por la Directiva 2009/136/CE, en materia de Cookies.</p>
+            <p>Esta pol&iacute;tica de privacidad se refiere &uacute;nicamente a esta Aplicaci&oacute;n.</p>
+            <p></p>
+        ]]>
+                    </string>
 </resources>

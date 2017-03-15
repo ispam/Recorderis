@@ -62,8 +62,6 @@
         </activity>
         <activity android:name=".activities.Selection">
         </activity>
-        <activity android:name=".activities.Info">
-        </activity>
         <activity android:name=".activities.Policy">
         </activity>
         <activity android:name=".activities.Terms">
