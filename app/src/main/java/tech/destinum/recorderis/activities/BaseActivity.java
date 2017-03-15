@@ -71,7 +71,7 @@ public class BaseActivity extends AppCompatActivity {
                     public void onFailure(AuthenticationException error) {
                         BaseActivity.this.runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast.makeText(BaseActivity.this, "Profile Request Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(BaseActivity.this, R.string.profile_request_failed, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -145,33 +145,40 @@ public class BaseActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         switch (item.getItemId()){
+
                             case R.id.nav_home:
-                                Intent intent0 = new Intent(BaseActivity.this, Home.class);
-                                startActivity(intent0.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                Intent intent = new Intent(BaseActivity.this, Home.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
                                 break;
 
                             case R.id.nav_settings:
-                                Intent intent1 = new Intent(BaseActivity.this, Settings.class);
-                                startActivity(intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                intent = new Intent(BaseActivity.this, Settings.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
                                 break;
 
                             case R.id.nav_selection:
-                                Intent intent2 = new Intent(BaseActivity.this, Selection.class);
-                                startActivity(intent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                intent = new Intent(BaseActivity.this, Selection.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
                                 break;
 
                             case R.id.nav_privacy_policy:
-                                Intent intent3 = new Intent(BaseActivity.this, PrivacyPolicy.class);
-                                startActivity(intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                intent = new Intent(BaseActivity.this, Policy.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
+                                break;
+
+                            case R.id.nav_terms:
+                                intent = new Intent(BaseActivity.this, Terms.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
                                 break;
 
                             default:
-                                Intent intent4 = new Intent(BaseActivity.this, Home.class);
-                                startActivity(intent4.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                intent = new Intent(BaseActivity.this, Home.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
                                 break;
                         }
@@ -191,29 +198,41 @@ public class BaseActivity extends AppCompatActivity {
             mNavigationView.setCheckedItem(R.id.nav_settings);
         } else if (this.getClass().equals(Selection.class)){
             mNavigationView.setCheckedItem(R.id.nav_selection);
-        } else if (this.getClass().equals(PrivacyPolicy.class)){
+        } else if (this.getClass().equals(Policy.class)){
             mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
+        } else if (this.getClass().equals(Terms.class)){
+            mNavigationView.setCheckedItem(R.id.nav_terms);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        if (this.getClass().equals(Home.class)) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        } else if (this.getClass().equals(Settings.class)) {
+            return false;
+        } else if (this.getClass().equals(Selection.class)){
+            return false;
+        } else if (this.getClass().equals(Policy.class)){
+            return false;
+        } else if (this.getClass().equals(Terms.class)){
+            return false;
+        }
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.logout) {
-            CredentialsManager.deleteCredentials(this);
-            startActivity(new Intent(this, Login.class));
-            finish();
-            return true;
-        }
-
+            int id = item.getItemId();
+            if (id == R.id.logout) {
+                CredentialsManager.deleteCredentials(this);
+                startActivity(new Intent(this, Login.class));
+                finish();
+                return true;
+            }
         return super.onOptionsItemSelected(item);
     }
 

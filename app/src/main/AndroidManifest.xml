@@ -41,7 +41,7 @@
                     android:scheme="https"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.auth0.android.provider.WebAuthActivity"></activity>
+        <activity android:name="com.auth0.android.provider.WebAuthActivity"/>
         <activity
             android:name=".activities.Login"
             android:theme="@style/AppTheme.NoActionBar">
@@ -50,12 +50,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activities.Form"
-            android:theme="@style/MyTheme"
-            android:parentActivityName=".activities.Selection">
+            android:parentActivityName=".activities.Selection"
+            android:theme="@style/MyTheme">
         </activity>
         <activity android:name=".activities.Home">
         </activity>
@@ -63,7 +62,11 @@
         </activity>
         <activity android:name=".activities.Selection">
         </activity>
-        <activity android:name=".activities.PrivacyPolicy">
+        <activity android:name=".activities.Info">
+        </activity>
+        <activity android:name=".activities.Policy">
+        </activity>
+        <activity android:name=".activities.Terms">
         </activity>
     </application>
 
