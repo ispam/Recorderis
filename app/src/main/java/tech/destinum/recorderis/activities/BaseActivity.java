@@ -220,6 +220,7 @@ public class BaseActivity extends AppCompatActivity {
         } else if (this.getClass().equals(Terms.class)){
             return false;
         }
+
         return true;
     }
 

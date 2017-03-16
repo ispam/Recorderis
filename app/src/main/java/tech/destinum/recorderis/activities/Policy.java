@@ -13,7 +13,6 @@ import tech.destinum.recorderis.R;
 public class Policy extends BaseActivity {
 
     private TextView mPrivacyPolicy;
-    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
