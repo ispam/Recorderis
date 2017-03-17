@@ -15,6 +15,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +41,7 @@ public class BaseActivity extends AppCompatActivity {
     protected ActionBarDrawerToggle mToggle;
     protected Toolbar mToolbar;
     public DrawerLayout mDrawerLayout;
+    private Menu mMenu;
 
     private ImageView mImageProfile;
     private TextView mName, mEmail;
@@ -125,6 +128,12 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         mNavigationView= (NavigationView) findViewById(R.id.navigation_view);
+        mMenu = mNavigationView.getMenu();
+
+        MenuItem about = mMenu.findItem(R.id.about);
+        SpannableString s =  new SpannableString(about.getTitle());
+        s.setSpan(new TextAppearanceSpan(this, R.style.BlackTextColor), 0, s.length(), 0);
+        about.setTitle(s);
 
         View hView =  mNavigationView.getHeaderView(0);
         mImageProfile = (ImageView) hView.findViewById(R.id.image_profile);
@@ -196,12 +205,15 @@ public class BaseActivity extends AppCompatActivity {
             mNavigationView.setCheckedItem(R.id.nav_home);
         } else if (this.getClass().equals(Settings.class)) {
             mNavigationView.setCheckedItem(R.id.nav_settings);
+            setTitle(R.string.nav_settings);
         } else if (this.getClass().equals(Selection.class)){
             mNavigationView.setCheckedItem(R.id.nav_selection);
+            setTitle(R.string.nav_selection);
         } else if (this.getClass().equals(Policy.class)){
             mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
         } else if (this.getClass().equals(Terms.class)){
             mNavigationView.setCheckedItem(R.id.nav_terms);
+            setTitle(R.string.terms_link);
         }
     }
 
@@ -210,13 +222,12 @@ public class BaseActivity extends AppCompatActivity {
 
         if (this.getClass().equals(Home.class)) {
             getMenuInflater().inflate(R.menu.menu_main, menu);
-
         } else if (this.getClass().equals(Settings.class)) {
             return false;
         } else if (this.getClass().equals(Selection.class)){
             return false;
         } else if (this.getClass().equals(Policy.class)){
-            return false;
+            getMenuInflater().inflate(R.menu.menu_version, menu);
         } else if (this.getClass().equals(Terms.class)){
             return false;
         }
