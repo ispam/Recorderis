@@ -41,6 +41,9 @@
     <string name="cancel">Cancelar</string>
 
 
+    <string name="info_form">Ingrese SÓLO las Fechas de Vencimiento</string>
+
+
     <string name="privacy_policy_text">
         <![CDATA[
             <h1>Pol&iacute;tica de privacidad de <strong>Recorderis</strong></h1>
