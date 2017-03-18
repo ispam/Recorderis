@@ -12,6 +12,13 @@
     <string name="navigation_drawer_close">Drawer Cerrado</string>
     <string name="logout">Desconectarse</string>
 
+    <!--Nombre de Documentos-->
+    <string name="doc_rtm">Revisión Técnico Mecánica</string>
+    <string name="doc_src">Seguro Responsabilidad Civil</string>
+    <string name="doc_str">Seguro Todo Riesgo</string>
+    <string name="doc_soat">SOAT</string>
+    <string name="doc_tao">Tarjeta de Operación</string>
+
     <!--Links About Page-->
     <string name="privacy_policy_link">Política de Privacidad</string>
     <string name="terms_link">Terminos y Condiciones</string>

@@ -12,6 +12,13 @@
     <string name="navigation_drawer_close">Drawer Closed</string>
     <string name="logout">Logout</string>
 
+    <!--Names of Documents-->
+    <string name="doc_rtm">Technical Mechanical Review</string>
+    <string name="doc_src">Civil Liability Insurance</string>
+    <string name="doc_str">All Risk Insurance</string>
+    <string name="doc_soat">SOAT</string>
+    <string name="doc_tao">Operation Card</string>
+
     <!--Links About Page-->
     <string name="privacy_policy_link">Privacy Policy</string>
     <string name="terms_link">Terms and Conditions</string>
