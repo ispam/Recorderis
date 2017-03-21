@@ -4,9 +4,13 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -35,12 +39,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Document document = mDocuments.get(position);
         holder.mTitle.setText(document.getName());
         holder.mTitleExpanded.setText(document.getName());
 
-        String date = holder.mEditText.getText().toString();
     }
 
     @Override
@@ -71,6 +74,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 // Set Views to View.GONE and .setEnabled(false)
                 mConstraintLayout.setVisibility(View.GONE);
                 mConstraintLayout.setEnabled(false);
+
             }
         }
 
@@ -86,6 +90,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             ValueAnimator valueAnimator;
             if (!isViewExpanded) {
                 mTitle.setVisibility(View.GONE);
+                mTitle.setEnabled(true);
                 mConstraintLayout.setVisibility(View.VISIBLE);
                 mConstraintLayout.setEnabled(true);
                 isViewExpanded = true;
@@ -107,7 +112,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         mTitle.setVisibility(View.VISIBLE);
-                        mConstraintLayout.setVisibility(View.INVISIBLE);
+                        mTitle.setEnabled(true);
+                        mConstraintLayout.setVisibility(View.GONE);
                         mConstraintLayout.setEnabled(false);
                     }
 
