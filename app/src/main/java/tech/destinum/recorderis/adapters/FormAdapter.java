@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -36,6 +38,9 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Document document = mDocuments.get(position);
         holder.mTitle.setText(document.getName());
+        holder.mTitleExpanded.setText(document.getName());
+
+        String date = holder.mEditText.getText().toString();
     }
 
     @Override
@@ -45,7 +50,9 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView mTitle;
+        public TextView mTitle, mTitleExpanded;
+        public Button mButton;
+        public EditText mEditText;
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
         private ConstraintLayout mConstraintLayout;
@@ -56,6 +63,9 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
+            mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
+            mButton = (Button) view.findViewById(R.id.add_button);
+            mEditText = (EditText) view.findViewById(R.id.date_et);
 
             if (isViewExpanded == false) {
                 // Set Views to View.GONE and .setEnabled(false)
