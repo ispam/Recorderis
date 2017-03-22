@@ -2,6 +2,9 @@ package tech.destinum.recorderis.adapters;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Document;
@@ -27,6 +31,9 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<Document> mDocuments;
+    private final static String PREFS_FORM_ADAPTER = "FormAdapterPREFS";
+    private static List<String> mEditTextValues = new ArrayList<>();
+    private String[] texts = new String[];
 
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
@@ -39,10 +46,23 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        Document document = mDocuments.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final Document document = mDocuments.get(position);
         holder.mTitle.setText(document.getName());
         holder.mTitleExpanded.setText(document.getName());
+        holder.mEditText.setTag(R.id.date_et, position);
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                mEditTextValues.add(holder.mEditText.getText().toString());
+                Log.d("FormAdapter", holder.mEditText.getText().toString());
+                Log.d("id", String.valueOf(document.getId()));
+
+                for(int i = 0; i < mEditTextValues.size(); i++) {
+                    System.out.println(mEditTextValues.get(i)); //prints element i
+                }
+            }
+        });
 
     }
 
@@ -76,7 +96,26 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 mConstraintLayout.setEnabled(false);
 
             }
+
+            mEditText.addTextChangedListener(new TextWatcher() {
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+                public void afterTextChanged(Editable editable) {}
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                    if(mEditText.getTag()!=null){
+//                        for (int j = 0; j < mEditTextValues.size(); j++){
+//                            mEditTextValues.add(mEditTextValues.set((int)mEditText.getTag(), charSequence.toString()));
+//                            Log.d("FormAdapter", charSequence.toString());
+//                        }
+//                    }
+
+                    int position = (int) mEditText.getTag(R.id.date_et);
+
+
+                }
+            });
         }
+
+
 
         @Override
         public void onClick(final View v) {
@@ -90,7 +129,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             ValueAnimator valueAnimator;
             if (!isViewExpanded) {
                 mTitle.setVisibility(View.GONE);
-                mTitle.setEnabled(true);
+                mTitle.setEnabled(false);
                 mConstraintLayout.setVisibility(View.VISIBLE);
                 mConstraintLayout.setEnabled(true);
                 isViewExpanded = true;
