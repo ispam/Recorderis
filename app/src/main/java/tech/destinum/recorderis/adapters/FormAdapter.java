@@ -33,7 +33,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     private ArrayList<Document> mDocuments;
     private final static String PREFS_FORM_ADAPTER = "FormAdapterPREFS";
     private static List<String> mEditTextValues = new ArrayList<>();
-    private String[] texts = new String[];
+    private String[] texts;
 
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
