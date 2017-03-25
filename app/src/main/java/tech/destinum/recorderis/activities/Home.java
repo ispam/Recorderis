@@ -33,7 +33,7 @@ public class Home extends BaseActivity {
         for (int i = 0; i < 5; i++){
             switch (i){
                 case 0:
-                    mName.setText(mDates);
+
                     break;
                 case 1:
 
