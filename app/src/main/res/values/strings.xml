@@ -41,6 +41,7 @@
     <string name="cancel">Cancel</string>
 
     <string name="info_form">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
+    <string name="hint_date">DD/MM/YYYY</string>
 
     <string name="privacy_policy_text">
         <![CDATA[

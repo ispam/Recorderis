@@ -25,15 +25,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tech.destinum.recorderis.R;
+import tech.destinum.recorderis.pojo.Dates;
 import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.utils.DateWatcher;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<Document> mDocuments;
     private final static String PREFS_FORM_ADAPTER = "FormAdapterPREFS";
-    private static List<String> mEditTextValues = new ArrayList<>();
-    private String[] texts;
+    private  ArrayList<Dates> list = new ArrayList<>();
 
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
@@ -54,16 +55,45 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mEditTextValues.add(holder.mEditText.getText().toString());
                 Log.d("FormAdapter", holder.mEditText.getText().toString());
-                Log.d("id", String.valueOf(document.getId()));
+                int position = (int) holder.mEditText.getTag(R.id.date_et);
+                Log.d("pos", String.valueOf(position));
 
-                for(int i = 0; i < mEditTextValues.size(); i++) {
-                    System.out.println(mEditTextValues.get(i)); //prints element i
+                Intent intent = new Intent();
+                switch (position){
+                    case 0:
+                        list.add(new Dates(0, holder.mEditText.getText().toString()));
+                        Log.d("SOAT", holder.mEditText.getText().toString());
+                        intent.putExtra("soat", holder.mEditText.getText().toString());
+                        break;
+                    case 1:
+                        list.add(new Dates(1, holder.mEditText.getText().toString()));
+                        Log.d("RTM", holder.mEditText.getText().toString());
+                        intent.putExtra("rtm", holder.mEditText.getText().toString());
+                        break;
+                    case 2:
+                        list.add(new Dates(2, holder.mEditText.getText().toString()));
+                        Log.d("SRC", holder.mEditText.getText().toString());
+                        intent.putExtra("src", holder.mEditText.getText().toString());
+                        break;
+                    case 3:
+                        list.add(new Dates(3, holder.mEditText.getText().toString()));
+                        Log.d("STR", holder.mEditText.getText().toString());
+                        intent.putExtra("str", holder.mEditText.getText().toString());
+                        break;
+                    case 4:
+                        list.add(new Dates(4, holder.mEditText.getText().toString()));
+                        Log.d("TO", holder.mEditText.getText().toString());
+                        intent.putExtra("to", holder.mEditText.getText().toString());
+                        break;
                 }
+
+//                for (int i = 0 ; i <= 5; i++){
+//                    list.add((holder.mEditText.getText().toString()));
+//                    Log.d("Saved", holder.mEditText.getText().toString());
+//                }
             }
         });
-
     }
 
     @Override
@@ -76,43 +106,30 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         public TextView mTitle, mTitleExpanded;
         public Button mButton;
         public EditText mEditText;
+        public RecyclerView mRecyclerView;
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
         private ConstraintLayout mConstraintLayout;
+        private DateWatcher mDateWatcher;
 
         public ViewHolder(View view) {
             super(view);
             view.setOnClickListener(this);
 
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_form);
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
             mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
             mButton = (Button) view.findViewById(R.id.add_button);
             mEditText = (EditText) view.findViewById(R.id.date_et);
+            mDateWatcher = new DateWatcher(mEditText);
+            mEditText.addTextChangedListener(mDateWatcher);
 
             if (isViewExpanded == false) {
                 // Set Views to View.GONE and .setEnabled(false)
                 mConstraintLayout.setVisibility(View.GONE);
                 mConstraintLayout.setEnabled(false);
-
             }
-
-            mEditText.addTextChangedListener(new TextWatcher() {
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-                public void afterTextChanged(Editable editable) {}
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                    if(mEditText.getTag()!=null){
-//                        for (int j = 0; j < mEditTextValues.size(); j++){
-//                            mEditTextValues.add(mEditTextValues.set((int)mEditText.getTag(), charSequence.toString()));
-//                            Log.d("FormAdapter", charSequence.toString());
-//                        }
-//                    }
-
-                    int position = (int) mEditText.getTag(R.id.date_et);
-
-
-                }
-            });
         }
 
 
