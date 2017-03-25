@@ -19,6 +19,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -107,6 +108,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         public Button mButton;
         public EditText mEditText;
         public RecyclerView mRecyclerView;
+        public ImageView mImageView;
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
         private ConstraintLayout mConstraintLayout;
@@ -122,6 +124,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
             mButton = (Button) view.findViewById(R.id.add_button);
             mEditText = (EditText) view.findViewById(R.id.date_et);
+            mImageView = (ImageView) view.findViewById(R.id.imageView_up);
             mDateWatcher = new DateWatcher(mEditText);
             mEditText.addTextChangedListener(mDateWatcher);
 
@@ -147,6 +150,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             if (!isViewExpanded) {
                 mTitle.setVisibility(View.GONE);
                 mTitle.setEnabled(false);
+                mImageView.setVisibility(View.GONE);
                 mConstraintLayout.setVisibility(View.VISIBLE);
                 mConstraintLayout.setEnabled(true);
                 isViewExpanded = true;
@@ -169,6 +173,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     public void onAnimationEnd(Animation animation) {
                         mTitle.setVisibility(View.VISIBLE);
                         mTitle.setEnabled(true);
+                        mImageView.setVisibility(View.VISIBLE);
                         mConstraintLayout.setVisibility(View.GONE);
                         mConstraintLayout.setEnabled(false);
                     }
