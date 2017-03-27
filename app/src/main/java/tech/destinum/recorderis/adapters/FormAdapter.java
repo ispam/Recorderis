@@ -60,39 +60,40 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 int position = (int) holder.mEditText.getTag(R.id.date_et);
                 Log.d("pos", String.valueOf(position));
 
-                Intent intent = new Intent();
                 switch (position){
                     case 0:
+                        Intent intent = new Intent();
                         list.add(new Dates(0, holder.mEditText.getText().toString()));
                         Log.d("SOAT", holder.mEditText.getText().toString());
                         intent.putExtra("soat", holder.mEditText.getText().toString());
                         break;
                     case 1:
+
+                        Intent intent1 = new Intent();
                         list.add(new Dates(1, holder.mEditText.getText().toString()));
                         Log.d("RTM", holder.mEditText.getText().toString());
-                        intent.putExtra("rtm", holder.mEditText.getText().toString());
+                        intent1.putExtra("rtm", holder.mEditText.getText().toString());
                         break;
                     case 2:
+
+                        Intent intent2 = new Intent();
                         list.add(new Dates(2, holder.mEditText.getText().toString()));
                         Log.d("SRC", holder.mEditText.getText().toString());
-                        intent.putExtra("src", holder.mEditText.getText().toString());
+                        intent2.putExtra("src", holder.mEditText.getText().toString());
                         break;
                     case 3:
+                        Intent intent3 = new Intent();
                         list.add(new Dates(3, holder.mEditText.getText().toString()));
                         Log.d("STR", holder.mEditText.getText().toString());
-                        intent.putExtra("str", holder.mEditText.getText().toString());
+                        intent3.putExtra("str", holder.mEditText.getText().toString());
                         break;
                     case 4:
+                        Intent intent4 = new Intent();
                         list.add(new Dates(4, holder.mEditText.getText().toString()));
                         Log.d("TO", holder.mEditText.getText().toString());
-                        intent.putExtra("to", holder.mEditText.getText().toString());
+                        intent4.putExtra("to", holder.mEditText.getText().toString());
                         break;
                 }
-
-//                for (int i = 0 ; i <= 5; i++){
-//                    list.add((holder.mEditText.getText().toString()));
-//                    Log.d("Saved", holder.mEditText.getText().toString());
-//                }
             }
         });
     }

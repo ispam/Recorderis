@@ -29,26 +29,10 @@ public class Home extends BaseActivity {
         mName = (TextView) findViewById(R.id.name);
         mDays = (TextView) findViewById(R.id.days);
         mDate = (TextView) findViewById(R.id.date);
-
-        for (int i = 0; i < 5; i++){
-            switch (i){
-                case 0:
-
-                    break;
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-            }
-        }
+//
+//        mName.setText(mDBHelper.getUser().get(0).getName());
+//        mDays.setText(mDBHelper.getUser().get(0).getSoat());
+//        mDate.setText(String.valueOf(mDBHelper.getUser().get(0).getId()));
 
     }
 
