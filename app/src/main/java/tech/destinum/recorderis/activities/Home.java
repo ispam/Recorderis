@@ -30,6 +30,7 @@ public class Home extends BaseActivity {
         mDBHelper = new DBHelper(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_home);
+
 //
 //        mName.setText(mDBHelper.getUser().get(0).getName());
 //        mDays.setText(mDBHelper.getUser().get(0).getSoat());

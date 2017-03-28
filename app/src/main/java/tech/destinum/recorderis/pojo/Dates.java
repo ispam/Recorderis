@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Dates implements Parcelable{
+public class Dates implements Parcelable {
     private int id;
     private String date;
 
