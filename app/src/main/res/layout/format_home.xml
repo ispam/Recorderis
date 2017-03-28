@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_margin="@dimen/activity_horizontal_margin"
                                              android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -15,7 +16,7 @@
         android:textSize="56sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="203dp"/>
+        tools:layout_editor_absoluteY="173dp"/>
 
     <TextView
         android:id="@+id/symbol_tv"
@@ -23,8 +24,8 @@
         android:layout_height="wrap_content"
         android:text="122 dias"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="54dp"/>
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="32dp"/>
 
     <TextView
         android:id="@+id/date_tv"
@@ -39,10 +40,10 @@
         app:layout_constraintTop_toBottomOf="@+id/symbol_tv"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/month_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Noviembre"
+        android:text="Noviembre, 2017"
         android:textSize="28sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -50,12 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/days_left_tv"/>
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:text="2017"
-        android:textSize="28sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="163dp"/>
+        android:layout_marginTop="38dp"
+        android:text="@string/soat_text"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/month_tv"
+        tools:layout_editor_absoluteX="0dp"/>
+
 </android.support.constraint.ConstraintLayout>

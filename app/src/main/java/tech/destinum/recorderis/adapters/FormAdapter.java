@@ -2,18 +2,14 @@ package tech.destinum.recorderis.adapters;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -23,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Dates;
@@ -56,43 +51,45 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("FormAdapter", holder.mEditText.getText().toString());
                 int position = (int) holder.mEditText.getTag(R.id.date_et);
                 Log.d("pos", String.valueOf(position));
 
                 SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = mSP.edit();
 
+                String data = holder.mEditText.getText().toString();
+
                 switch (position){
                     case 0:
-                        list.add(new Dates(0, holder.mEditText.getText().toString()));
-                        Log.d("SOAT", holder.mEditText.getText().toString());
-                        mEditor.putString("soat", holder.mEditText.getText().toString());
+                        list.add(new Dates(0, data));
+                        Log.d("SOAT", data);
+                        mEditor.putString("soat", data);
                         mEditor.commit();
+
                         break;
                     case 1:
 
-                        list.add(new Dates(1, holder.mEditText.getText().toString()));
-                        Log.d("RTM", holder.mEditText.getText().toString());
-                        mEditor.putString("rtm", holder.mEditText.getText().toString());
+                        list.add(new Dates(1, data));
+                        Log.d("RTM", data);
+                        mEditor.putString("rtm", data);
                         mEditor.commit();
                         break;
                     case 2:
-                        list.add(new Dates(2, holder.mEditText.getText().toString()));
-                        Log.d("SRC", holder.mEditText.getText().toString());
-                        mEditor.putString("src", holder.mEditText.getText().toString());
+                        list.add(new Dates(2, data));
+                        Log.d("SRC", data);
+                        mEditor.putString("src", data);
                         mEditor.commit();
                         break;
                     case 3:
-                        list.add(new Dates(3, holder.mEditText.getText().toString()));
-                        Log.d("STR", holder.mEditText.getText().toString());
-                        mEditor.putString("str", holder.mEditText.getText().toString());
+                        list.add(new Dates(3, data));
+                        Log.d("STR", data);
+                        mEditor.putString("str", data);
                         mEditor.commit();
                         break;
                     case 4:
-                        list.add(new Dates(4, holder.mEditText.getText().toString()));
-                        Log.d("TO", holder.mEditText.getText().toString());
-                        mEditor.putString("to", holder.mEditText.getText().toString());
+                        list.add(new Dates(4, data));
+                        Log.d("TO", data);
+                        mEditor.putString("to", data);
                         mEditor.commit();
                         break;
                 }
@@ -110,8 +107,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         public TextView mTitle, mTitleExpanded;
         public Button mButton;
         public EditText mEditText;
-        public RecyclerView mRecyclerView;
         public ImageView mImageView;
+
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
         private ConstraintLayout mConstraintLayout;
@@ -121,13 +118,13 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             super(view);
             view.setOnClickListener(this);
 
-            mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_form);
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
             mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
             mButton = (Button) view.findViewById(R.id.add_button);
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
+
             mDateWatcher = new DateWatcher(mEditText);
             mEditText.addTextChangedListener(mDateWatcher);
 
@@ -156,7 +153,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 mImageView.setVisibility(View.GONE);
                 mConstraintLayout.setVisibility(View.VISIBLE);
                 mConstraintLayout.setEnabled(true);
-                mConstraintLayout.setFocusableInTouchMode(true);
                 isViewExpanded = true;
                 valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight)); // These values in this method can be changed to expand however much you like
             } else {

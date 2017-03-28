@@ -43,6 +43,10 @@
     <string name="info_form">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
     <string name="hint_date">DD/MM/YYYY</string>
 
+    <string name="soat_text">El Seguro Obligatorio de Accidentes de Tránsito – SOAT, es un contrato de seguro fundamentado en un principio social, que busca garantizar la atención inmediata e integral de todas las víctimas de accidentes de tránsito ocurridos en las vías del país.\n
+        \n
+Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación de dar atención prioritaria a las víctimas de un accidente de tránsito y advertir al consumidor que la reclamación de la indemnización la puede realizar directamente. Asimismo, no requiere apoderados o intermediarios.</string>
+
     <string name="privacy_policy_text">
         <![CDATA[
         <h1>Privacy Policy of Recorderis</h1>\n
