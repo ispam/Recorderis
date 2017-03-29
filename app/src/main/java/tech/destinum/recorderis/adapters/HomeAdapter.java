@@ -10,20 +10,21 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
-import tech.destinum.recorderis.activities.Home;
-import tech.destinum.recorderis.pojo.Dates;
+import tech.destinum.recorderis.pojo.User;
 
 import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<Dates> mDates;
+    private ArrayList<User> mUser;
+    private DBHelper mDBHelper;
 
-    public HomeAdapter(Context context, ArrayList<Dates> dates) {
+    public HomeAdapter(Context context, ArrayList<User> user) {
         mContext = context;
-        mDates = dates;
+        mUser = user;
     }
 
     @Override
@@ -33,27 +34,31 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        mDBHelper = new DBHelper(mContext);
         SharedPreferences mSP = mContext.getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
-        Dates dates = mDates.get(position);
-        holder.mMonth.setText(dates.getDate());
+        User user = mUser.get(position);
+        holder.mMonth.setText(String.valueOf(user.getId()));
+        holder.mDaysLeft.setText(user.getName());
+        holder.mDate.setText(user.get);
     }
 
 
     @Override
     public int getItemCount() {
-        return mDates != null ? mDates.size(): 0;
+        return mUser != null ? mUser.size(): 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mDaysLeft, mMonth, mSymbol;
+        public TextView mDate, mMonth, mDaysLeft, mName;
 
         public ViewHolder(View view) {
             super(view);
 
-            mDaysLeft = (TextView) view.findViewById(R.id.days_left_tv);
-            mSymbol = (TextView) view.findViewById(R.id.symbol_tv);
-            mMonth = (TextView) view.findViewById(R.id.month_tv);
+            mDate = (TextView) view.findViewById(R.id.format_home_date_tv);
+            mDaysLeft = (TextView) view.findViewById(R.id.format_home_days_left_tv);
+            mMonth = (TextView) view.findViewById(R.id.format_home_month_tv);
+            mName = (TextView) view.findViewById(R.id.format_home_name_tv);
         }
     }
 }

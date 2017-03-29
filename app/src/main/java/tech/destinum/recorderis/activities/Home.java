@@ -2,6 +2,9 @@ package tech.destinum.recorderis.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
@@ -30,11 +33,13 @@ public class Home extends BaseActivity {
         mDBHelper = new DBHelper(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_home);
+        mHomeAdapter = new HomeAdapter(getApplicationContext(), mDBHelper.getUser());
 
-//
-//        mName.setText(mDBHelper.getUser().get(0).getName());
-//        mDays.setText(mDBHelper.getUser().get(0).getSoat());
-//        mDate.setText(String.valueOf(mDBHelper.getUser().get(0).getId()));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setHasFixedSize(true);
+
+        mRecyclerView.setAdapter(mHomeAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
     }
 

@@ -8,39 +8,43 @@
 
 
     <TextView
-        android:id="@+id/days_left_tv"
+        android:id="@+id/format_home_days_left_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:text="122 dias"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/format_home_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Revisión Técnico Mecánica"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/format_home_days_left_tv"
+        app:layout_constraintHorizontal_bias="0.509"/>
+
+    <TextView
+        android:id="@+id/format_home_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25/11/2017"
         android:textAlignment="center"
-        android:textSize="56sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="173dp"/>
-
-    <TextView
-        android:id="@+id/symbol_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="122 dias"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="32dp"/>
-
-    <TextView
-        android:id="@+id/date_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Revisión Técnico Mecánica"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/days_left_tv"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/symbol_tv"/>
+        app:layout_constraintHorizontal_bias="0.502"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/format_home_name_tv"/>
 
     <TextView
-        android:id="@+id/month_tv"
+        android:id="@+id/format_home_month_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Noviembre, 2017"
@@ -48,15 +52,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@+id/days_left_tv"/>
+        app:layout_constraintTop_toBottomOf="@+id/format_home_date_tv"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
         android:text="@string/soat_text"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/month_tv"
-        tools:layout_editor_absoluteX="0dp"/>
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/format_home_month_tv"/>
 
 </android.support.constraint.ConstraintLayout>

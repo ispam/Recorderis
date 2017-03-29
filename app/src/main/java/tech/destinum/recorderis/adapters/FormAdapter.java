@@ -93,6 +93,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         mEditor.commit();
                         break;
                 }
+
             }
         });
     }
