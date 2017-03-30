@@ -21,7 +21,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tech.destinum.recorderis.R;
-import tech.destinum.recorderis.pojo.Dates;
 import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
 
@@ -30,7 +29,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     public static final String FORM_PREFERENCES = "FormPreferences";
     private Context mContext;
     private ArrayList<Document> mDocuments;
-    private  ArrayList<Dates> list = new ArrayList<>();
 
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
@@ -61,7 +59,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                 switch (position){
                     case 0:
-                        list.add(new Dates(0, data));
+
                         Log.d("SOAT", data);
                         mEditor.putString("soat", data);
                         mEditor.commit();
@@ -69,28 +67,31 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                     case 1:
 
-                        list.add(new Dates(1, data));
                         Log.d("RTM", data);
                         mEditor.putString("rtm", data);
                         mEditor.commit();
+
                         break;
                     case 2:
-                        list.add(new Dates(2, data));
+
                         Log.d("SRC", data);
                         mEditor.putString("src", data);
                         mEditor.commit();
+
                         break;
                     case 3:
-                        list.add(new Dates(3, data));
+
                         Log.d("STR", data);
                         mEditor.putString("str", data);
                         mEditor.commit();
+
                         break;
                     case 4:
-                        list.add(new Dates(4, data));
+
                         Log.d("TO", data);
                         mEditor.putString("to", data);
                         mEditor.commit();
+
                         break;
                 }
 
