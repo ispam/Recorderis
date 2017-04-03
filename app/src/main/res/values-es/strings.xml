@@ -40,6 +40,7 @@
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
 
+    <string name="section_format">Hello World from section: %1$d</string>
 
     <string name="info_form">Ingrese SÓLO las Fechas de Vencimiento de los DOCUMENTOS que posea</string>
     <string name="hint_date">DD/MM/AAAA</string>
