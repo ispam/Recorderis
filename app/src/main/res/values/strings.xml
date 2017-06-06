@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Recorderis</string>
+    <string name="app_name">RECORDERIS</string>
     <string name="app_version">Version 1.0</string>
 
     <!--Menu Navigation Drawer-->
@@ -18,6 +18,8 @@
     <string name="doc_str">All Risk Insurance</string>
     <string name="doc_soat">SOAT</string>
     <string name="doc_tao">Operation Card</string>
+    <string name="doc_imp">Bearing tax</string>
+    <string name="doc_ext">Fire Extinguisher</string>
 
     <!--Links About Page-->
     <string name="privacy_policy_link">Privacy Policy</string>

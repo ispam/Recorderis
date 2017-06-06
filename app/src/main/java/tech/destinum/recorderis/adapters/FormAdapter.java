@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Document;
-import tech.destinum.recorderis.utils.DateWatcher;
+//import tech.destinum.recorderis.utils.DateWatcher;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
@@ -114,7 +114,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
         private ConstraintLayout mConstraintLayout;
-        private DateWatcher mDateWatcher;
+//        private DateWatcher mDateWatcher;
 
         public ViewHolder(View view) {
             super(view);
@@ -127,8 +127,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
 
-            mDateWatcher = new DateWatcher(mEditText);
-            mEditText.addTextChangedListener(mDateWatcher);
+//            mDateWatcher = new DateWatcher(mEditText);
+//            mEditText.addTextChangedListener(mDateWatcher);
 
             if (isViewExpanded == false) {
                 // Set Views to View.GONE and .setEnabled(false)
