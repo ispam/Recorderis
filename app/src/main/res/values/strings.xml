@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RECORDERIS</string>
+    <string name="app_name">Recorderis</string>
     <string name="app_version">Version 1.0</string>
 
     <!--Menu Navigation Drawer-->
