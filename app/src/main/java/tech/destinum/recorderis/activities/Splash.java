@@ -5,22 +5,17 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.VideoView;
-
-import com.felipecsl.gifimageview.library.GifImageView;
-
-import org.apache.commons.io.IOUtils;
-
-import java.io.InputStream;
 
 import tech.destinum.recorderis.R;
 
 public class Splash extends AppCompatActivity {
 
     private VideoView video_view;
+    private static final String TAG = Splash.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +47,7 @@ public class Splash extends AppCompatActivity {
 
         } catch (Exception e){
 
+            Log.d(TAG, "Paila tuki tuki");
         }
     }
 
