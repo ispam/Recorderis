@@ -35,9 +35,9 @@ public class Selection extends BaseActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_selection);
 
         int[] covers = new int[]{
-                R.drawable.moto,
-                R.drawable.private_transport,
-                R.drawable.publico};
+                R.drawable.moto640blanco,
+                R.drawable.parti640blanco,
+                R.drawable.publi640blanco};
 
         mCategoryArrayList = new ArrayList<>();
         mCategoryArrayList.add(new Category("Servicio Particular", "Si usted utiliza un vehículo de placas amarillas y de uso privado", covers[1]));
@@ -51,8 +51,8 @@ public class Selection extends BaseActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
 
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
-        mRecyclerView.addItemDecoration(itemDecoration);
+//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
+//        mRecyclerView.addItemDecoration(itemDecoration);
 
     }
 
