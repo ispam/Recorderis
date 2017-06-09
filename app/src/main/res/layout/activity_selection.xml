@@ -53,11 +53,7 @@
 
             </android.support.design.widget.CoordinatorLayout>
 
-
-
         </RelativeLayout>
-
-
 
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"
@@ -71,7 +67,6 @@
             android:background="#FFFF"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/drawer_menu"/>
-
 
     </android.support.v4.widget.DrawerLayout>
 

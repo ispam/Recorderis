@@ -3,6 +3,11 @@
     <string name="app_name">Recorderis</string>
     <string name="app_version">Version 1.0</string>
 
+    <!--Hint Text-->
+    <string name="hint_top">(Tap here when you finish)</string>
+    <string name="hint_mid">Enter ONLY the \nExpiration Dates of the \nDOCUMENT you own</string>
+    <string name="hint_bot">(Tap anywhere to continue)</string>
+
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Home</string>
     <string name="nav_settings">Settings</string>

@@ -13,7 +13,7 @@
         android:id="@+id/imageView_down"
         android:layout_width="37dp"
         android:layout_height="35dp"
-        app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp"
+        app:srcCompat="@drawable/arrow_black_down"
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="4dp"

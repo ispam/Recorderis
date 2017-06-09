@@ -26,7 +26,6 @@ public class Splash extends AppCompatActivity {
 
         try {
 
-
             Uri path = Uri.parse("android.resource://"+ getPackageName()+"/"+ R.raw.splash_screen);
             video_view.setVideoURI(path);
 
@@ -38,7 +37,6 @@ public class Splash extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
-
 
                 }
             });

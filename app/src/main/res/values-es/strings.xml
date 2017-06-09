@@ -3,6 +3,11 @@
     <string name="app_name">Recorderis</string>
     <string name="app_version">Versión 1.0</string>
 
+    <!--Hint Text-->
+    <string name="hint_top">Presione aquí cuando termine</string>
+    <string name="hint_mid">Ingrese SÓLO las Fechas de Vencimiento de los DOCUMENTOS que posea</string>
+    <string name="hint_bot">(Presione en cualquier \nlado para continuar)</string>
+
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Inicio</string>
     <string name="nav_settings">Ajustes</string>
