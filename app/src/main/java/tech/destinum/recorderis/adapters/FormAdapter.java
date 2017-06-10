@@ -105,6 +105,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         return mDocuments != null ? mDocuments.size(): 0;
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView mTitle, mTitleExpanded;
@@ -117,7 +119,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         private ConstraintLayout mConstraintLayout;
         private DateWatcher mDateWatcher;
 
-        public ViewHolder(View view) {
+        public ViewHolder(final View view) {
             super(view);
             view.setOnClickListener(this);
 
@@ -137,6 +139,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 mConstraintLayout.setEnabled(false);
             }
         }
+
 
 
 
