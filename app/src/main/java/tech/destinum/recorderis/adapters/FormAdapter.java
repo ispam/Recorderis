@@ -4,8 +4,8 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
-//import tech.destinum.recorderis.utils.DateWatcher;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
@@ -49,7 +49,63 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         holder.mEditText.setTag(R.id.date_et, position);
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
+
+                if (holder.originalHeight == 0) {
+                    holder.originalHeight = holder.mCardView.getHeight();
+                }
+
+                holder.isViewExpanded = false;
+                ValueAnimator valueAnimator;
+
+                valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+
+                Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
+
+                a.setDuration(200);
+                // Set a listener to the animation and configure onAnimationEnd
+                a.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        holder.mConstraintLayout.setVisibility(View.GONE);
+                        holder.mConstraintLayout.setEnabled(false);
+                        holder. mTitle.setVisibility(View.VISIBLE);
+                        holder.mTitle.setEnabled(true);
+                        holder. mImageView.setVisibility(View.VISIBLE);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                // Set the animation on the custom view
+                holder.mConstraintLayout.startAnimation(a);
+
+                valueAnimator.setDuration(200);
+                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Integer value = (Integer) animation.getAnimatedValue();
+                        holder.mCardView.getLayoutParams().height = value.intValue();
+                        holder.mCardView.requestLayout();
+                    }
+                });
+                valueAnimator.start();
+
+                holder. mTitle.setVisibility(View.VISIBLE);
+                holder.mTitle.setEnabled(true);
+                holder.mImageView.setVisibility(View.VISIBLE);
+                holder.mConstraintLayout.setVisibility(View.GONE);
+                holder.mConstraintLayout.setEnabled(false);
+
                 int position = (int) holder.mEditText.getTag(R.id.date_et);
                 Log.d("pos", String.valueOf(position));
 
@@ -96,6 +152,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                 }
 
+
             }
         });
     }
@@ -106,17 +163,17 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     }
 
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView mTitle, mTitleExpanded;
         public Button mButton;
         public EditText mEditText;
         public ImageView mImageView;
+        public CardView mCardView;
 
-        private int originalHeight = 0;
-        private boolean isViewExpanded = false;
-        private ConstraintLayout mConstraintLayout;
+        public int originalHeight = 0;
+        public boolean isViewExpanded = false;
+        public ConstraintLayout mConstraintLayout;
         private DateWatcher mDateWatcher;
 
         public ViewHolder(final View view) {
@@ -130,6 +187,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
 
+            mCardView = (CardView) view.findViewById(R.id.card_view_form);
+
             mDateWatcher = new DateWatcher(mEditText);
             mEditText.addTextChangedListener(mDateWatcher);
 
@@ -141,11 +200,15 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         }
 
 
-
-
         @Override
         public void onClick(final View v) {
-            // If the originalHeight is 0 then find the height of the View being used 
+
+            animate(v);
+
+        }
+
+        public void animate(final View v){
+            // If the originalHeight is 0 then find the height of the View being used
             // This would be the height of the ConstraintLayout
             if (originalHeight == 0) {
                 originalHeight = v.getHeight();
@@ -202,10 +265,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     v.requestLayout();
                 }
             });
-
-
             valueAnimator.start();
-
         }
     }
 }
