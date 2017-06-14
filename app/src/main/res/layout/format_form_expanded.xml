@@ -64,29 +64,31 @@
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayout"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="-4dp"
+        android:layout_marginTop="0dp"
+        android:background="#adceb5"
         android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_below="@id/textInputLayout"
-        android:layout_marginRight="-4dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="0dp"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        android:layout_marginTop="0dp"
         app:layout_constraintVertical_bias="0.0"/>
 
     <Button
         android:id="@+id/button_cancel"
+        style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cancel"
         android:layout_below="@id/textInputLayout"
-        android:layout_marginEnd="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="0dp"
+        android:background="#adceb5"
+        android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/add_button"
-        android:layout_marginRight="0dp"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        android:layout_marginTop="0dp"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="1.0"/>
 
 
 </android.support.constraint.ConstraintLayout>

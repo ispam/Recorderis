@@ -7,4 +7,5 @@
     <color name="colorAbout">#4a71bf</color>
     <color name="colorMidGradient">#21316A</color>
     <color name="colorBotGradient">#262C6E</color>
+    <color name="colorAcceptedAnswer">#d1fcdd</color>
 </resources>

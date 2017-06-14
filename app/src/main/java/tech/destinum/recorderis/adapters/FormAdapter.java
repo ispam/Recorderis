@@ -3,6 +3,7 @@ package tech.destinum.recorderis.adapters;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -51,15 +52,14 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             @Override
             public void onClick(final View v) {
 
+                holder.isViewExpanded = false;
+
                 if (holder.originalHeight == 0) {
                     holder.originalHeight = holder.mCardView.getHeight();
                 }
 
-                holder.isViewExpanded = false;
                 ValueAnimator valueAnimator;
-
                 valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
-
                 Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
 
                 a.setDuration(200);
@@ -74,9 +74,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     public void onAnimationEnd(Animation animation) {
                         holder.mConstraintLayout.setVisibility(View.GONE);
                         holder.mConstraintLayout.setEnabled(false);
-                        holder. mTitle.setVisibility(View.VISIBLE);
+                        holder.mCardView.setBackgroundColor(Color.parseColor("#E5FDEB"));
+                        holder.mTitle.setVisibility(View.VISIBLE);
                         holder.mTitle.setEnabled(true);
-                        holder. mImageView.setVisibility(View.VISIBLE);
+                        holder.mImageView.setVisibility(View.GONE);
+                        holder.mImageViewCheck.setVisibility(View.VISIBLE);
 
                     }
 
@@ -99,12 +101,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                 });
                 valueAnimator.start();
-
-                holder. mTitle.setVisibility(View.VISIBLE);
-                holder.mTitle.setEnabled(true);
-                holder.mImageView.setVisibility(View.VISIBLE);
-                holder.mConstraintLayout.setVisibility(View.GONE);
-                holder.mConstraintLayout.setEnabled(false);
 
                 int position = (int) holder.mEditText.getTag(R.id.date_et);
                 Log.d("pos", String.valueOf(position));
@@ -168,7 +164,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         public TextView mTitle, mTitleExpanded;
         public Button mButton;
         public EditText mEditText;
-        public ImageView mImageView;
+        public ImageView mImageView, mImageViewCheck;
         public CardView mCardView;
 
         public int originalHeight = 0;
@@ -186,6 +182,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             mButton = (Button) view.findViewById(R.id.add_button);
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
+            mImageViewCheck = (ImageView) view.findViewById(R.id.imageView_black_check);
 
             mCardView = (CardView) view.findViewById(R.id.card_view_form);
 
@@ -222,6 +219,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 mImageView.setVisibility(View.GONE);
                 mConstraintLayout.setVisibility(View.VISIBLE);
                 mConstraintLayout.setEnabled(true);
+                mImageViewCheck.setVisibility(View.GONE);
                 isViewExpanded = true;
                 valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight)); // These values in this method can be changed to expand however much you like
             } else {
