@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,6 +31,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<Document> mDocuments;
 
+    public boolean zero, one, two, three, four, five;
+
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
         this.mDocuments = mDocuments;
@@ -47,6 +48,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         final Document document = mDocuments.get(position);
         holder.mTitle.setText(document.getName());
         holder.mTitleExpanded.setText(document.getName());
+
         holder.mEditText.setTag(R.id.date_et, position);
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +115,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 switch (position){
                     case 0:
 
+                        zero = true;
                         Log.d("SOAT", data);
                         mEditor.putString("soat", data);
                         mEditor.commit();
@@ -120,6 +123,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                     case 1:
 
+                        one = true;
                         Log.d("RTM", data);
                         mEditor.putString("rtm", data);
                         mEditor.commit();
@@ -127,6 +131,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                     case 2:
 
+                        two = true;
                         Log.d("SRC", data);
                         mEditor.putString("src", data);
                         mEditor.commit();
@@ -134,6 +139,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                     case 3:
 
+                        three = true;
                         Log.d("STR", data);
                         mEditor.putString("str", data);
                         mEditor.commit();
@@ -141,17 +147,221 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         break;
                     case 4:
 
+                        four = true;
                         Log.d("TO", data);
                         mEditor.putString("to", data);
                         mEditor.commit();
+
+                        break;
+                    case 5:
+
+                        five = true;
+                        Log.d("EXT", data);
+                        mEditor.putString("ext", data);
+                        mEditor.commit();
+
+                        break;
+                }
+            }
+        });
+
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (position){
+                    case 0:
+
+                        if (zero == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
+
+                        break;
+                    case 1:
+
+                        if (one == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
+
+                        break;
+                    case 2:
+
+                        if (two == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
+
+                        break;
+                    case 3:
+
+                        if (three == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
+
+                        break;
+                    case 4:
+
+                        if (four == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
+
+                        break;
+
+                    case 5:
+
+                        if (five == true){
+                            animation1();
+                        } else {
+                            animation2();
+                        }
 
                         break;
                 }
 
 
             }
+
+            private void animation1() {
+
+                if (holder.originalHeight == 0) {
+                    holder.originalHeight = holder.mCardView.getHeight();
+                }
+
+                ValueAnimator valueAnimator;
+
+                if (!holder.isViewExpanded) {
+                    holder.mTitle.setVisibility(View.GONE);
+                    holder.mTitle.setEnabled(false);
+                    holder.mImageView.setVisibility(View.GONE);
+                    holder.mConstraintLayout.setVisibility(View.VISIBLE);
+                    holder.mConstraintLayout.setEnabled(true);
+                    holder.mImageViewCheck.setVisibility(View.GONE);
+                    holder.isViewExpanded = true;
+                    valueAnimator = ValueAnimator.ofInt(holder.originalHeight, holder.originalHeight + (int) (holder.originalHeight));
+
+                } else {
+                    holder.isViewExpanded = false;
+
+                    valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+                    Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
+
+                    a.setDuration(200);
+                    // Set a listener to the animation and configure onAnimationEnd
+                    a.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            holder.mConstraintLayout.setVisibility(View.GONE);
+                            holder.mConstraintLayout.setEnabled(false);
+                            holder.mCardView.setBackgroundColor(Color.parseColor("#E5FDEB"));
+                            holder.mTitle.setVisibility(View.VISIBLE);
+                            holder.mTitle.setEnabled(true);
+                            holder.mImageView.setVisibility(View.GONE);
+                            holder.mImageViewCheck.setVisibility(View.VISIBLE);
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    // Set the animation on the custom view
+                    holder.mConstraintLayout.startAnimation(a);
+                }
+
+                valueAnimator.setDuration(200);
+                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Integer value = (Integer) animation.getAnimatedValue();
+                        holder.mCardView.getLayoutParams().height = value.intValue();
+                        holder.mCardView.requestLayout();
+                    }
+                });
+                valueAnimator.start();
+            }
+
+            private void animation2(){
+                if (holder.originalHeight == 0) {
+                    holder.originalHeight = holder.mCardView.getHeight();
+                }
+
+                ValueAnimator valueAnimator;
+
+                if (!holder.isViewExpanded) {
+                    holder.mTitle.setVisibility(View.GONE);
+                    holder.mTitle.setEnabled(false);
+                    holder.mImageView.setVisibility(View.GONE);
+                    holder.mConstraintLayout.setVisibility(View.VISIBLE);
+                    holder.mConstraintLayout.setEnabled(true);
+                    holder.mImageViewCheck.setVisibility(View.GONE);
+                    holder.isViewExpanded = true;
+                    valueAnimator = ValueAnimator.ofInt(holder.originalHeight, holder.originalHeight + (int) (holder.originalHeight)); // These values in this method can be changed to expand however much you like
+                } else {
+                    holder.isViewExpanded = false;
+                    valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+
+                    Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
+
+                    a.setDuration(200);
+                    // Set a listener to the animation and configure onAnimationEnd
+                    a.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            holder.mTitle.setVisibility(View.VISIBLE);
+                            holder.mTitle.setEnabled(true);
+                            holder.mImageView.setVisibility(View.VISIBLE);
+                            holder.mConstraintLayout.setVisibility(View.GONE);
+                            holder.mConstraintLayout.setEnabled(false);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    // Set the animation on the custom view
+                    holder.mConstraintLayout.startAnimation(a);
+                }
+
+                valueAnimator.setDuration(200);
+                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Integer value = (Integer) animation.getAnimatedValue();
+                        holder.mCardView.getLayoutParams().height = value.intValue();
+                        holder.mCardView.requestLayout();
+                    }
+                });
+                valueAnimator.start();
+            }
         });
+
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -159,7 +369,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mTitle, mTitleExpanded;
         public Button mButton;
@@ -174,7 +384,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
         public ViewHolder(final View view) {
             super(view);
-            view.setOnClickListener(this);
+//            view.setOnClickListener(this);
 
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
@@ -197,12 +407,12 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         }
 
 
-        @Override
-        public void onClick(final View v) {
-
-            animate(v);
-
-        }
+//        @Override
+//        public void onClick(final View v) {
+//
+//            animate(v);
+//
+//        }
 
         public void animate(final View v){
             // If the originalHeight is 0 then find the height of the View being used
@@ -213,6 +423,65 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
             // Declare a ValueAnimator object
             ValueAnimator valueAnimator;
+
+            SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
+
+            //modified animation
+//            if (!isViewExpanded) {
+//                mTitle.setVisibility(View.GONE);
+//                mTitle.setEnabled(false);
+//                mImageView.setVisibility(View.GONE);
+//                mConstraintLayout.setVisibility(View.VISIBLE);
+//                mConstraintLayout.setEnabled(true);
+//                mImageViewCheck.setVisibility(View.GONE);
+//                isViewExpanded = true;
+//                valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight)); // These values in this method can be changed to expand however much you like
+//            } else {
+//                isViewExpanded = false;
+//                valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight), originalHeight);
+//
+//                Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
+//
+//                a.setDuration(200);
+//                // Set a listener to the animation and configure onAnimationEnd
+//                a.setAnimationListener(new Animation.AnimationListener() {
+//                    @Override
+//                    public void onAnimationStart(Animation animation) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onAnimationEnd(Animation animation) {
+//                        mTitle.setVisibility(View.VISIBLE);
+//                        mTitle.setEnabled(true);
+//                        mImageView.setVisibility(View.GONE);
+//                        mConstraintLayout.setVisibility(View.GONE);
+//                        mConstraintLayout.setEnabled(false);
+//                        mImageViewCheck.setVisibility(View.VISIBLE);
+//                    }
+//
+//                    @Override
+//                    public void onAnimationRepeat(Animation animation) {
+//
+//                    }
+//                });
+//
+//                // Set the animation on the custom view
+//                mConstraintLayout.startAnimation(a);
+//            }
+
+//            valueAnimator.setDuration(200);
+//            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+//            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//                public void onAnimationUpdate(ValueAnimator animation) {
+//                    Integer value = (Integer) animation.getAnimatedValue();
+//                    v.getLayoutParams().height = value.intValue();
+//                    v.requestLayout();
+//                }
+//            });
+//            valueAnimator.start();
+
+            //normal animation
             if (!isViewExpanded) {
                 mTitle.setVisibility(View.GONE);
                 mTitle.setEnabled(false);
@@ -254,6 +523,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 // Set the animation on the custom view
                 mConstraintLayout.startAnimation(a);
             }
+
             valueAnimator.setDuration(200);
             valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
             valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -264,6 +534,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 }
             });
             valueAnimator.start();
+
         }
     }
 }
