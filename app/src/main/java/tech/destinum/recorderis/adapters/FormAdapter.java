@@ -50,7 +50,56 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         holder.mTitleExpanded.setText(document.getName());
 
         holder.mEditText.setTag(R.id.date_et, position);
-        holder.mButton.setOnClickListener(new View.OnClickListener() {
+
+        holder.mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.isViewExpanded = false;
+
+                ValueAnimator valueAnimator;
+                valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+                Animation a = new AlphaAnimation(1.00f, 0.00f);
+
+                a.setDuration(200);
+
+                a.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        holder.mConstraintLayout.setVisibility(View.GONE);
+                        holder.mConstraintLayout.setEnabled(false);
+                        holder.mTitle.setVisibility(View.VISIBLE);
+                        holder.mTitle.setEnabled(true);
+                        holder.mImageView.setVisibility(View.VISIBLE);
+                        holder.mImageViewCheck.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                holder.mConstraintLayout.startAnimation(a);
+
+                valueAnimator.setDuration(200);
+                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Integer value = (Integer) animation.getAnimatedValue();
+                        holder.mCardView.getLayoutParams().height = value.intValue();
+                        holder.mCardView.requestLayout();
+                    }
+                });
+                valueAnimator.start();
+            }
+        });
+        holder.mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
@@ -226,8 +275,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                         break;
                 }
-
-
             }
 
             private void animation1() {
@@ -357,8 +404,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 valueAnimator.start();
             }
         });
-
-
     }
 
 
@@ -372,7 +417,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mTitle, mTitleExpanded;
-        public Button mButton;
+        public Button mAddButton, mCancelButton;
         public EditText mEditText;
         public ImageView mImageView, mImageViewCheck;
         public CardView mCardView;
@@ -384,16 +429,15 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
         public ViewHolder(final View view) {
             super(view);
-//            view.setOnClickListener(this);
 
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
             mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
-            mButton = (Button) view.findViewById(R.id.add_button);
+            mAddButton = (Button) view.findViewById(R.id.add_button);
+            mCancelButton = (Button) view.findViewById(R.id.button_cancel);
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
             mImageViewCheck = (ImageView) view.findViewById(R.id.imageView_black_check);
-
             mCardView = (CardView) view.findViewById(R.id.card_view_form);
 
             mDateWatcher = new DateWatcher(mEditText);
@@ -404,137 +448,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 mConstraintLayout.setVisibility(View.GONE);
                 mConstraintLayout.setEnabled(false);
             }
-        }
-
-
-//        @Override
-//        public void onClick(final View v) {
-//
-//            animate(v);
-//
-//        }
-
-        public void animate(final View v){
-            // If the originalHeight is 0 then find the height of the View being used
-            // This would be the height of the ConstraintLayout
-            if (originalHeight == 0) {
-                originalHeight = v.getHeight();
-            }
-
-            // Declare a ValueAnimator object
-            ValueAnimator valueAnimator;
-
-            SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
-
-            //modified animation
-//            if (!isViewExpanded) {
-//                mTitle.setVisibility(View.GONE);
-//                mTitle.setEnabled(false);
-//                mImageView.setVisibility(View.GONE);
-//                mConstraintLayout.setVisibility(View.VISIBLE);
-//                mConstraintLayout.setEnabled(true);
-//                mImageViewCheck.setVisibility(View.GONE);
-//                isViewExpanded = true;
-//                valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight)); // These values in this method can be changed to expand however much you like
-//            } else {
-//                isViewExpanded = false;
-//                valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight), originalHeight);
-//
-//                Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
-//
-//                a.setDuration(200);
-//                // Set a listener to the animation and configure onAnimationEnd
-//                a.setAnimationListener(new Animation.AnimationListener() {
-//                    @Override
-//                    public void onAnimationStart(Animation animation) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        mTitle.setVisibility(View.VISIBLE);
-//                        mTitle.setEnabled(true);
-//                        mImageView.setVisibility(View.GONE);
-//                        mConstraintLayout.setVisibility(View.GONE);
-//                        mConstraintLayout.setEnabled(false);
-//                        mImageViewCheck.setVisibility(View.VISIBLE);
-//                    }
-//
-//                    @Override
-//                    public void onAnimationRepeat(Animation animation) {
-//
-//                    }
-//                });
-//
-//                // Set the animation on the custom view
-//                mConstraintLayout.startAnimation(a);
-//            }
-
-//            valueAnimator.setDuration(200);
-//            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-//            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//                public void onAnimationUpdate(ValueAnimator animation) {
-//                    Integer value = (Integer) animation.getAnimatedValue();
-//                    v.getLayoutParams().height = value.intValue();
-//                    v.requestLayout();
-//                }
-//            });
-//            valueAnimator.start();
-
-            //normal animation
-            if (!isViewExpanded) {
-                mTitle.setVisibility(View.GONE);
-                mTitle.setEnabled(false);
-                mImageView.setVisibility(View.GONE);
-                mConstraintLayout.setVisibility(View.VISIBLE);
-                mConstraintLayout.setEnabled(true);
-                mImageViewCheck.setVisibility(View.GONE);
-                isViewExpanded = true;
-                valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight)); // These values in this method can be changed to expand however much you like
-            } else {
-                isViewExpanded = false;
-                valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight), originalHeight);
-
-                Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
-
-                a.setDuration(200);
-                // Set a listener to the animation and configure onAnimationEnd
-                a.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        mTitle.setVisibility(View.VISIBLE);
-                        mTitle.setEnabled(true);
-                        mImageView.setVisibility(View.VISIBLE);
-                        mConstraintLayout.setVisibility(View.GONE);
-                        mConstraintLayout.setEnabled(false);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-
-                // Set the animation on the custom view
-                mConstraintLayout.startAnimation(a);
-            }
-
-            valueAnimator.setDuration(200);
-            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    Integer value = (Integer) animation.getAnimatedValue();
-                    v.getLayoutParams().height = value.intValue();
-                    v.requestLayout();
-                }
-            });
-            valueAnimator.start();
-
         }
     }
 }
