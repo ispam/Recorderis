@@ -50,7 +50,56 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
         holder.mTitleExpanded.setText(document.getName());
 
         holder.mEditText.setTag(R.id.date_et, position);
-        holder.mButton.setOnClickListener(new View.OnClickListener() {
+
+        holder.mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.isViewExpanded = false;
+
+                ValueAnimator valueAnimator;
+                valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+                Animation a = new AlphaAnimation(1.00f, 0.00f);
+
+                a.setDuration(200);
+
+                a.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        holder.mConstraintLayout.setVisibility(View.GONE);
+                        holder.mConstraintLayout.setEnabled(false);
+                        holder.mTitle.setVisibility(View.VISIBLE);
+                        holder.mTitle.setEnabled(true);
+                        holder.mImageView.setVisibility(View.VISIBLE);
+                        holder.mImageViewCheck.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                holder.mConstraintLayout.startAnimation(a);
+
+                valueAnimator.setDuration(200);
+                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        Integer value = (Integer) animation.getAnimatedValue();
+                        holder.mCardView.getLayoutParams().height = value.intValue();
+                        holder.mCardView.requestLayout();
+                    }
+                });
+                valueAnimator.start();
+            }
+        });
+        holder.mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
@@ -226,8 +275,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                         break;
                 }
-
-
             }
 
             private void animation1() {
@@ -357,8 +404,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 valueAnimator.start();
             }
         });
-
-
     }
 
 
@@ -372,7 +417,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mTitle, mTitleExpanded;
-        public Button mButton;
+        public Button mAddButton, mCancelButton;
         public EditText mEditText;
         public ImageView mImageView, mImageViewCheck;
         public CardView mCardView;
@@ -388,11 +433,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.expanded);
             mTitle = (TextView) view.findViewById(R.id.name_title_tv);
             mTitleExpanded = (TextView) view.findViewById(R.id.name_title_tv_expanded);
-            mButton = (Button) view.findViewById(R.id.add_button);
+            mAddButton = (Button) view.findViewById(R.id.add_button);
+            mCancelButton = (Button) view.findViewById(R.id.button_cancel);
             mEditText = (EditText) view.findViewById(R.id.date_et);
             mImageView = (ImageView) view.findViewById(R.id.imageView_up);
             mImageViewCheck = (ImageView) view.findViewById(R.id.imageView_black_check);
-
             mCardView = (CardView) view.findViewById(R.id.card_view_form);
 
             mDateWatcher = new DateWatcher(mEditText);
