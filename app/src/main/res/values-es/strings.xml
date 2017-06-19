@@ -36,14 +36,15 @@
     <string name="auth0_preferences">AUTH0_SHARED_PREFERENCES_KEY</string>
 
     <string name="login_success">Inicio - Exitoso</string>
-    <string name="login_error">Inicio- Error</string>
-    <string name="login_canceled">Inicio - Canceledo</string>
+    <string name="login_error">Inicio - Error</string>
+    <string name="login_canceled">Inicio - Cancelado</string>
     <string name="automatic_login_success">Inicio de sesión Automático </string>
     <string name="session_expired">Sesión expirada, Por favor inicie sesión</string>
     <string name="profile_request_failed">Pedido de perfil fallido</string>
 
     <!--Home Screen -->
     <string name="need_email">Necesitamos un Correo por favor</string>
+    <string name="need_date">Necesitamos alguna FECHA</string>
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
 
@@ -140,9 +141,7 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 
     <string name="terms_and_conditions">
         <![CDATA[
-            <!-- #######  YAY, I AM THE SOURCE EDITOR! #########-->
-<h1><strong>TERMINOS Y CONDICIONES DE USO</strong></h1>
-<h2>Tabla de Contenido</h2>
+<h1>Tabla de Contenido</h1>
 <h3><a href="#1">1. Contenido</a></h3>
 <h3><a href="#2">2. Reclamos por Violaci&oacute;n</a></h3>
 <h3><a href="#3">3. Marco Legal Principal</a></h3>

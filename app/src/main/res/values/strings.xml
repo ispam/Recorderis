@@ -44,6 +44,7 @@
 
     <!--Home Screen -->
     <string name="need_email">We Need an Email Please</string>
+    <string name="need_date">We Need A DATE</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
 

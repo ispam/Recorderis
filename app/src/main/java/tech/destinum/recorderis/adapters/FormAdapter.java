@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -75,6 +76,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         holder.mConstraintLayout.setEnabled(false);
                         holder.mTitle.setVisibility(View.VISIBLE);
                         holder.mTitle.setEnabled(true);
+                        holder.mCardView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        holder.mEditText.setText("");
                         holder.mImageView.setVisibility(View.VISIBLE);
                         holder.mImageViewCheck.setVisibility(View.GONE);
                     }
@@ -97,6 +100,62 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                 });
                 valueAnimator.start();
+
+                String nothing = "";
+
+                SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor mEditor = mSP.edit();
+
+                switch (position){
+                    case 0:
+
+                        zero = false;
+                        Log.d("SOAT", nothing);
+                        mEditor.putString("soat", nothing);
+                        mEditor.commit();
+
+                        break;
+                    case 1:
+
+                        one = false;
+                        Log.d("RTM", nothing);
+                        mEditor.putString("rtm", nothing);
+                        mEditor.commit();
+
+                        break;
+                    case 2:
+
+                        two = false;
+                        Log.d("SRC", nothing);
+                        mEditor.putString("src", nothing);
+                        mEditor.commit();
+
+                        break;
+                    case 3:
+
+                        three = false;
+                        Log.d("STR", nothing);
+                        mEditor.putString("str", nothing);
+                        mEditor.commit();
+
+                        break;
+                    case 4:
+
+                        four = false;
+                        Log.d("TO", nothing);
+                        mEditor.putString("to", nothing);
+                        mEditor.commit();
+
+                        break;
+                    case 5:
+
+                        five = false;
+                        Log.d("EXT", nothing);
+                        mEditor.putString("ext", nothing);
+                        mEditor.commit();
+
+                        break;
+                }
             }
         });
 
@@ -104,113 +163,118 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
             @Override
             public void onClick(final View v) {
 
-                holder.isViewExpanded = false;
-
-                if (holder.originalHeight == 0) {
-                    holder.originalHeight = holder.mCardView.getHeight();
-                }
-
-                ValueAnimator valueAnimator;
-                valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
-                Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
-
-                a.setDuration(200);
-                // Set a listener to the animation and configure onAnimationEnd
-                a.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        holder.mConstraintLayout.setVisibility(View.GONE);
-                        holder.mConstraintLayout.setEnabled(false);
-                        holder.mCardView.setBackgroundColor(Color.parseColor("#E5FDEB"));
-                        holder.mTitle.setVisibility(View.VISIBLE);
-                        holder.mTitle.setEnabled(true);
-                        holder.mImageView.setVisibility(View.GONE);
-                        holder.mImageViewCheck.setVisibility(View.VISIBLE);
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-
-                // Set the animation on the custom view
-                holder.mConstraintLayout.startAnimation(a);
-
-                valueAnimator.setDuration(200);
-                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        Integer value = (Integer) animation.getAnimatedValue();
-                        holder.mCardView.getLayoutParams().height = value.intValue();
-                        holder.mCardView.requestLayout();
-                    }
-                });
-                valueAnimator.start();
-
-                int position = (int) holder.mEditText.getTag(R.id.date_et);
-                Log.d("pos", String.valueOf(position));
-
-                SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
-                SharedPreferences.Editor mEditor = mSP.edit();
-
                 String data = holder.mEditText.getText().toString();
 
-                switch (position){
-                    case 0:
+                if (data.length() <= 0 || data == "") {
+                    Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.isViewExpanded = false;
 
-                        zero = true;
-                        Log.d("SOAT", data);
-                        mEditor.putString("soat", data);
-                        mEditor.commit();
+                    if (holder.originalHeight == 0) {
+                        holder.originalHeight = holder.mCardView.getHeight();
+                    }
 
-                        break;
-                    case 1:
+                    ValueAnimator valueAnimator;
+                    valueAnimator = ValueAnimator.ofInt(holder.originalHeight + (int) (holder.originalHeight), holder.originalHeight);
+                    Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
 
-                        one = true;
-                        Log.d("RTM", data);
-                        mEditor.putString("rtm", data);
-                        mEditor.commit();
+                    a.setDuration(200);
+                    // Set a listener to the animation and configure onAnimationEnd
+                    a.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
 
-                        break;
-                    case 2:
+                        }
 
-                        two = true;
-                        Log.d("SRC", data);
-                        mEditor.putString("src", data);
-                        mEditor.commit();
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            holder.mConstraintLayout.setVisibility(View.GONE);
+                            holder.mConstraintLayout.setEnabled(false);
+                            holder.mCardView.setBackgroundColor(Color.parseColor("#E5FDEB"));
+                            holder.mTitle.setVisibility(View.VISIBLE);
+                            holder.mTitle.setEnabled(true);
+                            holder.mImageView.setVisibility(View.GONE);
+                            holder.mImageViewCheck.setVisibility(View.VISIBLE);
 
-                        break;
-                    case 3:
+                        }
 
-                        three = true;
-                        Log.d("STR", data);
-                        mEditor.putString("str", data);
-                        mEditor.commit();
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
 
-                        break;
-                    case 4:
+                        }
+                    });
 
-                        four = true;
-                        Log.d("TO", data);
-                        mEditor.putString("to", data);
-                        mEditor.commit();
+                    // Set the animation on the custom view
+                    holder.mConstraintLayout.startAnimation(a);
 
-                        break;
-                    case 5:
+                    valueAnimator.setDuration(200);
+                    valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                    valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        public void onAnimationUpdate(ValueAnimator animation) {
+                            Integer value = (Integer) animation.getAnimatedValue();
+                            holder.mCardView.getLayoutParams().height = value.intValue();
+                            holder.mCardView.requestLayout();
+                        }
+                    });
+                    valueAnimator.start();
 
-                        five = true;
-                        Log.d("EXT", data);
-                        mEditor.putString("ext", data);
-                        mEditor.commit();
+                    int position = (int) holder.mEditText.getTag(R.id.date_et);
+                    Log.d("pos", String.valueOf(position));
 
-                        break;
+                    SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor mEditor = mSP.edit();
+
+
+                    switch (position) {
+                        case 0:
+
+                            zero = true;
+                            Log.d("SOAT", data);
+                            mEditor.putString("soat", data);
+                            mEditor.commit();
+
+                            break;
+                        case 1:
+
+                            one = true;
+                            Log.d("RTM", data);
+                            mEditor.putString("rtm", data);
+                            mEditor.commit();
+
+                            break;
+                        case 2:
+
+                            two = true;
+                            Log.d("SRC", data);
+                            mEditor.putString("src", data);
+                            mEditor.commit();
+
+                            break;
+                        case 3:
+
+                            three = true;
+                            Log.d("STR", data);
+                            mEditor.putString("str", data);
+                            mEditor.commit();
+
+                            break;
+                        case 4:
+
+                            four = true;
+                            Log.d("TO", data);
+                            mEditor.putString("to", data);
+                            mEditor.commit();
+
+                            break;
+                        case 5:
+
+                            five = true;
+                            Log.d("EXT", data);
+                            mEditor.putString("ext", data);
+                            mEditor.commit();
+
+                            break;
+                    }
                 }
             }
         });
