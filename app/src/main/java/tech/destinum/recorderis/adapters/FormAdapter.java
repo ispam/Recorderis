@@ -99,6 +99,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                 valueAnimator.start();
             }
         });
+
         holder.mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
