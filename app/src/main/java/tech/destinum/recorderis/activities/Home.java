@@ -31,6 +31,5 @@ public class Home extends BaseActivity {
 
         mDBHelper = new DBHelper(this);
 
-
     }
 }
