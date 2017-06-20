@@ -17,7 +17,7 @@ public class Terms extends BaseActivity {
         super.onCreateDrawer();
 
 
-        mRelativeLayout = (RelativeLayout) findViewById(R.id.justify);
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.terms);
 
         final WebView view = new WebView(this);
 
