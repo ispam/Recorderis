@@ -1,16 +1,14 @@
 package tech.destinum.recorderis.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.view.Menu;
-import android.widget.TextView;
+import android.webkit.WebView;
+import android.widget.RelativeLayout;
 
 import tech.destinum.recorderis.R;
 
 public class Terms extends BaseActivity {
 
-    private TextView mTerms;
+    private RelativeLayout mRelativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +16,17 @@ public class Terms extends BaseActivity {
         setContentView(R.layout.activity_terms);
         super.onCreateDrawer();
 
-        mTerms = (TextView) findViewById(R.id.terms_and_conditions_text);
 
-        mTerms.setText(Html.fromHtml(getString(R.string.terms_and_conditions)));
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.justify);
+
+        final WebView view = new WebView(this);
+
+        view.setVerticalScrollBarEnabled(true);
+
+        mRelativeLayout.addView(view);
+
+        view.loadData(getString(R.string.terms_and_conditions), "text/html; charset=utf-8", "utf-8");
+
 
     }
 
