@@ -57,7 +57,7 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 
     <string name="privacy_policy_text">
         <![CDATA[
-<h1>Table of Contents</h1>
+<h2>Table of Contents</h2>
 <h2><a href="#1">1.Definitions and legal references</a></h2>
 <h3><a href="#1.1">1.1 Personal Data (or Data)</a></h3>
 <h3><a href="#1.2">1.2 Usage Data</a></h3>
@@ -178,9 +178,7 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
     <string name="terms_and_conditions">
         <![CDATA[
 
-<html>
- <head>
-<h1>Tabla de Contenido</h1>
+<h2>Tabla de Contenido</h2>
 <h3><a href="#one">1. Contenido</a></h3>
 <h3><a href="#two">2. Reclamos por Violaci&oacute;n</a></h3>
 <h3><a href="#3">3. Marco Legal Principal</a></h3>
@@ -203,8 +201,6 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <h3><a href="#20">20. Preguntas y Comentarios</a></h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-   </head>
-<body style="text-align: justify;">
 <h2><a name="one"></a>1. CONTENIDO</h2>
 <p style="text-align: justify;">Todo texto, informaci&oacute;n, datos, fotograf&iacute;as, gr&aacute;ficos, c&oacute;digo fuente, muestras de audio y video, marcas y logotipos, y similares (en adelante el <strong>"Contenido"</strong>) que aparezcan en este Sitio Web y/o Aplicaci&oacute;n M&oacute;vil, pertenecen a RECORDERIS&nbsp;(en adelante la <strong>"Compa&ntilde;&iacute;a" o "DESTINUM"</strong>) o sus empresas afiliadas, sucursales, agencias o proveedores, salvo que quede expresamente especificado en esta Aplicaci&oacute;n M&oacute;vil. Los Usuarios (como se definen en el presente documento) solo pueden utilizar el Contenido en un dispositivo m&oacute;vil (por ejemplo, Apple iPhone o iPad, dispositivo Android o dispositivo m&oacute;vil con Microsoft Windows) que posean o controlen, y solamente por motivos personales, internos y sin fines comerciales. &ldquo;&copy; 2017 DESTINUM tiene todos los derechos reservados.&rdquo; Ning&uacute;n otro uso del Contenido, incluyendo, entre otras, cualquier clase de edici&oacute;n del mismo, est&aacute; permitido sin previa autorizaci&oacute;n por escrito otorgada por la Compa&ntilde;&iacute;a. Todo Usuario que haya violado comprobadamente la propiedad intelectual de un tercero mediante la retransmisi&oacute;n o publicaci&oacute;n de material vinculado con esta Aplicaci&oacute;n M&oacute;vil que infrinja los derechos de autor u otros derechos legales de dicho tercero ser&aacute; excluido de esta Aplicaci&oacute;n M&oacute;vil.</p>
 <p style="text-align: justify;">&nbsp;</p>
@@ -278,8 +274,6 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <h2><a name="20"></a>20. PREGUNTAS Y COMENTARIOS</h2>
 <p>Los Usuarios que tengan alguna pregunta o duda sobre los T&eacute;rminos y Condiciones para la Aplicaci&oacute;n M&oacute;vil pueden ponerse en contacto con el webmaster en relaci&oacute;n con esta Aplicaci&oacute;n M&oacute;vil escribiendo al siguiente correo electr&oacute;nico: diegoug@gmail.com</p>
 
-  </body>
-</html>
         ]]>
     </string>
 
