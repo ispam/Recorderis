@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,7 @@ import com.auth0.android.callback.BaseCallback;
 import com.auth0.android.result.UserProfile;
 import com.squareup.picasso.Picasso;
 
+import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.utils.CredentialsManager;
 
@@ -43,11 +45,12 @@ public class BaseActivity extends AppCompatActivity {
     public DrawerLayout mDrawerLayout;
     private Menu mMenu;
 
-    private Boolean gotEmail;
+    private Boolean gotEmail = false;
     private ImageView mImageProfile;
     private TextView mName, mEmail;
     private Auth0 mAuth0;
     private UserProfile mUserProfile;
+    private DBHelper mDBHelper;
 
     private static final String PREFERENCES = "Preferences";
 
@@ -55,8 +58,6 @@ public class BaseActivity extends AppCompatActivity {
         //Instantiate Navigation Drawer
         setupNavDrawer();
 
-        SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
         //AuthO
         mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
         // The process to reclaim an UserProfile is preceded by an Authentication call.
@@ -87,6 +88,8 @@ public class BaseActivity extends AppCompatActivity {
 
 
     private void refreshScreenInformation() {
+        mDBHelper = new DBHelper(getApplicationContext());
+
         if (mUserProfile.getPictureURL() != null) {
             Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
         } else {
@@ -122,13 +125,30 @@ public class BaseActivity extends AppCompatActivity {
             mDialog.show();
 
         }
+        SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        if (gotEmail.equals(true)){
 
-        if (!gotEmail){
-            SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-            mEmail.setText(mUserProfile.getEmail());
             String email = mSharedPreferences.getString("email", "");
             mEmail.setText(email);
+            if (mSharedPreferences.getBoolean("first_time", true)){
+                mDBHelper.createNewUser(mUserProfile.getName(), email);
+                Log.d("BaseAct1", mUserProfile.getName() + " "+email);
+
+                mSharedPreferences.edit().putBoolean("first_time", false).commit();
+            }
+
+        } else {
+            mEmail.setText(mUserProfile.getEmail());
+            if (mSharedPreferences.getBoolean("first_time", true)){
+                mDBHelper.createNewUser(mUserProfile.getName(), mUserProfile.getEmail());
+                Log.d("BaseAct2", mUserProfile.getName() + mUserProfile.getEmail());
+
+                mSharedPreferences.edit().putBoolean("first_time", false).commit();
+            }
+
         }
+
+
     }
 
 
@@ -221,6 +241,7 @@ public class BaseActivity extends AppCompatActivity {
             setTitle(R.string.nav_selection);
         } else if (this.getClass().equals(Policy.class)){
             mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
+            setTitle(R.string.privacy_policy_link);
         } else if (this.getClass().equals(Terms.class)){
             mNavigationView.setCheckedItem(R.id.nav_terms);
             setTitle(R.string.terms_link);
@@ -251,7 +272,9 @@ public class BaseActivity extends AppCompatActivity {
             int id = item.getItemId();
             if (id == R.id.logout) {
                 CredentialsManager.deleteCredentials(this);
-                startActivity(new Intent(this, Login.class));
+                Intent intent = new Intent(this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 finish();
                 return true;
             }

@@ -24,8 +24,6 @@ public class Policy extends BaseActivity {
 
         mRelativeLayout = (RelativeLayout) findViewById(R.id.policy);
 
-        setTitle(R.string.privacy_policy_link);
-
         final WebView view = new WebView(this);
 
         view.setVerticalScrollBarEnabled(true);
