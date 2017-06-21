@@ -43,6 +43,7 @@ public class BaseActivity extends AppCompatActivity {
     public DrawerLayout mDrawerLayout;
     private Menu mMenu;
 
+    private Boolean gotEmail;
     private ImageView mImageProfile;
     private TextView mName, mEmail;
     private Auth0 mAuth0;
@@ -54,6 +55,8 @@ public class BaseActivity extends AppCompatActivity {
         //Instantiate Navigation Drawer
         setupNavDrawer();
 
+        SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
         //AuthO
         mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
         // The process to reclaim an UserProfile is preceded by an Authentication call.
@@ -105,7 +108,8 @@ public class BaseActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                                 editor.putString("email", item);
                                 editor.commit();
-                                mEmail.setText(mUserProfile.getEmail());
+                                mEmail.setText(item);
+                                gotEmail = true;
                             }
                         }
                     })
@@ -116,8 +120,14 @@ public class BaseActivity extends AppCompatActivity {
                         }
                     }).create();
             mDialog.show();
-        } else {
+
+        }
+
+        if (!gotEmail){
+            SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
             mEmail.setText(mUserProfile.getEmail());
+            String email = mSharedPreferences.getString("email", "");
+            mEmail.setText(email);
         }
     }
 

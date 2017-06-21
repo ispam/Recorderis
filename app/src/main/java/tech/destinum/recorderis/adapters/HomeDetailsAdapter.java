@@ -30,6 +30,12 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
     @Override
     public void onBindViewHolder(HomeDetailsAdapter.ViewHolder holder, int position) {
 
+        Date date = mDates.get(position);
+        holder.mName.setText(date.getName());
+//        TODO formula to calculate the days left
+        holder.mDaysLeft.setText("125");
+        holder.mDays.setText(R.string.days);
+        holder.mDate.setText(date.getDate());
     }
 
     @Override
