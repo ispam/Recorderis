@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
+import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
 
@@ -30,6 +32,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
     public static final String FORM_PREFERENCES = "FormPreferences";
     private Context mContext;
+    private DBHelper mDBHelper;
     private ArrayList<Document> mDocuments;
 
     public boolean zero, one, two, three, four, five;
@@ -47,6 +50,8 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Document document = mDocuments.get(position);
+        mDBHelper = new DBHelper(mContext);
+
         holder.mTitle.setText(document.getName());
         holder.mTitleExpanded.setText(document.getName());
 
@@ -225,11 +230,13 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     SharedPreferences.Editor mEditor = mSP.edit();
 
 
+//                    long user_id = mDBHelper.getLastUser();
                     switch (position) {
                         case 0:
 
                             zero = true;
                             Log.d("SOAT", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_soat),"SOAT", data, 0);
                             mEditor.putString("soat", data);
                             mEditor.commit();
 
@@ -238,6 +245,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                             one = true;
                             Log.d("RTM", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_rtm),"RTM", data, 1);
                             mEditor.putString("rtm", data);
                             mEditor.commit();
 
@@ -246,6 +254,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                             two = true;
                             Log.d("SRC", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_src),"SRC", data, 2);
                             mEditor.putString("src", data);
                             mEditor.commit();
 
@@ -254,6 +263,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                             three = true;
                             Log.d("STR", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_str),"STR", data, 3);
                             mEditor.putString("str", data);
                             mEditor.commit();
 
@@ -262,6 +272,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                             four = true;
                             Log.d("TO", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_tao),"TO", data, 4);
                             mEditor.putString("to", data);
                             mEditor.commit();
 
@@ -270,6 +281,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                             five = true;
                             Log.d("EXT", data);
+//                            new Date(user_id, mContext.getString(R.string.doc_ext),"EXT", data, 5);
                             mEditor.putString("ext", data);
                             mEditor.commit();
 

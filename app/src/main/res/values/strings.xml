@@ -59,32 +59,31 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
     <string name="privacy_policy_text">
         <![CDATA[
 <h2>Table of Contents</h2>
-<h2><a href="#1">1.Definitions and legal references</a></h2>
-<h3><a href="#1.1">1.1 Personal Data (or Data)</a></h3>
-<h3><a href="#1.2">1.2 Usage Data</a></h3>
-<h3><a href="#1.3">1.3 User</a></h3>
-<h3><a href="#1.4">1.4 Data Subject</a></h3>
-<h3><a href="#1.5">1.5 Data Processor (or Data Supervisor)</a></h3>
-<h3><a href="#1.6">1.6 Data Controller (or Owner)</a></h3>
-<h3><a href="#1.7">1.7 Legal Information</a></h3>
+<h4><a href="#1">1.Definitions and legal references</a></h4>
+<h5><a href="#1.1">1.1 Personal Data (or Data)</a></h5>
+<h5><a href="#1.2">1.2 Usage Data</a></h5>
+<h5><a href="#1.3">1.3 User</a></h5>
+<h5><a href="#1.4">1.4 Data Subject</a></h5>
+<h5><a href="#1.5">1.5 Data Processor (or Data Supervisor)</a></h5>
+<h5><a href="#1.6">1.6 Data Controller (or Owner)</a></h5>
+<h5><a href="#1.7">1.7 Legal Information</a></h5>
+<h4><a href="#2">2. Types of Data collected</a></h4>
+<h4><a href="#3">3. Mode and place of processing&nbsp;the information</a></h4>
+<h4><a href="#4">4. Storage</a></h4>
+<h4><a href="#5">5. Retention time</a></h4>
+<h4><a href="#6">6. The use of the collected Data</a></h4>
+<h4><a href="#7">7. Additional information about User\'s Personal Data</a></h4>
+<h4><a href="#8">8. Users Rights</a></h4>
+<h4><a href="#9">9. Legal action</a></h4>
+<h4><a href="#10">10. System logs and maintenance</a></h4>
+<h4><a href="#11">11.Information not contained in this policy</a></h4>
+<h4><a href="#12">12.Changes to this privacy policy</a></h4>
+<h4><a href="#13">13. Detailed information on the processing of the Personal Data</a></h4>
+<h5><a href="#13.1">13.1 Facebook account access</a></h5>
+<h5><a href="#13.2">13.2 Google account access</a></h5>
+<h5><a href="#13.3">13.3 Twitter&nbsp;account access</a></h5>
 <p>&nbsp;</p>
-<h2><a href="#2">2. Types of Data collected</a></h2>
-<h2><a href="#3">3. Mode and place of processing&nbsp;the information</a></h2>
-<h2><a href="#4">4. Storage</a></h2>
-<h2><a href="#5">5. Retention time</a></h2>
-<h2><a href="#6">6. The use of the collected Data</a></h2>
-<h2><a href="#7">7. Additional information about User\'s Personal Data</a></h2>
-<h2><a href="#8">8. Users Rights</a></h2>
-<h2><a href="#9">9. Legal action</a></h2>
-<h2><a href="#10">10. System logs and maintenance</a></h2>
-<h2><a href="#11">11.Information not contained in this policy</a></h2>
-<h2><a href="#12">12.Changes to this privacy policy</a></h2>
-<h2><a href="#13">13. Detailed information on the processing of the Personal Data</a></h2>
-<h3><a href="#13.1">13.1 Facebook account access</a></h3>
-<h3><a href="#13.2">13.2 Google account access</a></h3>
-<h3><a href="#13.3">13.3 Twitter&nbsp;account access</a></h3>
-<p>&nbsp;</p>
-<h2><a href="#14">14. Contact Information</a></h2>
+<h4><a href="#14">14. Contact Information</a></h4>
 <p>&nbsp;</p>
 <h2><a name="1"></a>Definitions and legal references</h2>
 <h3><a name="1.1"></a>Personal Data (or Data)</h3>
@@ -180,26 +179,26 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
         <![CDATA[
 
 <h2>Table of Contents</h2>
-<h2><a href="#1">1. Content</a></h2>
-<h2><a href="#2">2. Claims of Violation</a></h2>
-<h2><a href="#3">3. Main Legal Framework</a></h2>
-<h2><a href="#4">4. Terms of Use</a></h2>
-<h2><a href="#5">5. User Accounts</a></h2>
-<h2><a href="#6">6. Submitting Content</a></h2>
-<h2><a href="#7">7. Third parties</a></h2>
-<h2><a href="#8">8. Mobile Application Updates</a></h2>
-<h2><a href="#9">9. Problems of Wireless Coverage and Function Deactivation</a></h2>
-<h2><a href="#10">10. Limited Liability</a></h2>
-<h2><a href="#11">11. Privacy</a></h2>
-<h2><a href="#12">12. Sponsorship</a></h2>
-<h2><a href="#13">13. Warranty Exclusion</a></h2>
-<h2><a href="#14">14. Exoneration</a></h2>
-<h2><a href="#15">15. Export Restrictions</a></h2>
-<h2><a href="#16">16. Available Location Functions</a></h2>
-<h2><a href="#17">17. Dispute Resolution</a></h2>
-<h2><a href="#18">18. Indivisibility</a></h2>
-<h2><a href="#19">19. Prevailing Language</a></h2>
-<h2><a href="#20">20. Questions and Comments</a></h2>
+<h4><a href="#1">1. Content</a></h4>
+<h4><a href="#2">2. Claims of Violation</a></h4>
+<h4><a href="#3">3. Main Legal Framework</a></h4>
+<h4><a href="#4">4. Terms of Use</a></h4>
+<h4><a href="#5">5. User Accounts</a></h4>
+<h4><a href="#6">6. Submitting Content</a></h4>
+<h4><a href="#7">7. Third parties</a></h4>
+<h4><a href="#8">8. Mobile Application Updates</a></h4>
+<h4><a href="#9">9. Problems of Wireless Coverage and Function Deactivation</a></h4>
+<h4><a href="#10">10. Limited Liability</a></h4>
+<h4><a href="#11">11. Privacy</a></h4>
+<h4><a href="#12">12. Sponsorship</a></h4>
+<h4><a href="#13">13. Warranty Exclusion</a></h4>
+<h4><a href="#14">14. Exoneration</a></h4>
+<h4><a href="#15">15. Export Restrictions</a></h4>
+<h4><a href="#16">16. Available Location Functions</a></h4>
+<h4><a href="#17">17. Dispute Resolution</a></h4>
+<h4><a href="#18">18. Indivisibility</a></h4>
+<h4><a href="#19">19. Prevailing Language</a></h4>
+<h4><a href="#20">20. Questions and Comments</a></h4>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2><a name="1"></a>1. CONTENTS</h2>
