@@ -38,14 +38,6 @@
                     app:theme="@style/ToolBarStyle"
                     android:layout_height="?actionBarSize"/>
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/toolbar_actionbar"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="TextView"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"

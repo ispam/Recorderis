@@ -35,7 +35,7 @@ public class Home extends BaseActivity {
     private Context mContext;
     private RecyclerView mRecyclerView;
     private HomeDetailsAdapter mAdapter;
-    private ArrayList<Date> mDatesList;
+//    private ArrayList<Date> mDatesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,40 +48,40 @@ public class Home extends BaseActivity {
         mDBHelper = new DBHelper(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_home);
 
-        mDatesList = new ArrayList<>();
+//        mDatesList = new ArrayList<>();
         long user_id = mDBHelper.getLastUser();
 
-        String soat = mSP.getString("soat", "");
-        if (soat != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_soat), "soat", soat, 0));
-        }
+//        String soat = mSP.getString("soat", "");
+//        if (soat != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_soat), "soat", soat, 0));
+//        }
+//
+//        String rtm = mSP.getString("rtm", "");
+//        if (rtm != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_rtm), "rtm", rtm, 1));
+//        }
+//
+//        String src = mSP.getString("src", "");
+//        if (src != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_src), "src", src, 2));
+//        }
+//
+//        String str = mSP.getString("str", "");
+//        if (str != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_str), "str", str, 3));
+//        }
+//
+//        String to = mSP.getString("to", "");
+//        if (to != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_tao), "to", to, 4));
+//        }
+//
+//        String ext = mSP.getString("ext", "");
+//        if (ext != null){
+//            mDatesList.add(new Date(user_id, getString(R.string.doc_ext), "ext", ext, 5));
+//        }
 
-        String rtm = mSP.getString("rtm", "");
-        if (rtm != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_rtm), "rtm", rtm, 1));
-        }
-
-        String src = mSP.getString("src", "");
-        if (src != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_src), "src", src, 2));
-        }
-
-        String str = mSP.getString("str", "");
-        if (str != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_str), "str", str, 3));
-        }
-
-        String to = mSP.getString("to", "");
-        if (to != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_tao), "to", to, 4));
-        }
-
-        String ext = mSP.getString("ext", "");
-        if (ext != null){
-            mDatesList.add(new Date(user_id, getString(R.string.doc_ext), "ext", ext, 5));
-        }
-
-        mAdapter = new HomeDetailsAdapter(mContext, mDatesList);
+        mAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates());
 
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));

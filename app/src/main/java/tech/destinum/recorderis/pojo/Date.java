@@ -2,11 +2,11 @@ package tech.destinum.recorderis.pojo;
 
 public class Date {
 
-    private long user_id;
+    private long user_id, id;
     private String name, symbol, date;
-    private int id;
 
-    public Date(long user_id, String name, String symbol, String date, int id) {
+
+    public Date(long user_id, String name, String symbol, String date, long id) {
         this.user_id = user_id;
         this.name = name;
         this.symbol = symbol;
@@ -46,7 +46,7 @@ public class Date {
         this.date = date;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -97,34 +97,7 @@ public class BaseActivity extends AppCompatActivity {
         }
         mName.setText(mUserProfile.getName());
 
-        if (mUserProfile.getEmail() == null){
-            final EditText email = new EditText(getApplicationContext());
-            AlertDialog mDialog = new AlertDialog.Builder(BaseActivity.this).setTitle(R.string.need_email).setView(email)
-                    .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            String item = String.valueOf(email.getText()).trim();
-                            if (item.length() <= 0 || item == ""){
-                                Toast.makeText(getApplicationContext(), R.string.need_email, Toast.LENGTH_SHORT).show();
-                            } else {
-                                SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = mSharedPreferences.edit();
-                                editor.putString("email", item);
-                                editor.commit();
-                                mEmail.setText(item);
-                                gotEmail = true;
-                            }
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(getApplicationContext(), "Need to create settings before using this toast", Toast.LENGTH_LONG).show();
-                        }
-                    }).create();
-            mDialog.show();
 
-        }
         SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
         if (gotEmail.equals(true)){
 
