@@ -1,31 +1,16 @@
 package tech.destinum.recorderis.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.HomeDetailsAdapter;
-import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.adapters.HomeSymbolsAdapter;
 
 import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
@@ -33,9 +18,9 @@ public class Home extends BaseActivity {
 
     private DBHelper mDBHelper;
     private Context mContext;
-    private RecyclerView mRecyclerView;
-    private HomeDetailsAdapter mAdapter;
-//    private ArrayList<Date> mDatesList;
+    private RecyclerView mRecyclerViewDetails, mRecyclerViewSymbols;
+    private HomeDetailsAdapter mDetailsAdapter;
+    private HomeSymbolsAdapter mSymbolsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,47 +30,52 @@ public class Home extends BaseActivity {
 
         SharedPreferences mSP = getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
 
-        mDBHelper = new DBHelper(this);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_home);
+        mDBHelper = new DBHelper(getApplicationContext());
+        mRecyclerViewDetails = (RecyclerView) findViewById(R.id.recycler_view_details);
+        mRecyclerViewSymbols = (RecyclerView) findViewById(R.id.recycler_view_symbols);
 
-//        mDatesList = new ArrayList<>();
+        mSymbolsAdapter = new HomeSymbolsAdapter(mContext, mDBHelper.getAllDates());
+
+        mRecyclerViewSymbols.setAdapter(mSymbolsAdapter);
+        mRecyclerViewSymbols.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+
         long user_id = mDBHelper.getLastUser();
+        Log.d("User", String.valueOf(user_id));
 
-//        String soat = mSP.getString("soat", "");
-//        if (soat != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_soat), "soat", soat, 0));
-//        }
-//
-//        String rtm = mSP.getString("rtm", "");
-//        if (rtm != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_rtm), "rtm", rtm, 1));
-//        }
-//
-//        String src = mSP.getString("src", "");
-//        if (src != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_src), "src", src, 2));
-//        }
-//
-//        String str = mSP.getString("str", "");
-//        if (str != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_str), "str", str, 3));
-//        }
-//
-//        String to = mSP.getString("to", "");
-//        if (to != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_tao), "to", to, 4));
-//        }
-//
-//        String ext = mSP.getString("ext", "");
-//        if (ext != null){
-//            mDatesList.add(new Date(user_id, getString(R.string.doc_ext), "ext", ext, 5));
-//        }
+        String soat = mSP.getString("soat", "");
+        if (soat != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), soat, "SOAT", user_id);
+        }
 
-        mAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates());
+        String rtm = mSP.getString("rtm", "");
+        if (rtm != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), rtm, "RTM", user_id);
+        }
 
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        String src = mSP.getString("src", "");
+        if (src != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_src), src, "SRC", user_id);
+        }
 
+        String str = mSP.getString("str", "");
+        if (str != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), str, "STR", user_id);
+        }
+
+        String to = mSP.getString("to", "");
+        if (to != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), to, "TO", user_id);
+        }
+
+        String ext = mSP.getString("ext", "");
+        if (ext != null && soat != ""){
+            mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), ext, "EXT", user_id);
+        }
+
+        mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates());
+
+        mRecyclerViewDetails.setAdapter(mDetailsAdapter);
+        mRecyclerViewDetails.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
 
 
     }
