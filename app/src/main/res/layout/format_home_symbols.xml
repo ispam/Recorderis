@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="80dp"
     android:layout_height="80dp"
-    android:background="@drawable/home_borders_symbols">
+    android:id="@+id/cl_symbols">
 
     <TextView
         android:id="@+id/symbols_tv"

@@ -18,6 +18,7 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     private Context mContext;
     private DBHelper mDBHelper;
     private ArrayList<Date> mDatesList;
+    private final static int ITEMS_PER_PAGE = 3;
 
     public HomeSymbolsAdapter(Context context, ArrayList<Date> datesList) {
         mContext = context;
@@ -26,7 +27,15 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
 
     @Override
     public HomeSymbolsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.format_home_symbols, parent, false));
+        int itemWidth = parent.getWidth() / ITEMS_PER_PAGE;
+
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.format_home_symbols, parent, false);
+
+        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+        layoutParams.width = itemWidth;
+        itemView.setLayoutParams(layoutParams);
+        return new ViewHolder(itemView);
     }
 
     @Override
