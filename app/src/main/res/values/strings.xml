@@ -23,8 +23,14 @@
     <string name="doc_str">All Risk Insurance</string>
     <string name="doc_soat">SOAT</string>
     <string name="doc_tao">Operation Card</string>
-    <string name="doc_imp">Bearing tax</string>
     <string name="doc_ext">Fire Extinguisher</string>
+
+    <string name="symbol_soat">SOAT</string>
+    <string name="symbol_rtm">TMR</string>
+    <string name="symbol_src">CLI</string>
+    <string name="symbol_str">ARI</string>
+    <string name="symbol_tao">OC</string>
+    <string name="symbol_ext">FE</string>
 
     <!--Links About Page-->
     <string name="privacy_policy_link">Privacy Policy</string>

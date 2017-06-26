@@ -26,6 +26,13 @@
     <string name="doc_imp">Impuesto de Rodamiento</string>
     <string name="doc_ext">Extinguidor</string>
 
+    <string name="symbol_soat">SOAT</string>
+    <string name="symbol_rtm">RTM</string>
+    <string name="symbol_src">SRC</string>
+    <string name="symbol_str">STR</string>
+    <string name="symbol_tao">TO</string>
+    <string name="symbol_ext">EXT</string>
+
     <!--Links About Page-->
     <string name="privacy_policy_link">Política de Privacidad</string>
     <string name="terms_link">Terminos y Condiciones</string>
