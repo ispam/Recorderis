@@ -59,6 +59,7 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
             super(view);
 
             mSymbol = (TextView) view.findViewById(R.id.symbols_tv);
+
         }
     }
 }
