@@ -27,8 +27,8 @@ public class Home extends BaseActivity {
     private RecyclerView mRecyclerViewDetails, mRecyclerViewSymbols;
     private HomeDetailsAdapter mDetailsAdapter;
     private HomeSymbolsAdapter mSymbolsAdapter;
-    private RelativeLayout mLayout;
-    private ConstraintLayout mConstraintLayout;
+    private LinearLayoutManager mLinearLayoutManager;
+    private LinearLayoutPagerManager mLinearLayoutPagerManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,45 +40,26 @@ public class Home extends BaseActivity {
         mRecyclerViewDetails = (RecyclerView) findViewById(R.id.recycler_view_details);
         mRecyclerViewSymbols = (RecyclerView) findViewById(R.id.recycler_view_symbols);
 
-        mLayout = (RelativeLayout) findViewById(R.id.rl_position);
 
-        mSymbolsAdapter = new HomeSymbolsAdapter(mContext, mDBHelper.getAllDates());
+        mSymbolsAdapter = new HomeSymbolsAdapter(mContext, mDBHelper.getAllDates(), new HomeSymbolsAdapter.clickCallback() {
+            @Override
+            public void onItemClick(int position) {
+                mRecyclerViewSymbols.scrollToPosition(position);
+                Log.d("Home", String.valueOf(position));
+            }
+        });
 
         mRecyclerViewSymbols.setAdapter(mSymbolsAdapter);
-        mRecyclerViewSymbols.setLayoutManager(new LinearLayoutPagerManager(mContext, LinearLayoutManager.HORIZONTAL, false, 3));
+        mLinearLayoutPagerManager = new LinearLayoutPagerManager(mContext, LinearLayoutManager.HORIZONTAL, false, 3);
+        mRecyclerViewSymbols.setLayoutManager(mLinearLayoutPagerManager);
+        mRecyclerViewSymbols.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
 
         mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates());
 
         mRecyclerViewDetails.setAdapter(mDetailsAdapter);
-        mRecyclerViewDetails.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-
-
-//        final RecyclerView.OnScrollListener[] scrollListeners = new RecyclerView.OnScrollListener[2];
-//        scrollListeners[0] = new RecyclerView.OnScrollListener( )
-//        {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-//            {
-//                super.onScrolled(recyclerView, dx, dy);
-//                mRecyclerViewDetails.removeOnScrollListener(scrollListeners[1]);
-//                mRecyclerViewDetails.scrollBy(dx, dy);
-//                mRecyclerViewDetails.addOnScrollListener(scrollListeners[1]);
-//
-//            }
-//        };
-//        scrollListeners[1] = new RecyclerView.OnScrollListener( )
-//        {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-//            {
-//                super.onScrolled(recyclerView, dx, dy);
-//                mRecyclerViewSymbols.removeOnScrollListener(scrollListeners[0]);
-//                mRecyclerViewSymbols.scrollBy(dx, dy);
-//                mRecyclerViewSymbols.addOnScrollListener(scrollListeners[0]);
-//            }
-//        };
-//        mRecyclerViewSymbols.addOnScrollListener(scrollListeners[0]);
-//        mRecyclerViewDetails.addOnScrollListener(scrollListeners[1]);
+        mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerViewDetails.setLayoutManager(mLinearLayoutManager);
+        mRecyclerViewDetails.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(mRecyclerViewDetails);

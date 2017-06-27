@@ -29,8 +29,8 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     @Override
     public void onBindViewHolder(HomeDetailsAdapter.ViewHolder holder, int position) {
-
-        Date date = mDates.get(position);
+        int positionInList = position % mDates.size();
+        Date date = mDates.get(positionInList);
         holder.mName.setText(date.getName());
 //        TODO formula to calculate the days left
         holder.mDaysLeft.setText("125");
@@ -40,7 +40,8 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     @Override
     public int getItemCount() {
-        return mDates != null ? mDates.size(): 0;
+        return Integer.MAX_VALUE;
+//        return mDates != null ? mDates.size(): 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

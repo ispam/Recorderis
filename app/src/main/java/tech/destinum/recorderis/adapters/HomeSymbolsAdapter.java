@@ -18,11 +18,17 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     private Context mContext;
     private DBHelper mDBHelper;
     private ArrayList<Date> mDatesList;
+    private clickCallback mClickCallback;
     private final static int ITEMS_PER_PAGE = 3;
 
-    public HomeSymbolsAdapter(Context context, ArrayList<Date> datesList) {
+    public HomeSymbolsAdapter(Context context, ArrayList<Date> datesList, clickCallback clickCallback) {
         mContext = context;
         mDatesList = datesList;
+        mClickCallback = clickCallback;
+    }
+
+    public interface clickCallback{
+        void onItemClick(int position);
     }
 
     @Override
@@ -40,15 +46,15 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
 
     @Override
     public void onBindViewHolder(HomeSymbolsAdapter.ViewHolder holder, int position) {
-
-        Date date = mDatesList.get(position);
+        int positionInList = position % mDatesList.size();
+        Date date = mDatesList.get(positionInList);
         holder.mSymbol.setText(date.getSymbol());
 
     }
 
     @Override
     public int getItemCount() {
-        return mDatesList != null ? mDatesList.size(): 0;
+        return Integer.MAX_VALUE;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,6 +65,12 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
             super(view);
 
             mSymbol = (TextView) view.findViewById(R.id.symbols_tv);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickCallback.onItemClick(getAdapterPosition());
+                }
+            });
 
         }
     }
