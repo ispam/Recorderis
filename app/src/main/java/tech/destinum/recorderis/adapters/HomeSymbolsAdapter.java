@@ -19,7 +19,6 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     private DBHelper mDBHelper;
     private ArrayList<Date> mDatesList;
     private clickCallback mClickCallback;
-    private final static int ITEMS_PER_PAGE = 3;
 
     public HomeSymbolsAdapter(Context context, ArrayList<Date> datesList, clickCallback clickCallback) {
         mContext = context;
@@ -33,15 +32,8 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
 
     @Override
     public HomeSymbolsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int itemWidth = parent.getWidth() / ITEMS_PER_PAGE;
 
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.format_home_symbols, parent, false);
-
-        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
-        layoutParams.width = itemWidth;
-        itemView.setLayoutParams(layoutParams);
-        return new ViewHolder(itemView);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.format_home_symbols, parent, false));
     }
 
     @Override
@@ -49,6 +41,12 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
         int positionInList = position % mDatesList.size();
         Date date = mDatesList.get(positionInList);
         holder.mSymbol.setText(date.getSymbol());
+        holder.v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
@@ -60,6 +58,7 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mSymbol;
+        public View v;
 
         public ViewHolder(View view) {
             super(view);
@@ -71,6 +70,8 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
                     mClickCallback.onItemClick(getAdapterPosition());
                 }
             });
+
+            this.v = view;
 
         }
     }
