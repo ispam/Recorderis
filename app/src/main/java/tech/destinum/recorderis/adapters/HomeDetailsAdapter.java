@@ -16,10 +16,15 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     private Context mContext;
     private ArrayList<Date> mDates;
+    private clickCallback mClickCallback;
 
-    public HomeDetailsAdapter(Context context, ArrayList<Date> dates) {
+    public HomeDetailsAdapter(Context context, ArrayList<Date> dates, clickCallback clickCallback) {
         mContext = context;
         mDates = dates;
+        mClickCallback = clickCallback;
+    }
+    public interface clickCallback{
+        void onItemClick(int position);
     }
 
     @Override
@@ -55,6 +60,13 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             mDaysLeft = (TextView) view.findViewById(R.id.format_home_days_left);
             mDays = (TextView) view.findViewById(R.id.format_home_days);
             mDate = (TextView) view.findViewById(R.id.format_home_date);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickCallback.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

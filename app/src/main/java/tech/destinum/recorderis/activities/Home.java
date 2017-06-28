@@ -2,6 +2,7 @@ package tech.destinum.recorderis.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -32,8 +34,6 @@ public class Home extends BaseActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private LinearLayoutPagerManager mLinearLayoutPagerManager;
 
-    private int mPostion;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +49,25 @@ public class Home extends BaseActivity {
             public void onItemClick(int position) {
                 Log.d("Home", String.valueOf(position));
 
-                mPostion = position;
             }
         });
 
         mRecyclerViewSymbols.setAdapter(mSymbolsAdapter);
         mLinearLayoutPagerManager = new LinearLayoutPagerManager(mContext, LinearLayoutManager.HORIZONTAL, false, 3);
         mRecyclerViewSymbols.setLayoutManager(mLinearLayoutPagerManager);
-//        mRecyclerViewSymbols.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
+        mRecyclerViewSymbols.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
 
-        mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates());
+        mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates(), new HomeDetailsAdapter.clickCallback() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d("Home", String.valueOf(position));
+            }
+        });
 
         mRecyclerViewDetails.setAdapter(mDetailsAdapter);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerViewDetails.setLayoutManager(mLinearLayoutManager);
-//        mRecyclerViewDetails.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
+        mRecyclerViewDetails.getLayoutManager().scrollToPosition(Integer.MAX_VALUE / 2);
 
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
@@ -71,50 +75,55 @@ public class Home extends BaseActivity {
         PagerSnapHelper snapHelper2 = new PagerSnapHelper();
         snapHelper2.attachToRecyclerView(mRecyclerViewSymbols);
 
-        mRecyclerViewSymbols.setOnFlingListener(snapHelper);
-        mRecyclerViewDetails.setOnFlingListener(snapHelper);
+//        mRecyclerViewSymbols.setOnFlingListener(snapHelper2);
+//        mRecyclerViewDetails.setOnFlingListener(snapHelper);
 
         mRecyclerViewSymbols.addOnItemTouchListener(new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 mRecyclerViewDetails.smoothScrollToPosition(position);
+
+                int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
+                int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
+
+                int centerPosition = (firstVisibleItemPosition + lastVisibleItemPosition) / 2;
+
+                if (position > centerPosition) {
+                    mRecyclerViewSymbols.smoothScrollToPosition(position + 1);
+                } else if (position < centerPosition) {
+                    mRecyclerViewSymbols.smoothScrollToPosition(position - 1);
+                }
             }
         }));
 
         mRecyclerViewDetails.addOnItemTouchListener(new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                mRecyclerViewSymbols.smoothScrollToPosition(position);
+//                mRecyclerViewSymbols.smoothScrollToPosition(position);
+
+                int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
+                int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
+
+                int centerPosition = (firstVisibleItemPosition + lastVisibleItemPosition) / 2;
+
+                if (position > centerPosition) {
+                    mRecyclerViewSymbols.smoothScrollToPosition(position + 1);
+                } else if (position < centerPosition) {
+                    mRecyclerViewSymbols.smoothScrollToPosition(position - 1);
+                }
+
+
+//                Display display = getWindowManager().getDefaultDisplay();
+//                Point size = new Point();
+//                display.getSize(size);
+//                final int width = size.x;
+//                int center = (width -  view.getWidth())/2;
+//                mRecyclerViewSymbols.scrollTo(view.getLeft() - center, view.getTop());
+//                int scrollX = (view.getLeft() - (view.getWidth() / 2)) + (view.getWidth() / 2);
+//                mRecyclerViewSymbols.getLayoutManager().scrollToPositionWithOffset(scrollX, 0);
             }
         }));
-//        final RecyclerView.OnScrollListener[] scrollListeners = new RecyclerView.OnScrollListener[2];
-//        scrollListeners[0] = new RecyclerView.OnScrollListener( )
-//        {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-//            {
-//                super.onScrolled(recyclerView, dx, dy);
-//                mRecyclerViewDetails.removeOnScrollListener(scrollListeners[1]);
-////                mRecyclerViewDetails.smoothScrollToPosition(mPostion);
-//                        mRecyclerViewDetails.scrollBy(dx, dy);
-//                mRecyclerViewDetails.addOnScrollListener(scrollListeners[1]);
-//            }
-//        };
-//        scrollListeners[1] = new RecyclerView.OnScrollListener( )
-//        {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-//            {
-//                super.onScrolled(recyclerView, dx, dy);
-//                mRecyclerViewSymbols.removeOnScrollListener(scrollListeners[0]);
-////                mRecyclerViewSymbols.smoothScrollToPosition(mPostion);
-//                mLinearLayoutManager.scrollToPositionWithOffset(1, 0);
-////                        mRecyclerViewSymbols.smoothScrollBy(dx, dy);
-//                mRecyclerViewSymbols.addOnScrollListener(scrollListeners[0]);
-//            }
-//        };
-//        mRecyclerViewSymbols.addOnScrollListener(scrollListeners[0]);
-//        mRecyclerViewDetails.addOnScrollListener(scrollListeners[1]);
+
 
     }
 }

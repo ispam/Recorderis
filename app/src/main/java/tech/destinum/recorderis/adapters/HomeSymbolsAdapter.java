@@ -41,12 +41,6 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
         int positionInList = position % mDatesList.size();
         Date date = mDatesList.get(positionInList);
         holder.mSymbol.setText(date.getSymbol());
-        holder.v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
     }
 
@@ -58,7 +52,6 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mSymbol;
-        public View v;
 
         public ViewHolder(View view) {
             super(view);
@@ -70,8 +63,6 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
                     mClickCallback.onItemClick(getAdapterPosition());
                 }
             });
-
-            this.v = view;
 
         }
     }
