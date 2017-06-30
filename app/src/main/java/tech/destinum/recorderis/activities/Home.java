@@ -83,16 +83,11 @@ public class Home extends BaseActivity {
             public void onItemClick(View view, int position) {
                 mRecyclerViewDetails.smoothScrollToPosition(position);
 
-                int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
-                int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
 
-                int centerPosition = (firstVisibleItemPosition + lastVisibleItemPosition) / 2;
+                int itemToScroll = mRecyclerViewSymbols.getChildPosition(view);
+                int centerOfScreen = mRecyclerViewSymbols.getWidth() / 2 - view.getWidth() / 2;
+                mLinearLayoutPagerManager.scrollToPositionWithOffset(itemToScroll, centerOfScreen);
 
-                if (position > centerPosition) {
-                    mRecyclerViewSymbols.smoothScrollToPosition(position + 1);
-                } else if (position < centerPosition) {
-                    mRecyclerViewSymbols.smoothScrollToPosition(position - 1);
-                }
             }
         }));
 
@@ -101,26 +96,9 @@ public class Home extends BaseActivity {
             public void onItemClick(View view, int position) {
 //                mRecyclerViewSymbols.smoothScrollToPosition(position);
 
-                int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
-                int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
-
-                int centerPosition = (firstVisibleItemPosition + lastVisibleItemPosition) / 2;
-
-                if (position > centerPosition) {
-                    mRecyclerViewSymbols.smoothScrollToPosition(position + 1);
-                } else if (position < centerPosition) {
-                    mRecyclerViewSymbols.smoothScrollToPosition(position - 1);
-                }
-
-
-//                Display display = getWindowManager().getDefaultDisplay();
-//                Point size = new Point();
-//                display.getSize(size);
-//                final int width = size.x;
-//                int center = (width -  view.getWidth())/2;
-//                mRecyclerViewSymbols.scrollTo(view.getLeft() - center, view.getTop());
-//                int scrollX = (view.getLeft() - (view.getWidth() / 2)) + (view.getWidth() / 2);
-//                mRecyclerViewSymbols.getLayoutManager().scrollToPositionWithOffset(scrollX, 0);
+                int itemToScroll = mRecyclerViewSymbols.getChildPosition(view);
+                int centerOfScreen = mRecyclerViewSymbols.getWidth() / 2 - view.getWidth() / 2;
+                mLinearLayoutPagerManager.scrollToPositionWithOffset(itemToScroll, centerOfScreen);
             }
         }));
 
