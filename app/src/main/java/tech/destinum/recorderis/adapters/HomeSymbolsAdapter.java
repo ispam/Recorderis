@@ -1,17 +1,26 @@
 package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
+import tech.destinum.recorderis.activities.Home;
 import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.utils.LinearLayoutPagerManager;
+import tech.destinum.recorderis.utils.OnSwipeTouchListener;
 
 public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.ViewHolder> {
 
@@ -19,6 +28,7 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
     private DBHelper mDBHelper;
     private ArrayList<Date> mDatesList;
     private clickCallback mClickCallback;
+    private OnSwipeTouchListener onSwipeTouchListener;
 
     public HomeSymbolsAdapter(Context context, ArrayList<Date> datesList, clickCallback clickCallback) {
         mContext = context;
@@ -38,6 +48,7 @@ public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.
 
     @Override
     public void onBindViewHolder(HomeSymbolsAdapter.ViewHolder holder, int position) {
+
         int positionInList = position % mDatesList.size();
         Date date = mDatesList.get(positionInList);
         holder.mSymbol.setText(date.getSymbol());
