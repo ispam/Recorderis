@@ -1,12 +1,16 @@
 package tech.destinum.recorderis.adapters;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -43,7 +47,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(HomeDetailsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final HomeDetailsAdapter.ViewHolder holder, int position) {
         int positionInList = position % mDates.size();
         Date date = mDates.get(positionInList);
         holder.mName.setText(date.getName());
@@ -53,8 +57,11 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
             java.util.Date d = sdf.parse(date.getDate());
             Calendar c = Calendar.getInstance();
-            long diff = d.getTime() - c.getTimeInMillis();
+            final long diff = d.getTime() - c.getTimeInMillis();
             holder.mDaysLeft.setText(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
+
+
+            holder.mProgressBar.setProgress(Math.round(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
 
         } catch (ParseException e){
             e.printStackTrace();
@@ -75,7 +82,6 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             e.printStackTrace();
         }
 
-
     }
 
     @Override
@@ -87,6 +93,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView mName, mDaysLeft, mDays, mDate;
+        public ProgressBar mProgressBar;
 
         public ViewHolder(View view) {
             super(view);
@@ -95,6 +102,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             mDaysLeft = (TextView) view.findViewById(R.id.format_home_days_left);
             mDays = (TextView) view.findViewById(R.id.format_home_days);
             mDate = (TextView) view.findViewById(R.id.format_home_date);
+            mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

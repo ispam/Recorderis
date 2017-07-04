@@ -1,11 +1,14 @@
 package tech.destinum.recorderis.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
