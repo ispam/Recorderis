@@ -1,13 +1,23 @@
 package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
@@ -37,10 +47,35 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
         int positionInList = position % mDates.size();
         Date date = mDates.get(positionInList);
         holder.mName.setText(date.getName());
-//        TODO formula to calculate the days left
-        holder.mDaysLeft.setText("125");
+
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+            java.util.Date d = sdf.parse(date.getDate());
+            Calendar c = Calendar.getInstance();
+            long diff = d.getTime() - c.getTimeInMillis();
+            holder.mDaysLeft.setText(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
+
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
         holder.mDays.setText(R.string.days);
-        holder.mDate.setText(date.getDate());
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+            java.util.Date d = sdf.parse(date.getDate());
+            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+            calendar.setTime(d);
+            int day  = calendar.get(Calendar.DAY_OF_MONTH);
+//            holder.mDate.setText(String.valueOf(sdf.format(d)));
+            holder.mDate.setText(String.valueOf(day)+"/"+new SimpleDateFormat("MMM").format(calendar.getTime())
+                    +"/"+calendar.get(Calendar.YEAR));
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override

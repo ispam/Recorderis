@@ -46,7 +46,7 @@
     <string name="login_error">Inicio - Error</string>
     <string name="login_canceled">Inicio - Cancelado</string>
     <string name="automatic_login_success">Inicio de sesión Automático </string>
-    <string name="session_expired">Sesión expirada, Por favor inicie sesión</string>
+    <string name="session_expired">Por favor verifique su Internet</string>
     <string name="profile_request_failed">Pedido de perfil fallido</string>
 
     <!--Home Screen -->

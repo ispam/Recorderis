@@ -45,7 +45,7 @@
     <string name="login_error">Log In - Error</string>
     <string name="login_canceled">Log In - Canceled</string>
     <string name="automatic_login_success">Automatic Login Success</string>
-    <string name="session_expired">Session Expired, Please Log In</string>
+    <string name="session_expired">Please Verify Internet Connection</string>
     <string name="profile_request_failed">Profile Request Failed</string>
 
     <!--Home Screen -->
