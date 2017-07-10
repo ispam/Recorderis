@@ -7,7 +7,7 @@
         android:id="@+id/group1">
         <item
             android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_input_delete"
+            android:icon="@drawable/home_icon"
             android:title="@string/nav_home"></item>
         <item
             android:id="@+id/nav_selection"
@@ -15,19 +15,22 @@
             android:title="@string/nav_selection"></item>
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/cast_ic_mini_controller_pause_large"
+            android:icon="@drawable/settings_icon"
             android:title="@string/nav_settings"></item>
 
     </group>
 
-    <item android:title="@string/nav_info"
-        android:id="@+id/about">
+    <item
+        android:id="@+id/about"
+        android:title="@string/nav_info">
         <menu>
             <group android:checkableBehavior="single">
-            <item android:title="@string/privacy_policy_link"
-                android:id="@+id/nav_privacy_policy"></item>
-            <item android:title="@string/terms_link"
-                android:id="@+id/nav_terms"></item>
+                <item
+                    android:id="@+id/nav_privacy_policy"
+                    android:title="@string/privacy_policy_link"></item>
+                <item
+                    android:id="@+id/nav_terms"
+                    android:title="@string/terms_link"></item>
             </group>
         </menu>
     </item>

@@ -64,7 +64,6 @@ public class Home extends BaseActivity {
         mRecyclerViewDetails.setAdapter(mDetailsAdapter);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerViewDetails.setLayoutManager(mLinearLayoutManager);
-        mRecyclerViewDetails.getLayoutManager().scrollToPosition((Integer.MAX_VALUE / 2)+1);
 
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();

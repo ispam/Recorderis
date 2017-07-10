@@ -86,8 +86,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     @Override
     public int getItemCount() {
-        return Integer.MAX_VALUE;
-//        return mDates != null ? mDates.size(): 0;
+        return mDates != null ? mDates.size(): 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
