@@ -48,10 +48,8 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     @Override
     public void onBindViewHolder(final HomeDetailsAdapter.ViewHolder holder, int position) {
-        int positionInList = position % mDates.size();
-        Date date = mDates.get(positionInList);
+        Date date = mDates.get(position);
         holder.mName.setText(date.getName());
-
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
@@ -59,8 +57,6 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar c = Calendar.getInstance();
             final long diff = d.getTime() - c.getTimeInMillis();
             holder.mDaysLeft.setText(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
-
-
             holder.mProgressBar.setProgress(Math.round(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
 
         } catch (ParseException e){
@@ -75,13 +71,11 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
-//            holder.mDate.setText(String.valueOf(sdf.format(d)));
             holder.mDate.setText(String.valueOf(day)+"/"+new SimpleDateFormat("MMM").format(calendar.getTime())
                     +"/"+calendar.get(Calendar.YEAR));
         } catch (ParseException e){
             e.printStackTrace();
         }
-
     }
 
     @Override
