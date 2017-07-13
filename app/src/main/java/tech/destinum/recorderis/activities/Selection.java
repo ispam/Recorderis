@@ -55,9 +55,9 @@ public class Selection extends BaseActivity {
                 R.drawable.publi640blanco};
 
         mCategoryArrayList = new ArrayList<>();
-        mCategoryArrayList.add(new Category("Servicio Particular", "Si usted utiliza un vehículo de placas amarillas y de uso privado", covers[1]));
-        mCategoryArrayList.add(new Category("Servicio Público", "Si usted utiliza un vehículo de placas blancas y de uso público", covers[2]));
-        mCategoryArrayList.add(new Category("Motos", "Si usted utiliza una moto de 2 o 4 Tiempos", covers[0]));
+        mCategoryArrayList.add(new Category(getString(R.string.pri_serv), getString(R.string.exp_pri_serv), covers[1]));
+        mCategoryArrayList.add(new Category(getString(R.string.pub_serv), getString(R.string.exp_pub_serv), covers[2]));
+        mCategoryArrayList.add(new Category(getString(R.string.motos), getString(R.string.exp_motos), covers[0]));
         mAdapter = new ListAdapter(mContext, mCategoryArrayList);
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

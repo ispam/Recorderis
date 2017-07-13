@@ -8,6 +8,15 @@
     <string name="hint_mid">Ingrese SÓLO las Fechas de Vencimiento de los DOCUMENTOS que posea</string>
     <string name="hint_bot">(Presione en cualquier \nlado para continuar)</string>
 
+    <!-- Selection -->
+    <string name="pub_serv">Servicio Público</string>
+    <string name="pri_serv">Servicio Privado</string>
+    <string name="motos">Motos</string>
+
+    <string name="exp_pub_serv">Si usted utiliza un vehículo de placas blancas y de uso público</string>
+    <string name="exp_pri_serv">Si usted utiliza un vehículo de placas amarillas y de uso privado</string>
+    <string name="exp_motos">Si usted utiliza una moto de 2 o 4 Tiempos</string>
+
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Inicio</string>
     <string name="nav_settings">Ajustes</string>

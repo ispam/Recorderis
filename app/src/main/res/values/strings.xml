@@ -8,6 +8,15 @@
     <string name="hint_mid">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
     <string name="hint_bot">(Tap anywhere to continue)</string>
 
+    <!-- Selection -->
+    <string name="pub_serv">Public Service</string>
+    <string name="pri_serv">Private Service</string>
+    <string name="motos">Motorcycles</string>
+
+    <string name="exp_pub_serv">If you use a vehicle with white plates and for public use</string>
+    <string name="exp_pri_serv">If you use a vehicle with yellow plates and for private use</string>
+    <string name="exp_motos">If you use a 2 or 4 stroke bike</string>
+
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Home</string>
     <string name="nav_settings">Settings</string>
