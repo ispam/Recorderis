@@ -3,14 +3,17 @@ package tech.destinum.recorderis.adapters;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +67,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar c = Calendar.getInstance();
             final long diff = d.getTime() - c.getTimeInMillis();
             holder.mDaysLeft.setText(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
+            holder.mProgressBar.setProgress(Math.round(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
 
         } catch (ParseException e){
             e.printStackTrace();
@@ -80,16 +84,27 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             holder.mDate.setText(String.valueOf(day)+"/"+new SimpleDateFormat("MMM").format(calendar.getTime())
                     +"/"+calendar.get(Calendar.YEAR));
 
+            ContentResolver contentResolver = holder.mView.getContext().getContentResolver();
+            ContentValues contentValues = new ContentValues();
 
-                ContentResolver contentResolver = mContext.getApplicationContext().getContentResolver();
-                ContentValues contentValues = new ContentValues();
+            contentValues.put(CalendarContract.Events.TITLE, holder.mView.getResources().getString(R.string.app_name));
+            contentValues.put(CalendarContract.Events.DESCRIPTION, "");
+            contentValues.put(CalendarContract.Events.DTSTART, calendar.getTimeInMillis());
+//            contentValues.put(CalendarContract.Events.DTEND, calendar.getTimeInMillis()+ 60*60*7200);
+            contentValues.put(CalendarContract.Events.ALL_DAY, true);
+            contentValues.put(CalendarContract.Events.CALENDAR_ID, date.getId());
+            contentValues.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
 
-                contentValues.put(CalendarContract.Events.TITLE, mContext.getResources().getString(R.string.app_name));
-                contentValues.put(CalendarContract.Events.DESCRIPTION, "");
-                contentValues.put(CalendarContract.Events.DTSTART, calendar.getTimeInMillis());
-                contentValues.put(CalendarContract.Events.DTEND, calendar.getTimeInMillis()+ 60*60*7200);
+            Uri uri = contentResolver.insert(CalendarContract.Events.CONTENT_URI, contentValues);
 
-                Uri uri = contentResolver.insert(CalendarContract.Events.CONTENT_URI, contentValues);
+            long eventID = Long.parseLong(uri.getLastPathSegment());
+
+            ContentValues reminders = new ContentValues();
+            reminders.put(CalendarContract.Reminders.EVENT_ID, eventID);
+            reminders.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
+            reminders.put(CalendarContract.Reminders.MINUTES, 60);
+
+            Uri uri2 = contentResolver.insert(CalendarContract.Reminders.CONTENT_URI, reminders);
 
         } catch (ParseException e){
             e.printStackTrace();
@@ -107,9 +122,12 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
         public TextView mName, mDaysLeft, mDays, mDate;
         public ProgressBar mProgressBar;
+        public View mView;
 
         public ViewHolder(View view) {
             super(view);
+
+            this.mView = view;
 
             mName = (TextView) view.findViewById(R.id.format_home_name);
             mDaysLeft = (TextView) view.findViewById(R.id.format_home_days_left);

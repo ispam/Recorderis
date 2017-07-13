@@ -1,9 +1,13 @@
 package tech.destinum.recorderis.activities;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +29,8 @@ public class Selection extends BaseActivity {
     private Context mContext;
     private ArrayList<Category> mCategoryArrayList;
 
+    private static final int MY_CAL_WRITE_REQUEST = 101;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +40,16 @@ public class Selection extends BaseActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_selection);
 
-        int[] covers = new int[]{
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_CALENDAR}, MY_CAL_WRITE_REQUEST);
+        }else if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
+
+        }
+
+            int[] covers = new int[]{
                 R.drawable.moto640blanco,
                 R.drawable.parti640blanco,
                 R.drawable.publi640blanco};
