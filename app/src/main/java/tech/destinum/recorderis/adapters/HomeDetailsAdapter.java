@@ -24,10 +24,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -81,8 +83,9 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
-            holder.mDate.setText(String.valueOf(day)+"/"+new SimpleDateFormat("MMM").format(calendar.getTime())
-                    +"/"+calendar.get(Calendar.YEAR));
+            Locale locale = Locale.getDefault();
+            String month = new SimpleDateFormat("MMM", Locale.US).format(calendar.get(Calendar.MONTH));
+            holder.mDate.setText(String.valueOf(day)+"/"+ month +"/"+calendar.get(Calendar.YEAR));
 
             ContentResolver contentResolver = holder.mView.getContext().getContentResolver();
             ContentValues contentValues = new ContentValues();
