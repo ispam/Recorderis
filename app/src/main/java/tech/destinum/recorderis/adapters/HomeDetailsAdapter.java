@@ -87,27 +87,6 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             String month = new SimpleDateFormat("MMM", Locale.US).format(calendar.get(Calendar.MONTH));
             holder.mDate.setText(String.valueOf(day)+"/"+ month +"/"+calendar.get(Calendar.YEAR));
 
-            ContentResolver contentResolver = holder.mView.getContext().getContentResolver();
-            ContentValues contentValues = new ContentValues();
-
-            contentValues.put(CalendarContract.Events.TITLE, holder.mView.getResources().getString(R.string.app_name));
-            contentValues.put(CalendarContract.Events.DESCRIPTION, "");
-            contentValues.put(CalendarContract.Events.DTSTART, calendar.getTimeInMillis());
-            contentValues.put(CalendarContract.Events.DTEND, calendar.getTimeInMillis()+ 60*60*7500);
-            contentValues.put(CalendarContract.Events.CALENDAR_ID, date.getId());
-            contentValues.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
-
-            Uri uri = contentResolver.insert(CalendarContract.Events.CONTENT_URI, contentValues);
-
-            long eventID = Long.parseLong(uri.getLastPathSegment());
-
-//            ContentValues reminders = new ContentValues();
-//            reminders.put(CalendarContract.Reminders.EVENT_ID, eventID);
-//            reminders.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
-//            reminders.put(CalendarContract.Reminders.MINUTES, 60);
-//
-//            Uri uri2 = contentResolver.insert(CalendarContract.Reminders.CONTENT_URI, reminders);
-
         } catch (ParseException e){
             e.printStackTrace();
         }
