@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.CalendarContract;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,7 @@ import java.util.logging.Logger;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.utils.FlipAnimator;
 
 public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.ViewHolder> {
 
@@ -83,7 +85,6 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
-            Locale locale = Locale.getDefault();
             String month = new SimpleDateFormat("MMM", Locale.US).format(calendar.get(Calendar.MONTH));
             holder.mDate.setText(String.valueOf(day)+"/"+ month +"/"+calendar.get(Calendar.YEAR));
 
@@ -99,11 +100,13 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
         return mDates != null ? mDates.size(): 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView mName, mDaysLeft, mDays, mDate;
         public ProgressBar mProgressBar;
         public View mView;
+        public ConstraintLayout mFront, mBack;
+        int click = 1;
 
         public ViewHolder(View view) {
             super(view);
@@ -115,6 +118,8 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             mDays = (TextView) view.findViewById(R.id.format_home_days);
             mDate = (TextView) view.findViewById(R.id.format_home_date);
             mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+            mFront = (ConstraintLayout) view.findViewById(R.id.cl_front);
+            mBack = (ConstraintLayout) view.findViewById(R.id.cl_back);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -122,6 +127,20 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
                     mClickCallback.onItemClick(getAdapterPosition());
                 }
             });
+
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            click++;
+            if(click % 2 == 0){
+                FlipAnimator.flipView(mView.getContext(),mBack,mFront,true);
+            }else {
+                FlipAnimator.flipView(mView.getContext(),mBack,mFront,false);
+            }
+
         }
     }
 }
