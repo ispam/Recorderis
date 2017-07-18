@@ -100,13 +100,13 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
         return mDates != null ? mDates.size(): 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mName, mDaysLeft, mDays, mDate;
         public ProgressBar mProgressBar;
         public View mView;
         public ConstraintLayout mFront, mBack;
-        int click = 1;
+//        int click = 1;
 
         public ViewHolder(View view) {
             super(view);
@@ -128,19 +128,19 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
                 }
             });
 
-            view.setOnClickListener(this);
+//            view.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-
-            click++;
-            if(click % 2 == 0){
-                FlipAnimator.flipView(mView.getContext(),mBack,mFront,true);
-            }else {
-                FlipAnimator.flipView(mView.getContext(),mBack,mFront,false);
-            }
-
-        }
+//        @Override
+//        public void onClick(View v) {
+//
+//            click++;
+//            if(click % 2 == 0){
+//                FlipAnimator.flipView(mView.getContext(),mBack,mFront,true);
+//            }else {
+//                FlipAnimator.flipView(mView.getContext(),mBack,mFront,false);
+//            }
+//
+//        }
     }
 }

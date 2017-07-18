@@ -2,6 +2,7 @@ package tech.destinum.recorderis.activities;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,7 +12,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import tech.destinum.recorderis.DB.DBHelper;
@@ -52,7 +57,6 @@ public class Home extends BaseActivity {
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(mRecyclerViewDetails);
-
 
     }
 }
