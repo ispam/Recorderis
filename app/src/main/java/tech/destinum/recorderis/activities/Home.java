@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+
+import java.util.Locale;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
@@ -40,6 +43,10 @@ public class Home extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
+
+        Configuration c = getResources().getConfiguration();
+        c.setLocale(new Locale("es", "ES"));
+        getApplicationContext().createConfigurationContext(c);
 
         mDBHelper = new DBHelper(getApplicationContext());
         mRecyclerViewDetails = (RecyclerView) findViewById(R.id.recycler_view_details);

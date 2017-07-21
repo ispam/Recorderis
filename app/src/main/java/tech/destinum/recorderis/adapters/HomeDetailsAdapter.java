@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
@@ -82,10 +83,10 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
             java.util.Date d = sdf.parse(date.getDate());
-            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+            Calendar calendar = Calendar.getInstance();
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
-            String month = new SimpleDateFormat("MMM", Locale.US).format(calendar.get(Calendar.MONTH));
+            String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
             holder.mDate.setText(String.valueOf(day)+"/"+ month +"/"+calendar.get(Calendar.YEAR));
 
         } catch (ParseException e){
