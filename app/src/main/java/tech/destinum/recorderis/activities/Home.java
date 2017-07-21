@@ -44,10 +44,6 @@ public class Home extends BaseActivity {
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
 
-        Configuration c = getResources().getConfiguration();
-        c.setLocale(new Locale("es", "ES"));
-        getApplicationContext().createConfigurationContext(c);
-
         mDBHelper = new DBHelper(getApplicationContext());
         mRecyclerViewDetails = (RecyclerView) findViewById(R.id.recycler_view_details);
 

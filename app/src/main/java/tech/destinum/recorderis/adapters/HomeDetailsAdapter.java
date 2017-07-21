@@ -17,6 +17,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,7 +88,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
             String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-            holder.mDate.setText(String.valueOf(day)+"/"+ month +"/"+calendar.get(Calendar.YEAR));
+            holder.mDate.setText(String.valueOf(day)+"/"+ month.substring(0,1).toUpperCase()+month.substring(1)+"/"+calendar.get(Calendar.YEAR));
 
         } catch (ParseException e){
             e.printStackTrace();
