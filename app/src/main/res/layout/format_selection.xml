@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/card_view"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selection_white_borders"
+        >
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_margin="5dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/image_category"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="Vehículo Público"
+            android:textSize="24sp"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_category"
+            android:id="@+id/tv_title"/>
+
+        <TextView
+            android:text="Si usted utiliza un vehiculo de placas blancas y de uso público"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_category"
+            android:id="@+id/tv_description"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginBottom="10dp"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
