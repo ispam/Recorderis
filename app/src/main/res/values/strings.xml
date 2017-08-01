@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recorderis</string>
+    <string name="app_version">Version 1.0</string>
+
+    <!--Hint Text-->
+    <string name="hint_top">(Tap here when you finish)</string>
+    <string name="hint_mid">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
+    <string name="hint_bot">(Tap anywhere to continue)</string>
+
+    <!-- Selection -->
+    <string name="pub_serv">Public Service</string>
+    <string name="pri_serv">Private Service</string>
+    <string name="motos">Motorcycles</string>
+
+    <string name="exp_pub_serv">If you use a vehicle with white plates and for public use</string>
+    <string name="exp_pri_serv">If you use a vehicle with yellow plates and for private use</string>
+    <string name="exp_motos">If you use a 2 or 4 stroke bike</string>
+
+    <!--Menu Navigation Drawer-->
+    <string name="nav_home">Home</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_selection">Selection</string>
+    <string name="nav_info">About</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
+    <string name="logout">Logout</string>
+
+    <!--Names of Documents-->
+    <string name="doc_rtm">Technical Mechanical Review</string>
+    <string name="doc_src">Civil Liability Insurance</string>
+    <string name="doc_str">All Risk Insurance</string>
+    <string name="doc_soat">SOAT</string>
+    <string name="doc_tao">Operation Card</string>
+    <string name="doc_ext">Fire Extinguisher</string>
+
+    <string name="symbol_soat">SOAT</string>
+    <string name="symbol_rtm">TMR</string>
+    <string name="symbol_src">CLI</string>
+    <string name="symbol_str">ARI</string>
+    <string name="symbol_tao">OC</string>
+    <string name="symbol_ext">FE</string>
+
+    <!--Links About Page-->
+    <string name="privacy_policy_link">Privacy Policy</string>
+    <string name="terms_link">Terms and Conditions</string>
+
+    <!--Auth0-->
+    <string name="auth0_client_id">28BCzzh69tSn8aWrbZvZmJSgExSUrH4W</string>
+    <string name="auth0_domain">ispam.auth0.com</string>
+    <string name="auth0_preferences">AUTH0_SHARED_PREFERENCES_KEY</string>
+
+    <string name="login_success">Log In - Succes</string>
+    <string name="login_error">Log In - Error</string>
+    <string name="login_canceled">Log In - Canceled</string>
+    <string name="automatic_login_success">Automatic Login Success</string>
+    <string name="session_expired">Please Verify Internet Connection</string>
+    <string name="profile_request_failed">Profile Request Failed</string>
+
+    <!--Home Screen -->
+    <string name="need_email">We Need an Email Please</string>
+    <string name="need_date">We Need A DATE</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+
+    <!--Random-->
+    <string name="info_form">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
+    <string name="hint_date">DD/MM/YYYY</string>
+    <string name="days">Days</string>
+    <string name="soat_text">El Seguro Obligatorio de Accidentes de Tránsito – SOAT, es un contrato de seguro fundamentado en un principio social, que busca garantizar la atención inmediata e integral de todas las víctimas de accidentes de tránsito ocurridos en las vías del país.\n
+        \n
+Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación de dar atención prioritaria a las víctimas de un accidente de tránsito y advertir al consumidor que la reclamación de la indemnización la puede realizar directamente. Asimismo, no requiere apoderados o intermediarios.</string>
+
+    <string name="privacy_policy_text">
+        <![CDATA[
+<h2>Table of Contents</h2>
+<h4><a href="#1">1.Definitions and legal references</a></h4>
+<h5><a href="#1.1">1.1 Personal Data (or Data)</a></h5>
+<h5><a href="#1.2">1.2 Usage Data</a></h5>
+<h5><a href="#1.3">1.3 User</a></h5>
+<h5><a href="#1.4">1.4 Data Subject</a></h5>
+<h5><a href="#1.5">1.5 Data Processor (or Data Supervisor)</a></h5>
+<h5><a href="#1.6">1.6 Data Controller (or Owner)</a></h5>
+<h5><a href="#1.7">1.7 Legal Information</a></h5>
+<h4><a href="#2">2. Types of Data collected</a></h4>
+<h4><a href="#3">3. Mode and place of processing&nbsp;the information</a></h4>
+<h4><a href="#4">4. Storage</a></h4>
+<h4><a href="#5">5. Retention time</a></h4>
+<h4><a href="#6">6. The use of the collected Data</a></h4>
+<h4><a href="#7">7. Additional information about User\'s Personal Data</a></h4>
+<h4><a href="#8">8. Users Rights</a></h4>
+<h4><a href="#9">9. Legal action</a></h4>
+<h4><a href="#10">10. System logs and maintenance</a></h4>
+<h4><a href="#11">11.Information not contained in this policy</a></h4>
+<h4><a href="#12">12.Changes to this privacy policy</a></h4>
+<h4><a href="#13">13. Detailed information on the processing of the Personal Data</a></h4>
+<h5><a href="#13.1">13.1 Facebook account access</a></h5>
+<h5><a href="#13.2">13.2 Google account access</a></h5>
+<h5><a href="#13.3">13.3 Twitter&nbsp;account access</a></h5>
+<p>&nbsp;</p>
+<h4><a href="#14">14. Contact Information</a></h4>
+<p>&nbsp;</p>
+<h2><a name="1"></a>Definitions and legal references</h2>
+<h3><a name="1.1"></a>Personal Data (or Data)</h3>
+<p>Any information regarding a natural person, a legal person, an institution or an association, which is, or can be, identified, even indirectly, by reference to any other information, including a personal identification number.</p>
+<p>&nbsp;</p>
+<h3><a name="1.2"></a>Usage Data</h3>
+<p>Information collected automatically from this Application (or third party services employed in this Application), which can include: the IP addresses or domain names of the computers utilized by the Users who use this Application, the URI addresses (Uniform Resource Identifier), the time of the request, the method utilized to submit the request to the server, the size of the file received in response, the numerical code indicating the status of the server\'s answer (successful outcome, error, etc.), the country of origin, the features of the browser and the operating system utilized by the User, the various time details per visit (e.g., the time spent on each page within the Application) and the details about the path followed within the Application with special reference to the sequence of pages visited, and other parameters about the device operating system and/or the User\'s IT environment.</p>
+<p>&nbsp;</p>
+<h3><a name="1.3"></a>User</h3>
+<p>The individual using this Application, which must coincide with or be authorized by the Data Subject, to whom the Personal Data refers.</p>
+<p>&nbsp;</p>
+<h3><a name="1.4"></a>Data Subject</h3>
+<p>The legal or natural person to whom the Personal Data refers.</p>
+<p>&nbsp;</p>
+<h3><a name="1.5"></a>Data Processor (or Data Supervisor)</h3>
+<p>The natural person, legal person, public administration or any other body, association or organization authorized by the Data Controller to process the Personal Data in compliance with this privacy policy.</p>
+<p>&nbsp;</p>
+<h3><a name="1.6"></a>Data Controller (or Owner)</h3>
+<p>The natural person, legal person, public administration or any other body, association or organization with the right, also jointly with another Data Controller, to make decisions regarding the purposes, and the methods of processing of Personal Data and the means used, including the security measures concerning the operation and use of this Application. The Data Controller, unless otherwise specified, is the Owner of this Application.</p>
+<h3>&nbsp;</h3>
+<h3><a name="1.7"></a>Legal information</h3>
+<p>Notice to European Users: this privacy statement has been prepared in fulfillment of the obligations under Art. 10 of EC Directive n. 95/46/EC, and under the provisions of Directive 2002/58/EC, as revised by Directive 2009/136/EC, on the subject of Cookies.</p>
+<p>This privacy policy relates solely to this Application.</p>
+<p>&nbsp;</p>
+<h2><a name="2"></a>Types of Data collected</h2>
+<p>Recorderis collects some of your personal information through third party services like Facebook, Google and Twitter.</p>
+<p>Other Personal Data collected may be described in other sections of this privacy policy or by dedicated explanation text contextually with the Data collection.<br /> The Personal Data may be freely provided by the User, or collected automatically when using this Application.<br /> Any use of Cookies - or of other tracking tools - by this Application or by the owners of third party services used by this Application, unless stated otherwise, serves to identify Users and remember their preferences, for the sole purpose of providing the service required by the User.<br /> Failure to provide certain Personal Data may make it impossible for this Application to provide its services.</p>
+<p>Users are responsible for any Personal Data of third parties obtained, published or shared through this Application and confirm that they have the third party\'s consent to provide the Data to the Owner.</p>
+<h5>&nbsp;</h5>
+<h2><a name="3"></a>Mode and place of processing&nbsp;the information</h2>
+<p>The Data Controller processes the Data of Users in a proper manner and shall take appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data.<br /> The Data processing is carried out using computers and/or IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated. In addition to the Data Controller, in some cases, the Data may be accessible to certain types of persons in charge, involved with the operation of the site (administration, sales, marketing, legal, system administration) or external parties (such as third party technical service providers, mail carriers, hosting providers, IT companies, communications agencies) appointed, if necessary, as Data Processors by the Owner. The updated list of these parties may be requested from the Data Controller at any time.</p>
+<p>&nbsp;</p>
+<h2><a name="4"></a>Storage</h2>
+<p>The Data is processed at the Data Controller\'s operating offices and in any other places where the parties involved with the processing are located. For further information, please contact the Data Controller.</p>
+<p>&nbsp;</p>
+<h2><a name="5"></a>Retention time</h2>
+<p>The Data is kept for the time necessary to provide the service requested by the User, or stated by the purposes outlined in this document, and the User can always request that the Data Controller suspend or remove the data.</p>
+<p>&nbsp;</p>
+<h2><a name="6"></a>The use of the collected Data</h2>
+<p>The Data concerning the User is collected to allow the Owner to provide its services, as well as for the following purposes: Access to third party accounts.</p>
+<p>The Personal Data used for each purpose is outlined in the specific sections of this document.</p>
+<p>&nbsp;</p>
+<h2><a name="7"></a>Additional information about User\'s Personal Data</h2>
+<p>In addition to the information contained in this privacy policy, this Application may provide the User with additional and contextual information concerning particular services or the collection and processing of Personal Data upon request.</p>
+<p>&nbsp;</p>
+<h2><a name="8"></a>Users Rights</h2>
+<p>Users have the right, at any time, to know whether their Personal Data has been stored and can consult the Data Controller to learn about their contents and origin, to verify their accuracy or to ask for them to be supplemented, cancelled, updated or corrected, or for their transformation into anonymous format or to block any data held in violation of the law, as well as to oppose their treatment for any and all legitimate reasons. Requests should be sent to the Data Controller at the contact information set out above.</p>
+<p>This Application does not support &ldquo;Do Not Track&rdquo; requests.<br />To determine whether any of the third party services it uses honor the &ldquo;Do Not Track&rdquo; requests, please read their privacy policies.</p>
+<p>&nbsp;</p>
+<h2><a name="9"></a>Legal action</h2>
+<p>The User\'s Personal Data may be used for legal purposes by the Data Controller, in Court or in the stages leading to possible legal action arising from improper use of this Application or the related services.<br /> The User declares to be aware that the Data Controller may be required to reveal personal data upon request of public authorities.</p>
+<p>&nbsp;</p>
+<h2><a name="10"></a>System logs and maintenance</h2>
+<p>For operation and maintenance purposes, this Application and any third party services may collect files that record interaction with this Application (System logs) or use for this purpose other Personal Data (such as IP Address).</p>
+<h2>&nbsp;</h2>
+<h2><a name="11"></a>Information not contained in this policy</h2>
+<p>More details concerning the collection or processing of Personal Data may be requested from the Data Controller at any time. Please see the contact information at the beginning of this document.</p>
+<p>&nbsp;</p>
+<h2><a name="12"></a>Changes to this privacy policy</h2>
+<p>The Data Controller reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom. If a User objects to any of the changes to the Policy, the User must cease using this Application and can request that the Data Controller remove the Personal Data. Unless stated otherwise, the then-current privacy policy applies to all Personal Data the Data Controller has about Users.</p>
+<p>&nbsp;</p>
+<h2><a name="13"></a>Detailed information on the processing of the Personal Data</h2>
+<p>Personal Data is collected for the following purposes and using the following services:</p>
+<ul>
+<li><strong>Access to third party accounts</strong></li>
+</ul>
+<p>This type of service allows this Application to access Data from your account on a third party service and perform actions with it.<br />These services are not activated automatically, but require explicit authorization by the User.</p>
+<p>&nbsp;</p>
+<h2><a name="13.1"></a>Facebook account access (Facebook, Inc.)</h2>
+<p>This service allows this Application to connect with the User\'s account on the Facebook social network, provided by Facebook, Inc.</p>
+<p>Permissions asked: About Me and Contact email.</p>
+<p>Place of processing: US &ndash;Privacy Policy</p>
+<p>&nbsp;</p>
+<h2><a name="13.2"></a>Google account access (Google, Inc.)</h2>
+<p>This service allows this Application to connect with the User\'s account on the Google social network, provided by Google, Inc.</p>
+<p>Personal Data collected: Basic profile and contact email.</p>
+<p>Place of processing: US - Privacy Policy</p>
+<p>&nbsp;</p>
+<h2><a name="13.3"></a>Twitter account access (Twitter, Inc.)</h2>
+<p>This service allows this Application to connect with the User\'s account on the Twitter social network, provided by Twitter, Inc.</p>
+<p>Personal Data collected: various types of Data as specified in the privacy policy of the service.</p>
+<p>Place of processing: US &ndash;Privacy Policy</p>
+<p>&nbsp;</p>
+<h2><a name="14"></a>Contact information</h2>
+<p>Recorderis</p>
+<p>Calle 43 # 1 - 348, Caldas - Colombia</p>
+<p>Owner contact email:diegoug@gmail.com</p>
+<p>&nbsp;</p>
+                    ]]>
+                    </string>
+
+    <string name="terms_and_conditions">
+        <![CDATA[
+
+<h2>Table of Contents</h2>
+<h4><a href="#1">1. Content</a></h4>
+<h4><a href="#2">2. Claims of Violation</a></h4>
+<h4><a href="#3">3. Main Legal Framework</a></h4>
+<h4><a href="#4">4. Terms of Use</a></h4>
+<h4><a href="#5">5. User Accounts</a></h4>
+<h4><a href="#6">6. Submitting Content</a></h4>
+<h4><a href="#7">7. Third parties</a></h4>
+<h4><a href="#8">8. Mobile Application Updates</a></h4>
+<h4><a href="#9">9. Problems of Wireless Coverage and Function Deactivation</a></h4>
+<h4><a href="#10">10. Limited Liability</a></h4>
+<h4><a href="#11">11. Privacy</a></h4>
+<h4><a href="#12">12. Sponsorship</a></h4>
+<h4><a href="#13">13. Warranty Exclusion</a></h4>
+<h4><a href="#14">14. Exoneration</a></h4>
+<h4><a href="#15">15. Export Restrictions</a></h4>
+<h4><a href="#16">16. Available Location Functions</a></h4>
+<h4><a href="#17">17. Dispute Resolution</a></h4>
+<h4><a href="#18">18. Indivisibility</a></h4>
+<h4><a href="#19">19. Prevailing Language</a></h4>
+<h4><a href="#20">20. Questions and Comments</a></h4>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="1"></a>1. CONTENTS</h2>
+<p>All text, information, data, photographs, graphics, source code, audio and video samples, trademarks and logos, and similar (hereinafter "Content") appearing on this Website and / or Mobile Application belong to RECORDERIS (from this point forward known as&nbsp;the "Company" or "DESTINUM") or its affiliated companies, branches, agencies or suppliers, unless expressly specified in this Mobile Application. Users (as defined herein) may only use the Content on a mobile device (for example, Apple iPhone or iPad, Android device or Microsoft Windows mobile device) that they own or control, and only for personal, internal reasons And without commercial purposes. "&copy; 2017 DESTINUM has all rights reserved." No other use of the Content, including, but not limited to, any kind of editing thereof, is permitted without prior written permission from the Company. Any User who has violated the intellectual property of a third party through the retransmission or publication of material related to this Mobile Application that infringes the copyright or other legal rights of said third party will be excluded from this Mobile Application.</p>
+<p>&nbsp;</p>
+<h2><a name="2"></a>2. CLAIMS FOR VIOLATION</h2>
+<p>All trademarks used in this Website and/or Mobile Application are owned by the Company or, in a few cases, used with the authorization of their respective owners. No third party may use or reproduce any trademark including, but not limited to, logos and Internet domains that use the trademarks "RECORDERIS", "DESTINUM" (whether or not capitalized or not) without prior consent In writing of the Company or the owner of the trademark.</p>
+<p>Apart from the right of non-exclusive, non-transferable, personal and limited use of the Users as specified herein, no right is granted to said Content or portions thereof, regardless of the form in which it appears, through its inclusion in This Mobile Application or by access to it by the User. A User may not: (a) separate any individual Content or component of the Mobile Application for any other use than that indicated in connection with the Mobile Application; (B) incorporate a portion thereof into the User\'s own programs or collect any portion in combination with the User\'s own programs; (C) transfer it for use by another service; Or (d) sell, lease, assign, distribute, publicly communicate, or transform the Mobile Application or grant in any way any right to Mobile Application, in whole or in part. The Company will be responsible for all maintenance or technical support of the Mobile Application; Any Third Party (as defined herein) will be responsible for providing maintenance or technical support services for the Mobile Application.</p>
+<p>The Company reserves the right to amend, supplement or suspend all or part of the Mobile Application on an occasional basis. The Company also reserves the right to change the Terms and Conditions at any time, effective immediately upon the update of the Mobile Application. The terms "User" and "Users" refer to any individual or entity that uses, accesses, downloads, installs, obtains or provides information to and from this Mobile Application. All references to the plural in the present will include the singular and the references to the singular will include the plural unless another interpretation of the context is revealed.</p>
+<p>&nbsp;</p>
+<h2><a name="3"></a>3. PRINCIPAL LEGAL FRAMEWORK</h2>
+<p>Statutory Law 1266 of 2008; Statutory law 1581 of 2012; Decree 1377 of 2013; Decree 886 of 2014. On data protection. By virtue of which the company will have the character of user, insofar as it has access to personal information of third parties, is subject to the fulfillment of the duties and responsibilities envisaged to guarantee the protection of the rights of the holder of the data. Thus: Duties of users: 1. Save reservation on the information provided by the operators of the data banks, sources or information holders and use the information only for the purposes for which it was delivered , In the terms of the present law. 2. Inform the owners, at their request, of the use they are making of the information. 3. Retain with due security the information received to prevent its deterioration, loss, alteration, unauthorized or fraudulent use. 4. Comply with the instructions given by the control authority, in relation to compliance with the law. 5. The others that are derived from the Constitution or from the same law.</p>
+<p>&nbsp;</p>
+<h2><a name="4"></a>4. CONDITIONS OF USE</h2>
+<p>By using, accessing, downloading, installing, obtaining or providing information to and from this Mobile Application, Users will be deemed to have read and accepted these Terms and Conditions (including our Privacy Policy), which is incorporated herein by virtue of This reference. The use of this Mobile Application will also be subject to the Terms and Conditions ofRECORDERIS. Please be aware that all references to the "website" in our Privacy Policy are also considered valid for this Mobile Application, whether used in conjunction with or independently of the Company\'s Website at -------- ----</p>
+<p>&nbsp;Users must suspend the use of this Mobile Application immediately if they do not agree or do not accept all of these Terms and Conditions. The Company reserves the right to remove or prohibit any User from using this Mobile Application in its sole discretion.</p>
+<p>&nbsp;</p>
+<h2><a name="5"></a>5. USER ACCOUNTS</h2>
+<p>The Company may, in its sole discretion, provide access to Users to restricted portions of this Mobile Application, including, but not limited to, one or more User accounts where customer specific information and services may be provided and / or obtained.</p>
+<p>&nbsp;Users entering such locations may be subject to additional Terms and Conditions as specified in relation to the services provided. Users with service accounts are solely responsible for preserving the confidentiality of all access information, User account information and any actions or omissions related to said account.</p>
+<p>&nbsp;</p>
+<h2><a name="6"></a>6. SUBMITTING CONTENT</h2>
+<p>In the event that a User sends digital images or other content, including all photographs, illustrations, graphics and text (collectively, "Materials") to the Company through the Mobile Application, the following terms shall apply:</p>
+<p>The User may only send to the Company, through the Mobile Application, Materials of which he / she owns all intellectual property rights. In other words, if a User sends a digital image to the Company, the User must have all rights over said image or the User must have the authorization of the person who owns such rights. Minors can not send Materials to the Company through the Mobile Application. Likewise, a User may not send any personally identifiable information about a minor child.</p>
+<p>The User hereby grants to the Company worldwide, non-exclusive, royalty-free and perpetual rights and licenses to (a) reproduce, distribute, transmit, publicly represent and display the Materials in whole or in part in any manner and in any (B) modify, adapt, translate, and create derivative works of the Materials in whole or in part in any manner and in any Media, And (c) grant licenses for the aforementioned rights, totally or partially, to third parties with or without concession value.</p>
+<p>The User hereby grants the Company and its licensees a non-exclusive, royalty-free, worldwide license to use all trademarks, trade names and names and images of any individual appearing on the Materials. The User grants to the Company and its licensees the right to use the name that the User sends in relation to the Materials.</p>
+<p>&nbsp;</p>
+<h2><a name="7"></a>7. THIRD PARTIES</h2>
+<p>The wireless telephony service providers of Users, manufacturers and sellers of mobile devices on which the User downloads, installs, uses or accesses the Mobile Application, the creator of the operating system for the Users\' mobile devices and the Operator of any app store or similar services through which users obtain the Mobile Application, if any (collectively, the "Third Parties") are not a party to these Terms and Conditions and are not the owners or owners of the Mobile Application. Third Parties make no warranty in connection with the Mobile Application. They are not responsible for the maintenance or other support services of the Mobile Application and will not be responsible for any other claims, losses, imputation of liabilities, damages, costs or expenses related to the Mobile Application.</p>
+<p>Users acknowledge and agree that Third Parties and their subsidiaries are third-party beneficiaries of these Terms and Conditions and that they have the right (and it will be assumed that they have accepted such right) to exercise these Terms and Conditions to users as third party beneficiaries.</p>
+<p>The Mobile Application was created for the latest version available on the market for the operating systems of Users\' mobile devices and there may be drawbacks of compatibility when using earlier versions. Wireless network coverage and Wi-Fi network speed vary by provider and geographic location. The Company is not responsible for the limitations and/or failures in the operation of any wireless or Wi-Fi service used to access this Mobile Application or the security of wireless or Wi-Fi services. Likewise, the Company is not responsible for charges or fees for use of data networks, which are the sole responsibility of the User.</p>
+<p>&nbsp;</p>
+<h2><a name="8"></a>8. MOBILE APPLICATION UPDATES</h2>
+<p>The Company may require Users to update their version of the Mobile Application at any time. Although all efforts will be made to preserve the personal configurations and preferences of the Users, there will still be a possibility that they will be lost.</p>
+<p>&nbsp;</p>
+<h2><a name="9"></a>9. WIRELESS COVERAGE AND FUNCTION DEACTIVATION PROBLEMS</h2>
+<p>When attempting to perform a transaction on the Mobile Application, the wireless connection may be interrupted or a feature disabled. Should this occur, Users should check the status of their wireless network in the coverage area or have access to a computer. Users may also contact a DESTINUM customer service representative via the "Contact Us" link provided below: -------</p>
+<p>&nbsp;</p>
+<h2><a name="10"></a>10. LIMITED LIABILITY</h2>
+<p>Third parties, the company and its parent companies and affiliates, together with their respective officers, directors, personnel, employees and representatives (collectively referred to as the "exempt parties") shall not be responsible or liable for legal action and hereby The user waives any claim, demand, imputation of responsibilities, legal cause, complaint, damages claim, by reason of, among others, direct, indirect, accidental, incidental, extraordinary, special or punitive damages of Any nature with respect to this mobile application (including the products, services and contents of the exempt parties), even if the exempted parties have been advised of the possibility of such damages. The only recourse of users to such claims, demands, imputation of responsibilities, legal causes, complaints or claims of damages is to end the use of this mobile application.</p>
+<p>&nbsp;</p>
+<h2><a name="11"></a>11. PRIVACY</h2>
+<p>Our privacy policy regarding any information obtained by the Company through this Mobile Application can be consulted in the Privacy Policy section of the Company\'s Website. Some additional privacy rules may be valid as set forth in the features of this Mobile Application restricted to specific services of the User.</p>
+<p>The use of this Mobile Application implies the electronic transmission of information through the networks of the wireless service provider. Insofar as the Company does not operate or control the wireless networks used to access the Mobile Application, the Company is not responsible for the privacy or security of wireless data transmissions. Users must use accredited service providers and check with their wireless service provider for information regarding their privacy and security practices.</p>
+<p>&nbsp;</p>
+<h2><a name="12"></a>12. SPONSORSHIP</h2>
+<p>The Company does not recommend, sponsor or promote business, services or products of third parties, except for expressions of recommendation or sponsorship that the Company expressly makes, if any, in this Mobile Application. If this Mobile Application provides information about third parties or provides third-party content, and even links to third-party websites, the Company shall not be liable for any damage or loss related to any third-party information, even if it contains errors or mistakes. Likewise, the Company will not be responsible or subject to legal action for the services or products of third parties. See also the link section of our Privacy Policy, including disclaimer for third party content.</p>
+<p>&nbsp;</p>
+<h2><a name="13"></a>13. EXCLUSION OF WARRANTY</h2>
+<p>Exempt parties make no representations as to the functionality and use of the content of this mobile application. The use and navigation that the user makes with this mobile application is at the user\'s own risk. All information contained in this mobile application is provided "as is" and "as available" without any assertions or warranties, whether express or implied. Users should not assume that the information contained in this mobile application is constantly updated or Which includes recent information.</p>
+<p>This mobile application may stop functioning, be interrupted or malfunction occasionally. The exempt parties have no responsibility for such cessation of operation, interruption or improper operation. Users are cautioned that the information contained herein may contain technical errors, inaccuracies, programming errors, unknown viruses and omissions. The user assumes all risks associated with the use of this mobile application, and accepts that the company waives any warranty linked to the use of the mobile application by the user.</p>
+<p>Notwithstanding any other provision of these terms and conditions, the Company disclaims any express or implied warranty of any kind with respect to this mobile application (including our products, services and site content), including , Inter alia, warranties of merchantability and fitness for a particular purpose, peaceful enjoyment, title, non-infringement of third party rights and accuracy. No information or oral or written advice given by us or our authorized representatives will create a warranty or increase in any way the scope of our obligations as set forth in these terms and conditions.</p>
+<p>&nbsp;</p>
+<h2><a name="14"></a>14. EXEMPTION</h2>
+<p>The Users shall release from all responsibility and exempt the Parties Exempt from any claim, demand, civil liability, legal cause, complaint or damages (including reasonable attorneys\' fees and expenses) arising from the use that said Users make Of the Mobile Application (including our products, services and Content), including, but not limited to, the incorrect information, content or delivery of the Mobile Application, or the Company\'s or third party products and services. The Company reserves the right, on its own behalf, to assume the exclusive defense and control of any matter subject to exoneration by the Users, but doing so does not relieve Users of their exemption obligations.</p>
+<p>&nbsp;</p>
+<h2><a name="15"></a>15. EXPORT RESTRICTIONS</h2>
+<p>This Mobile Application or its underlying technology can not be downloaded, exported or re-exported in countries where the regulations prohibit it, if it is done, will be under the absolute and total responsibility of the person downloading it to any country, person, end user or Prohibited by the export laws of the respective country.</p>
+<p>&nbsp;</p>
+<h2><a name="16"></a>16. AVAILABLE LOCATION FUNCTIONS</h2>
+<p>Certain location functions (for example, locate the nearest Company\'s payment office) available in the Mobile Application when provided by third parties. Users\' use of such functionality is subject to the terms and conditions of the third party (and their occasional updates). Users should use their own judgment about the appropriateness and adequacy of the information. All the location information is provided in full under the conditions in which it is located, without guarantees of any nature.</p>
+<p>&nbsp;</p>
+<h2><a name="17"></a>17. DISPUTE RESOLUTION</h2>
+<p>By using, accessing, downloading, installing, obtaining or providing information to and from this mobile application, users expressly agree that any claim, dispute or controversy of a legal nature between users and the company that arise arise or are linked from any With the mobile application, including disputes relating to the applicability, scope or validity of any provision of these terms and conditions or our privacy policy (collectively, "disputes") will be resolved in accordance with the procedures hereunder Established. Either party may file a claim against the company. In case the complaint is not resolved informally, the user hereby accepts to resolve all disputes through a conciliator in accordance with Colombian laws on the matter and in case of continuing the dispute will be resolved through confidential binding arbitration, which will be an arbitrator Neutral agreement designated by both sides of the dispute. In case the parties fail to agree on a neutral arbitrator after sixty (60) days, the chamber of commerce of the company\'s domicile or its delegate will select the neutral arbitrator to resolve the dispute. The arbitrator has no legal capacity to resolve more than the claim of a single person, and can in no way settle any form of representative or collective legal action. Users expressly agree that no other Dispute will be unified or attached to their Dispute, either through legal actions of collective arbitration or other proceedings. By using, accessing, downloading, installing, obtaining or providing information from or to this Mobile Application, Users accept that they voluntarily and deliberately waive any right to participate as a representative or member of any group or group of plaintiffs of any kind Dispute.</p>
+<p>&nbsp;</p>
+<h2><a name="18"></a>18. INDIVISIBILITY</h2>
+<p>If any provision of these Terms and Conditions is invalid, void or unenforceable, the remaining provisions shall in any case retain their full validity and the invalid, void or unenforceable clause shall be deemed modified to be valid and enforceable to the maximum extent permitted by the law.</p>
+<p>&nbsp;</p>
+<h2><a name="19"></a>19. PREVAILING LANGUAGE</h2>
+<p>In the event that there is any inconsistency, ambiguity or conflict between the Spanish version of these Terms and Conditions and those translated into other languages, the Spanish version will prevail over the rest.</p>
+<p>&nbsp;</p>
+<h2><a name="20"></a>20. QUESTIONS AND COMMENTS</h2>
+<p>Users who have any questions or concerns about the Terms and Conditions for the Mobile Application may contact the webmaster regarding this Mobile Application by writing to the following email: diegoug@gmail.com</p>
+        ]]>
+    </string>
+
+</resources>
