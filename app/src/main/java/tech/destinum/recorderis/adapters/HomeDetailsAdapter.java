@@ -87,7 +87,11 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
+<<<<<<< HEAD
             String month = calendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+=======
+            String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+>>>>>>> 31e8acf7bedb7b304d31b3ee899b0fc5748b9dff
             holder.mDate.setText(String.valueOf(day)+"/"+ month.substring(0,1).toUpperCase()+month.substring(1)+"/"+calendar.get(Calendar.YEAR));
 
         } catch (ParseException e){
