@@ -87,17 +87,14 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(d);
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
-<<<<<<< HEAD
+
             String month = calendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
-=======
-            String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
->>>>>>> 31e8acf7bedb7b304d31b3ee899b0fc5748b9dff
+
             holder.mDate.setText(String.valueOf(day)+"/"+ month.substring(0,1).toUpperCase()+month.substring(1)+"/"+calendar.get(Calendar.YEAR));
 
         } catch (ParseException e){
             e.printStackTrace();
         }
-
 
     }
 
@@ -108,11 +105,11 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mName, mDaysLeft, mDays, mDate;
+        public TextView mName, mDaysLeft, mDays, mDate, mInfoName;
         public ProgressBar mProgressBar;
         public View mView;
         public ConstraintLayout mFront, mBack;
-//        int click = 1;
+        int click = 1;
 
         public ViewHolder(View view) {
             super(view);
@@ -126,6 +123,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
             mFront = (ConstraintLayout) view.findViewById(R.id.cl_front);
             mBack = (ConstraintLayout) view.findViewById(R.id.cl_back);
+            mInfoName = (TextView) view.findViewById(R.id.tv_info_name);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

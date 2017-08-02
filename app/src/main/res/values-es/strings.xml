@@ -26,6 +26,10 @@
     <string name="navigation_drawer_close">Drawer Cerrado</string>
     <string name="logout">Desconectarse</string>
 
+    <!--Snackbar -->
+    <string name="snack_ok">Ok</string>
+    <string name="snack_hint"> &lt;------------ DEZLICE ------------></string>
+
     <!--Nombre de Documentos-->
     <string name="doc_rtm">Revisión Técnico Mecánica</string>
     <string name="doc_src">Seguro Responsabilidad Civil</string>

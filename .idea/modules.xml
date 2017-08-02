@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Recorderis-master.iml" filepath="$PROJECT_DIR$/Recorderis-master.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/Recorderis.iml" filepath="$PROJECT_DIR$/Recorderis.iml" />
->>>>>>> 31e8acf7bedb7b304d31b3ee899b0fc5748b9dff
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

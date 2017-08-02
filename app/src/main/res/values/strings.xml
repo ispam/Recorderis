@@ -26,6 +26,10 @@
     <string name="navigation_drawer_close">Drawer Closed</string>
     <string name="logout">Logout</string>
 
+    <!--Snackbar -->
+    <string name="snack_ok">Ok</string>
+    <string name="snack_hint"> &lt;------------ SWIPE ------------></string>
+
     <!--Names of Documents-->
     <string name="doc_rtm">Technical Mechanical Review</string>
     <string name="doc_src">Civil Liability Insurance</string>

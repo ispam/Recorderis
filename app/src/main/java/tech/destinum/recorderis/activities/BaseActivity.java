@@ -231,7 +231,7 @@ public class BaseActivity extends AppCompatActivity {
         } else if (this.getClass().equals(Selection.class)){
             return false;
         } else if (this.getClass().equals(Policy.class)){
-            getMenuInflater().inflate(R.menu.menu_version, menu);
+            return false;
         } else if (this.getClass().equals(Terms.class)){
             return false;
         }
