@@ -29,9 +29,6 @@ public class Selection extends BaseActivity {
     private Context mContext;
     private ArrayList<Category> mCategoryArrayList;
 
-    private static final int MY_CAL_WRITE_REQUEST = 101;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
