@@ -18,9 +18,12 @@
 
 
 
-        <android.support.v4.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/scroll_view"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:tools="http://schemas.android.com/tools"
@@ -86,7 +89,7 @@
 
         </RelativeLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </ScrollView>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"

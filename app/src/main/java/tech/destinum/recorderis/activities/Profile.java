@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import tech.destinum.recorderis.DB.DBHelper;
@@ -19,6 +20,7 @@ public class Profile extends BaseActivity {
     public DBHelper mDBHelper;
     public ProfileAdapter mProfileAdapter;
     public RecyclerView mRecyclerView;
+    public ScrollView mScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +31,12 @@ public class Profile extends BaseActivity {
         mDBHelper = new DBHelper(this);
         mName = (TextView) findViewById(R.id.format_profile_name);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_profile);
+        mScrollView = (ScrollView) findViewById(R.id.scroll_view);
 
         SharedPreferences mSP = getSharedPreferences(BaseActivity.PREFERENCES, Context.MODE_PRIVATE);
         String name = mSP.getString("name", "");
         mName.setText(name);
+        mScrollView.smoothScrollTo(0,0);
 
         mProfileAdapter = new ProfileAdapter(mContext, mDBHelper.getAllDates());
         mRecyclerView.setAdapter(mProfileAdapter);
