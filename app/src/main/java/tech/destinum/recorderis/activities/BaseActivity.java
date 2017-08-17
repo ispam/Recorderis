@@ -234,7 +234,7 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         if (this.getClass().equals(Home.class)) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return false;
         } else if (this.getClass().equals(Settings.class)) {
             return false;
         } else if (this.getClass().equals(Selection.class)){
@@ -244,9 +244,8 @@ public class BaseActivity extends AppCompatActivity {
         } else if (this.getClass().equals(Terms.class)){
             return false;
         } else if (this.getClass().equals(Profile.class)){
-            return false;
+            getMenuInflater().inflate(R.menu.menu_main, menu);
         }
-
         return true;
     }
 

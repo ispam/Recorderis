@@ -14,15 +14,18 @@
         android:id="@+id/drawer_layout"
         android:layout_below="@id/activity_profile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
 
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:tools="http://schemas.android.com/tools"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/rl_position"
                         android:background="@drawable/background_gradient">
 
@@ -83,7 +86,7 @@
 
         </RelativeLayout>
 
-
+        </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"
