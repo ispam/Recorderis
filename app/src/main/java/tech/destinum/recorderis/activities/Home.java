@@ -1,6 +1,7 @@
 package tech.destinum.recorderis.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -27,7 +28,7 @@ public class Home extends BaseActivity {
     private RecyclerView mRecyclerViewDetails;
     private HomeDetailsAdapter mDetailsAdapter;
     private LinearLayoutManager mLinearLayoutManager;
-    private TextView mTextView;
+    private TextView mTextView, mProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,5 @@ public class Home extends BaseActivity {
                 mTextView.setGravity(Gravity.CENTER_HORIZONTAL);
             mSnackbar.show();
         }
-
     }
 }

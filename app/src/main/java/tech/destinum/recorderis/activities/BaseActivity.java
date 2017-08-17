@@ -52,7 +52,7 @@ public class BaseActivity extends AppCompatActivity {
     private UserProfile mUserProfile;
     private DBHelper mDBHelper;
 
-    private static final String PREFERENCES = "Preferences";
+    public static final String PREFERENCES = "Preferences";
 
     protected void onCreateDrawer() {
         //Instantiate Navigation Drawer
@@ -95,10 +95,10 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
         }
-        mName.setText(mUserProfile.getName());
-
-
         SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        mName.setText(mUserProfile.getName());
+        mSharedPreferences.edit().putString("name", mUserProfile.getName()).commit();
+
         if (gotEmail.equals(true)){
 
             String email = mSharedPreferences.getString("email", "");
@@ -188,6 +188,12 @@ public class BaseActivity extends AppCompatActivity {
 
                                 break;
 
+                            case R.id.nav_profile:
+                                intent = new Intent(BaseActivity.this, Profile.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
+                                break;
+
                             default:
                                 intent = new Intent(BaseActivity.this, Home.class);
                                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
@@ -218,6 +224,9 @@ public class BaseActivity extends AppCompatActivity {
         } else if (this.getClass().equals(Terms.class)){
             mNavigationView.setCheckedItem(R.id.nav_terms);
             setTitle(R.string.terms_link);
+        } else if (this.getClass().equals(Profile.class)){
+            mNavigationView.setCheckedItem(R.id.nav_profile);
+            setTitle(R.string.nav_profile);
         }
     }
 
@@ -233,6 +242,8 @@ public class BaseActivity extends AppCompatActivity {
         } else if (this.getClass().equals(Policy.class)){
             return false;
         } else if (this.getClass().equals(Terms.class)){
+            return false;
+        } else if (this.getClass().equals(Profile.class)){
             return false;
         }
 

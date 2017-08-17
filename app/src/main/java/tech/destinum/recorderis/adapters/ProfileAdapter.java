@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -53,14 +54,14 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
         public TextView mSymbol, mDate;
-        public ImageButton mEdit;
+        public ImageView mEdit;
 
         public ViewHolder(View v) {
             super(v);
 
             mSymbol = (TextView) v.findViewById(R.id.format_profile_symbol);
             mDate = (TextView) v.findViewById(R.id.format_profile_date);
-            mEdit = (ImageButton) v.findViewById(R.id.format_profile_edit);
+            mEdit = (ImageView) v.findViewById(R.id.format_profile_edit);
         }
     }
 }

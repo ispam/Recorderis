@@ -19,6 +19,7 @@
 
     <!--Menu Navigation Drawer-->
     <string name="nav_home">Inicio</string>
+    <string name="nav_profile">Perfil</string>
     <string name="nav_settings">Ajustes</string>
     <string name="nav_selection">Selección</string>
     <string name="nav_info">Información</string>

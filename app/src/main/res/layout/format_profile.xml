@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:padding="8dp"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="SOAT"
         android:textSize="18sp"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
@@ -27,11 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:text="XX/XX/XXXX"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/format_profile_edit"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/format_profile_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
