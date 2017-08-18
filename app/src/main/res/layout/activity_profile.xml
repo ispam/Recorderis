@@ -18,17 +18,10 @@
 
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scroll_view"
-            android:descendantFocusability="beforeDescendants"
-            android:focusableInTouchMode="true">
-
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:tools="http://schemas.android.com/tools"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/rl_position"
                         android:background="@drawable/background_gradient">
 
@@ -46,10 +39,15 @@
 
             </android.support.v7.widget.Toolbar>
 
-            <android.support.constraint.ConstraintLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/toolbar_actionbar"
+                android:id="@+id/scroll_view"
+                android:layout_below="@id/toolbar_actionbar">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin">
 
             <ImageView
@@ -74,10 +72,11 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/format_profile_img"/>
 
+
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_profile"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycler_view_profile"
                     android:layout_marginTop="32dp"
                     app:layout_constraintHorizontal_bias="0.47"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -85,11 +84,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/format_profile_name">
 
                 </android.support.v7.widget.RecyclerView>
-        </android.support.constraint.ConstraintLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            </ScrollView>
 
         </RelativeLayout>
-
-        </ScrollView>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"
