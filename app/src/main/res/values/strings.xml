@@ -31,6 +31,14 @@
     <string name="snack_ok">Ok</string>
     <string name="snack_hint"> &lt;------------ SWIPE ------------></string>
 
+    <!-- Dialog -->
+    <string name="dialog_title">Edition of \s</string>
+    <string name="dialog_msg">
+        <![CDATA[
+        <p>You\'re <b>replacing</b> this Date: \n</p>
+        ]]> </string>
+    <string name="dialog_change">Change</string>
+
     <!--Names of Documents-->
     <string name="doc_rtm">Technical Mechanical Review</string>
     <string name="doc_src">Civil Liability Insurance</string>

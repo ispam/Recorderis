@@ -31,6 +31,14 @@
     <string name="snack_ok">Ok</string>
     <string name="snack_hint"> &lt;------------ DEZLICE ------------></string>
 
+    <!-- Dialog -->
+    <string name="dialog_title">Edición de \s</string>
+    <string name="dialog_msg">
+        <![CDATA[
+        <p>Está <b>remplazando</b> la Siguiente Fecha: \n</p>
+        ]]> </string>
+    <string name="dialog_change">Change</string>
+
     <!--Nombre de Documentos-->
     <string name="doc_rtm">Revisión Técnico Mecánica</string>
     <string name="doc_src">Seguro Responsabilidad Civil</string>

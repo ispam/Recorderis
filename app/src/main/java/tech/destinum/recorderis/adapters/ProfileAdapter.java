@@ -3,18 +3,15 @@ package tech.destinum.recorderis.adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,42 +40,40 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        mDBHelper = new DBHelper(mContext);
 
-        Date date = mDates.get(position);
+
+        final Date date = mDates.get(position);
         holder.mSymbol.setText(date.getSymbol());
         holder.mDate.setText(date.getDate());
         holder.mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                final EditText input = new EditText(v.getContext());
-                final String date = mDates.get(position).getDate();
-                input.setHint(date);
-//                mDateWatcher = new DateWatcher(input);
-//                input.addTextChangedListener(mDateWatcher);
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
+                mDBHelper = new DBHelper(v.getContext());
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
 
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View dialogView =inflater.inflate(R.layout.dialog_profile, null, true);
+                final View dialogView =inflater.inflate(R.layout.dialog_profile, null, true);
                 final EditText edt = (EditText) dialogView.findViewById(R.id.dialog_edt_date);
-                dialog.setTitle("Edicion")
-                        .setMessage(Html.fromHtml("Ingrese <b>nueva</b> Fecha"))
-                        .setNegativeButton("No", null)
-                        .setView(dialogView)
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                TextView title = (TextView) dialogView.findViewById(R.id.dialog_tv_title) ;
+                TextView msg = (TextView) dialogView.findViewById(R.id.dialog_tv_msg) ;
+
+                title.setText(v.getContext().getResources().getString(R.string.dialog_title)+date.getSymbol());
+                msg.setText(Html.fromHtml(v.getContext().getResources().getString(R.string.dialog_msg))+date.getDate());
+                mDateWatcher = new DateWatcher(edt);
+                edt.addTextChangedListener(mDateWatcher);
+
+                dialog.setNegativeButton(R.string.cancel, null)
+                        .setPositiveButton(R.string.dialog_change, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                if (input.getText().toString().equals("") || input.getText().toString().length() <= 0){
-                                    Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
-                                } else {
-                                    String newDate = input.getText().toString();
-                                    mDBHelper.updateDate(mDates.get(position).getName(), newDate, mDates.get(position).getSymbol(), mDates.get(position).getUser_id());
-                                    Log.d("Dialog", newDate);
-                                }
 
+                                mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id());
+                                dialog.dismiss();
                             }
-                        }).show();
+                        });
+                dialog.setView(dialogView).show();
+
             }
         });
 
