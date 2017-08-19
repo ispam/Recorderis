@@ -96,7 +96,9 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.Profile">
+        <activity android:name=".activities.Profile"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -53,15 +53,19 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
             public void onClick(final View v) {
                 final EditText input = new EditText(v.getContext());
                 final String date = mDates.get(position).getDate();
-                input.setText(date);
+                input.setHint(date);
 //                mDateWatcher = new DateWatcher(input);
 //                input.addTextChangedListener(mDateWatcher);
 
-                ContextThemeWrapper ctw = new ContextThemeWrapper(v.getContext(), R.style.Theme_light)
                 AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
+
+                LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View dialogView =inflater.inflate(R.layout.dialog_profile, null, true);
+                final EditText edt = (EditText) dialogView.findViewById(R.id.dialog_edt_date);
                 dialog.setTitle("Edicion")
                         .setMessage(Html.fromHtml("Ingrese <b>nueva</b> Fecha"))
                         .setNegativeButton("No", null)
+                        .setView(dialogView)
                         .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
