@@ -154,13 +154,16 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateDate(String name, String date, String symbol, long user_id){
+    public void updateDate(String name, String date, String symbol, long user_id, long _id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values =  new ContentValues();
+        String strFilter = "_id = " + _id;
         values.put(DATES_COLUMN_NAME, name);
         values.put(DATES_COLUMN_DATE, date);
         values.put(DATES_COLUMN_SYMBOL, symbol);
         values.put(DATES_COLUMN_USER_ID, user_id);
+        values.put(DATES_COLUMN_ID, _id);
+        db.update(TABLE_DATES, values, strFilter, null);
         db.close();
     }
 

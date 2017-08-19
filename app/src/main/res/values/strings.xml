@@ -35,9 +35,17 @@
     <string name="dialog_title">Edition of \s</string>
     <string name="dialog_msg">
         <![CDATA[
-        <p>You\'re <b>replacing</b> this Date: \n</p>
+        <p>You\'re <strong>replacing</strong> this Date: \n</p>
         ]]> </string>
     <string name="dialog_change">Change</string>
+    <string name="dialog_delete">Delete</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_confirmation">Confirmation</string>
+    <string name="dialog_confirmation_msg">
+    <![CDATA[
+        <p>You\'ll <strong>permanently</strong> remove this entry. Are you sure? \n</p>
+        ]]> </string>
 
     <!--Names of Documents-->
     <string name="doc_rtm">Technical Mechanical Review</string>

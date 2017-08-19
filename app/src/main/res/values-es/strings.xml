@@ -35,9 +35,17 @@
     <string name="dialog_title">Edición de \s</string>
     <string name="dialog_msg">
         <![CDATA[
-        <p>Está <b>remplazando</b> la Siguiente Fecha: \n</p>
+        <p>Está <strong>remplazando</strong> la Siguiente Fecha: \n</p>
         ]]> </string>
-    <string name="dialog_change">Change</string>
+    <string name="dialog_change">Cambiar</string>
+    <string name="dialog_delete">Borrar</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_confirmation">Confirmación</string>
+    <string name="dialog_confirmation_msg">
+    <![CDATA[
+        <p>La información se Borrara <strong>permanentemente</strong>.Esta seguro? \n</p>
+        ]]></string>
 
     <!--Nombre de Documentos-->
     <string name="doc_rtm">Revisión Técnico Mecánica</string>
@@ -46,7 +54,7 @@
     <string name="doc_soat">SOAT</string>
     <string name="doc_tao">Tarjeta de Operación</string>
     <string name="doc_imp">Impuesto de Rodamiento</string>
-    <string name="doc_ext">Extinguidor</string>
+    <string name="doc_ext">Extintor</string>
 
     <string name="symbol_soat">SOAT</string>
     <string name="symbol_rtm">RTM</string>

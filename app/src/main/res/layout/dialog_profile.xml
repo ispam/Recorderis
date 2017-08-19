@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:text="Edición de SOAT"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
         android:textSize="25sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_centerHorizontal="true"/>
@@ -24,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Está Remplazando la siguiente fecha: DD/MM/AAAA"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/dialog_tv_title"/>
 

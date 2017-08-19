@@ -26,6 +26,7 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
     private ArrayList<Date> mDates;
     private DBHelper mDBHelper;
     private DateWatcher mDateWatcher;
+    private ProfileAdapter mAdapter;
 
     public ProfileAdapter(Context mContext, ArrayList<Date> mDates){
         this.mContext = mContext;
@@ -39,7 +40,6 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
 
 
         final Date date = mDates.get(position);
@@ -64,12 +64,37 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                 edt.addTextChangedListener(mDateWatcher);
 
                 dialog.setNegativeButton(R.string.cancel, null)
+                        .setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                AlertDialog.Builder confirmation = new AlertDialog.Builder(v.getContext());
+                                LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                View view = inflater.inflate(R.layout.dialog_confirmation, null, true);
+                                TextView title = (TextView) view.findViewById(R.id.dialog_tv_title);
+                                TextView msg = (TextView) view.findViewById(R.id.dialog_tv_msg);
+                                title.setText(v.getContext().getResources().getString(R.string.dialog_confirmation));
+                                msg.setText(Html.fromHtml(v.getContext().getResources().getString(R.string.dialog_confirmation_msg))+date.getSymbol() +" : "+ date.getDate());
+
+                                confirmation.setNegativeButton(R.string.dialog_no, null)
+                                        .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                mDBHelper.deleteDate(date.getId());
+                                                dialog.dismiss();
+                                                mAdapter.notifyDataSetChanged();
+                                            }
+                                        }).setView(view).show();
+
+                            }
+                        })
                         .setPositiveButton(R.string.dialog_change, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id());
+                                mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
                                 dialog.dismiss();
+
                             }
                         });
                 dialog.setView(dialogView).show();
@@ -92,7 +117,6 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
 
         public ViewHolder(View v) {
             super(v);
-
 
             mSymbol = (TextView) v.findViewById(R.id.format_profile_symbol);
             mDate = (TextView) v.findViewById(R.id.format_profile_date);
