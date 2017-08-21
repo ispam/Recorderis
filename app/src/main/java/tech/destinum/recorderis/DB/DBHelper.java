@@ -125,6 +125,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT _id FROM users", null);
         cursor.moveToLast();
         long id = cursor.getLong(cursor.getColumnIndex("_id"));
+        db.close();
         return id;
     }
 
@@ -188,6 +189,12 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return list;
+    }
+
+    public Cursor getAllDatesCursor(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select _id, name, date, symbol, user_id from dates where user_id = user_id", null);
+        return c;
     }
 
     public void createNewEvent(String title, String desc, String timezone, int hourStart, int hourEnd, long date_id){

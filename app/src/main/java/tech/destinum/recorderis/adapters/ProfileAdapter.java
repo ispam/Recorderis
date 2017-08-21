@@ -2,6 +2,8 @@ package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -80,9 +82,12 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                                         .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
+
                                                 mDBHelper.deleteDate(date.getId());
+                                                refreshAdapter(mDBHelper.getAllDates());
+
                                                 dialog.dismiss();
-                                                mAdapter.notifyDataSetChanged();
+
                                             }
                                         }).setView(view).show();
 
@@ -93,6 +98,7 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                             public void onClick(DialogInterface dialog, int which) {
 
                                 mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
+                                refreshAdapter(mDBHelper.getAllDates());
                                 dialog.dismiss();
 
                             }
@@ -102,6 +108,12 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
             }
         });
 
+    }
+
+    public synchronized void refreshAdapter(ArrayList<Date> mDatess){
+        mDates.clear();
+        mDates.addAll(mDatess);
+        notifyDataSetChanged();
     }
 
 
