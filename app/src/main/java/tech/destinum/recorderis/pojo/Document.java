@@ -1,14 +1,20 @@
 package tech.destinum.recorderis.pojo;
 
 public class Document {
-    private int mName;
+    private String mName, symbol;
     private int id;
 
-    public int getName() {
+    public Document(String name, String symbol, int id) {
+        mName = name;
+        this.symbol = symbol;
+        this.id = id;
+    }
+
+    public String getName() {
         return mName;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         mName = name;
     }
 
@@ -20,8 +26,12 @@ public class Document {
         this.id = id;
     }
 
-    public Document(int name, int id) {
-        mName = name;
-        id = id;
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 }

@@ -85,6 +85,20 @@
 
                 </android.support.v7.widget.RecyclerView>
 
+                <include
+                    layout="@layout/profile_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/recycler_view_profile"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.508"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycler_view_profile"/>
+
             </android.support.constraint.ConstraintLayout>
 
             </ScrollView>

@@ -42,6 +42,8 @@
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
     <string name="dialog_confirmation">Confirmación</string>
+    <string name="dialog_new_doc">Nuevo Documento</string>
+    <string name="dialog_choose">Seleccione:</string>
     <string name="dialog_confirmation_msg">
     <![CDATA[
         <p>La información se Borrara <strong>permanentemente</strong>.Esta seguro? \n</p>

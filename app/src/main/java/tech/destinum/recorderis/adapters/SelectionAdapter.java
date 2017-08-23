@@ -2,7 +2,6 @@ package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -18,12 +17,12 @@ import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.activities.Form;
 import tech.destinum.recorderis.pojo.Category;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<Category> mCategories;
 
-    public ListAdapter(Context mContext, ArrayList<Category> mCategories) {
+    public SelectionAdapter(Context mContext, ArrayList<Category> mCategories) {
         this.mContext = mContext;
         this.mCategories = mCategories;
     }

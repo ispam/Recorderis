@@ -21,6 +21,7 @@ import com.auth0.android.result.UserProfile;
 import java.util.HashMap;
 import java.util.Map;
 
+import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.utils.CredentialsManager;
 
@@ -29,10 +30,13 @@ import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 public class Login extends AppCompatActivity {
 
     private Lock lock;
+    private DBHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         Auth0 auth0 = new Auth0("28BCzzh69tSn8aWrbZvZmJSgExSUrH4W", "ispam.auth0.com");
         Map<String, Object> parameters = new HashMap<>();
@@ -76,12 +80,15 @@ public class Login extends AppCompatActivity {
     }
 
     private void goHomeScreen() {
+        mDBHelper = new DBHelper(this);
         SharedPreferences mSP = getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
         if (mSP.getBoolean("first_time", true)) {
+
             Intent intent = new Intent(getApplicationContext(), Selection.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
+
             mSP.edit().putBoolean("first_time", false).commit();
         } else {
             Intent intent = new Intent(getApplicationContext(), Home.class);

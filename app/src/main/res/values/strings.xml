@@ -41,6 +41,8 @@
     <string name="dialog_delete">Delete</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
+    <string name="dialog_new_doc">New Document</string>
+    <string name="dialog_choose">Choose:</string>
     <string name="dialog_confirmation">Confirmation</string>
     <string name="dialog_confirmation_msg">
     <![CDATA[

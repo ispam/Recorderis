@@ -7,20 +7,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.pojo.User;
 
 public class DBHelper extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "recorderis";
-    private final static int DB_VERSION = 3;
+    private final static int DB_VERSION = 6;
 
     public final static String TABLE_USERS = "users";
     public final static String USERS_COLUMN_ID = "_id";
     public final static String USERS_COLUMN_NAME = "name";
     public final static String USERS_COLUMN_EMAIL = "email";
+
+    public final static String TABLE_DOCUMENTS = "documents";
+    public final static String DOCUMENTS_COLUMN_ID = "_id";
+    public final static String DOCUMENTS_COLUMN_NAME = "name";
+    public final static String DOCUMENTS_COLUMN_SYMBOL = "symbol";
 
     public final static String TABLE_DATES = "dates";
     public final static String DATES_COLUMN_ID = "_id";
@@ -70,11 +77,17 @@ public class DBHelper extends SQLiteOpenHelper {
                         + EVENTS_COLUMN_DATE_ID + " LONG)", EVENTS_COLUMN_ID, EVENTS_COLUMN_TITLE, EVENTS_COLUMN_DESCRIPTION, EVENTS_COLUMN_TIMEZONE, EVENTS_COLUMN_HOURSTART,
                 EVENTS_COLUMN_HOUREND, EVENTS_COLUMN_DATE_ID);
 
+        String documents = String.format("create table " + TABLE_DOCUMENTS + "("
+                        + DOCUMENTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + DOCUMENTS_COLUMN_NAME + " TEXT, "
+                        + DOCUMENTS_COLUMN_SYMBOL + " TEXT)", TABLE_DOCUMENTS, DOCUMENTS_COLUMN_ID, DOCUMENTS_COLUMN_NAME, DOCUMENTS_COLUMN_SYMBOL);
+
         try {
             // Create Database
             db.execSQL(users);
             db.execSQL(dates);
             db.execSQL(events);
+            db.execSQL(documents);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,6 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DATES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOCUMENTS);
         onCreate(db);
         // If you need to add a column
 //        if (newVersion > oldVersion) {
@@ -193,10 +207,46 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getAllDatesCursor(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = db.rawQuery("select _id, name, date, symbol, user_id from dates where user_id = user_id", null);
+        Cursor c = db.rawQuery("select symbol from dates", null);
         return c;
     }
 
+    public String[] getSymbols(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery("select symbol from dates", null);
+        ArrayList<String> symbols = new ArrayList<>();
+        while (cursor.moveToNext()){
+            symbols.add(cursor.getString(cursor.getColumnIndex("symbol")));
+        }
+        cursor.close();
+        db.close();
+        return symbols.toArray(new String[symbols.size() ]);
+    }
+
+
+    public ArrayList<Document> getAllDocuments(){
+        ArrayList<Document> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from dates", null);
+        while (cursor.moveToNext()){
+            int _id = cursor.getInt(cursor.getColumnIndex("_id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String symbol = cursor.getString(cursor.getColumnIndex("symbol"));
+            list.add(new Document(name, symbol, _id));
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
+    public void createNewDocument(String name, String symbol){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DOCUMENTS_COLUMN_NAME, name);
+        values.put(DOCUMENTS_COLUMN_SYMBOL, symbol);
+        db.insertWithOnConflict(TABLE_DOCUMENTS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+    }
     public void createNewEvent(String title, String desc, String timezone, int hourStart, int hourEnd, long date_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

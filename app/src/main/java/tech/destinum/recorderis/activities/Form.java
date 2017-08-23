@@ -81,12 +81,13 @@ public class Form extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_form);
 
         mArrayList = new ArrayList<>();
-        mArrayList.add(new Document(R.string.doc_soat, 0));
-        mArrayList.add(new Document(R.string.doc_rtm, 1));
-        mArrayList.add(new Document(R.string.doc_src, 2));
-        mArrayList.add(new Document(R.string.doc_str, 3));
-        mArrayList.add(new Document(R.string.doc_tao, 4));
-        mArrayList.add(new Document(R.string.doc_ext, 5));
+        mArrayList.add(new Document(getString(R.string.doc_soat), getString(R.string.symbol_soat), 0));
+        mArrayList.add(new Document(getString(R.string.doc_rtm), getString(R.string.symbol_rtm), 1));
+        mArrayList.add(new Document(getString(R.string.doc_src), getString(R.string.symbol_src), 2));
+        mArrayList.add(new Document(getString(R.string.doc_str), getString(R.string.symbol_str), 3));
+        mArrayList.add(new Document(getString(R.string.doc_tao), getString(R.string.symbol_tao), 4));
+        mArrayList.add(new Document(getString(R.string.doc_ext), getString(R.string.symbol_ext), 5));
+
         mAdapter = new FormAdapter(mContext, mArrayList);
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

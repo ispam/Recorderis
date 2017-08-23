@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -85,7 +86,6 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
 
                                                 mDBHelper.deleteDate(date.getId());
                                                 refreshAdapter(mDBHelper.getAllDates());
-
                                                 dialog.dismiss();
 
                                             }
@@ -97,9 +97,14 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
-                                refreshAdapter(mDBHelper.getAllDates());
-                                dialog.dismiss();
+                                if (edt.getText().equals("") || edt.getText().length() < 6){
+                                    Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
+                                    refreshAdapter(mDBHelper.getAllDates());
+                                    dialog.dismiss();
+                                }
+
 
                             }
                         });
