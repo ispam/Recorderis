@@ -47,7 +47,7 @@
     <string name="dialog_new_doc">New Document</string>
     <string name="dialog_choose">Choose:</string>
     <string name="dialog_confirmation">Confirmation</string>
-    <string name="dialog_selection">You selected: </string>
+    <string name="dialog_selection">You selected: \s </string>
     <string name="dialog_confirmation_msg">
     <![CDATA[
         <p>You\'ll <strong>permanently</strong> remove this entry. Are you sure? \n</p>
@@ -94,9 +94,6 @@
     <string name="info_form">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
     <string name="hint_date">DD/MM/YYYY</string>
     <string name="days">Days</string>
-    <string name="soat_text">El Seguro Obligatorio de Accidentes de Tránsito – SOAT, es un contrato de seguro fundamentado en un principio social, que busca garantizar la atención inmediata e integral de todas las víctimas de accidentes de tránsito ocurridos en las vías del país.\n
-        \n
-Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación de dar atención prioritaria a las víctimas de un accidente de tránsito y advertir al consumidor que la reclamación de la indemnización la puede realizar directamente. Asimismo, no requiere apoderados o intermediarios.</string>
 
     <string name="privacy_policy_text">
         <![CDATA[

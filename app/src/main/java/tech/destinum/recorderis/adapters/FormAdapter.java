@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,9 +34,12 @@ import java.util.TimeZone;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
+import tech.destinum.recorderis.activities.Form;
 import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
@@ -124,7 +128,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 0:
 
                         zero = false;
-                        Log.d("SOAT", nothing);
                         mEditor.putString("soat", nothing);
                         mEditor.commit();
 
@@ -132,7 +135,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 1:
 
                         one = false;
-                        Log.d("RTM", nothing);
                         mEditor.putString("rtm", nothing);
                         mEditor.commit();
 
@@ -140,7 +142,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 2:
 
                         two = false;
-                        Log.d("SRC", nothing);
                         mEditor.putString("src", nothing);
                         mEditor.commit();
 
@@ -148,7 +149,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 3:
 
                         three = false;
-                        Log.d("STR", nothing);
                         mEditor.putString("str", nothing);
                         mEditor.commit();
 
@@ -156,7 +156,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 4:
 
                         four = false;
-                        Log.d("TO", nothing);
                         mEditor.putString("to", nothing);
                         mEditor.commit();
 
@@ -164,7 +163,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 5:
 
                         five = false;
-                        Log.d("EXT", nothing);
                         mEditor.putString("ext", nothing);
                         mEditor.commit();
 
@@ -232,8 +230,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     });
                     valueAnimator.start();
 
-                    Log.d("pos", String.valueOf(position));
-
                     SharedPreferences mSP = v.getContext().getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor mEditor = mSP.edit();
 
@@ -241,7 +237,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 0:
 
                             zero = true;
-                            Log.d("SOAT", data);
                             mEditor.putString("soat", data);
                             mEditor.commit();
 
@@ -249,7 +244,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 1:
 
                             one = true;
-                            Log.d("RTM", data);
                             mEditor.putString("rtm", data);
                             mEditor.commit();
 
@@ -257,7 +251,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 2:
 
                             two = true;
-                            Log.d("SRC", data);
                             mEditor.putString("src", data);
                             mEditor.commit();
 
@@ -265,7 +258,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 3:
 
                             three = true;
-                            Log.d("STR", data);
                             mEditor.putString("str", data);
                             mEditor.commit();
 
@@ -273,7 +265,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 4:
 
                             four = true;
-                            Log.d("TO", data);
                             mEditor.putString("to", data);
                             mEditor.commit();
 
@@ -281,11 +272,15 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         case 5:
 
                             five = true;
-                            Log.d("EXT", data);
                             mEditor.putString("ext", data);
                             mEditor.commit();
 
                             break;
+                    }
+                    View view = v.getRootView();
+                    if (view != null) {
+                        InputMethodManager inputManager = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     }
                 }
             }

@@ -162,18 +162,6 @@ public class BaseActivity extends AppCompatActivity {
 
                                 break;
 
-                            case R.id.nav_settings:
-                                intent = new Intent(BaseActivity.this, Settings.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-
-                                break;
-
-                            case R.id.nav_selection:
-                                intent = new Intent(BaseActivity.this, Selection.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-
-                                break;
-
                             case R.id.nav_privacy_policy:
                                 intent = new Intent(BaseActivity.this, Policy.class);
                                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
@@ -210,12 +198,6 @@ public class BaseActivity extends AppCompatActivity {
     private void setNavigationViewCheckedItem() {
         if (this.getClass().equals(Home.class)) {
             mNavigationView.setCheckedItem(R.id.nav_home);
-        } else if (this.getClass().equals(Settings.class)) {
-            mNavigationView.setCheckedItem(R.id.nav_settings);
-            setTitle(R.string.nav_settings);
-        } else if (this.getClass().equals(Selection.class)){
-            mNavigationView.setCheckedItem(R.id.nav_selection);
-            setTitle(R.string.nav_selection);
         } else if (this.getClass().equals(Policy.class)){
             mNavigationView.setCheckedItem(R.id.nav_privacy_policy);
             setTitle(R.string.privacy_policy_link);
@@ -232,10 +214,6 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         if (this.getClass().equals(Home.class)) {
-            return false;
-        } else if (this.getClass().equals(Settings.class)) {
-            return false;
-        } else if (this.getClass().equals(Selection.class)){
             return false;
         } else if (this.getClass().equals(Policy.class)){
             return false;

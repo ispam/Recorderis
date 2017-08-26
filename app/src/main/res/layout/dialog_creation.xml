@@ -28,7 +28,7 @@
         android:layout_alignStart="@+id/dialog_tv_title"/>
 
     <RelativeLayout
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="30dp"
         android:background="@drawable/spinner_border"
         android:orientation="horizontal"
@@ -38,11 +38,12 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="100dp"
-            android:textAlignment="textStart"
+            android:layout_width="70dp"
             android:background="@drawable/spinner_border"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:spinnerMode="dropdown"
+            android:textAlignment="textStart"
+            android:gravity="start|left"/>
 
         <ImageView
             android:layout_width="50dp"

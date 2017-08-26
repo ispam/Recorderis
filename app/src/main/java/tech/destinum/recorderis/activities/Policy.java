@@ -1,14 +1,8 @@
 package tech.destinum.recorderis.activities;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import java.util.Locale;
 
 import tech.destinum.recorderis.R;
 

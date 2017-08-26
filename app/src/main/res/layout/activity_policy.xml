@@ -33,14 +33,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"/>
 
+            <ImageView
+                android:id="@+id/settings_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar_actionbar"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settings_name"
+                android:text="@string/app_name"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_below="@+id/settings_logo"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/settings_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/settings_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/app_version"
+                android:textSize="16sp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/policy"
-                android:layout_below="@id/toolbar_actionbar">
-
-
+                android:layout_below="@id/settings_version">
 
             </RelativeLayout>
 
