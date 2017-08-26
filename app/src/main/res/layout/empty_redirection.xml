@@ -21,7 +21,7 @@
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/redirection_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No has ingresado nada todavia, por favor presiona el boton de agregar para hacerlo"
@@ -41,6 +41,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+        app:layout_constraintTop_toBottomOf="@+id/redirection_msg"/>
 
 </android.support.constraint.ConstraintLayout>

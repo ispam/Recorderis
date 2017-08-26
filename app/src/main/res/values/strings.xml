@@ -3,6 +3,9 @@
     <string name="app_name">Recorderis</string>
     <string name="app_version">Version 1.0</string>
 
+    <!-- Empty Redirection -->
+    <string name="redirection_msg">There\'s no information yet, please press the Add button to do so</string>
+
     <!--Hint Text-->
     <string name="hint_top">(Tap here when you finish)</string>
     <string name="hint_mid">Enter ONLY the Expiration Dates of the DOCUMENT you own</string>
@@ -44,6 +47,7 @@
     <string name="dialog_new_doc">New Document</string>
     <string name="dialog_choose">Choose:</string>
     <string name="dialog_confirmation">Confirmation</string>
+    <string name="dialog_selection">You selected: </string>
     <string name="dialog_confirmation_msg">
     <![CDATA[
         <p>You\'ll <strong>permanently</strong> remove this entry. Are you sure? \n</p>

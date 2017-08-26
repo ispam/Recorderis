@@ -150,7 +150,7 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
         pos = position;
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "You selected: " + label,
+        Toast.makeText(parent.getContext(), R.string.dialog_selection + label,
                 Toast.LENGTH_LONG).show();
     }
 
