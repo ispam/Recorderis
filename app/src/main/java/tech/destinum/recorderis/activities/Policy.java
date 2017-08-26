@@ -33,5 +33,6 @@ public class Policy extends BaseActivity {
         view.loadData(getString(R.string.privacy_policy_text), "text/html; charset=utf-8", "utf-8");
 
 
+
     }
 }

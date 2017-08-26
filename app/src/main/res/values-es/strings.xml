@@ -101,6 +101,9 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 
     <string name="privacy_policy_text">
         <![CDATA[
+
+        <body>
+<style>a {color:#000000;}</style>
             <h2>Tabla de Contenido</h2>
 <h4><a href="#1">1. Definiciones y referencias legales</a></h4>
 <h5><a href="#1.1">1.1 Datos Personales (o Datos)</a></h5>
@@ -213,12 +216,14 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <p>Calle 43 # 1 - 348, Caldas - Colombia</p>
 <p>Correo electr&oacute;nico de contacto del Titular: diegoug@gmail.com</p>
 <p>&nbsp;</p>
+</body>
         ]]>
                     </string>
 
     <string name="terms_and_conditions">
         <![CDATA[
-
+<body>
+<style>a {color:#000000;}</style>
 <h2>Tabla de Contenido</h2>
 <h4><a href="#one">1. Contenido</a></h4>
 <h4><a href="#two">2. Reclamos por Violaci&oacute;n</a></h4>
@@ -314,7 +319,7 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <p>&nbsp;</p>
 <h2><a name="20"></a>20. PREGUNTAS Y COMENTARIOS</h2>
 <p>Los Usuarios que tengan alguna pregunta o duda sobre los T&eacute;rminos y Condiciones para la Aplicaci&oacute;n M&oacute;vil pueden ponerse en contacto con el webmaster en relaci&oacute;n con esta Aplicaci&oacute;n M&oacute;vil escribiendo al siguiente correo electr&oacute;nico: diegoug@gmail.com</p>
-
+</body>
         ]]>
     </string>
 </resources>

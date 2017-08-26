@@ -100,6 +100,8 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 
     <string name="privacy_policy_text">
         <![CDATA[
+        <body>
+<style>a {color:#000000;}</style>
 <h2>Table of Contents</h2>
 <h4><a href="#1">1.Definitions and legal references</a></h4>
 <h5><a href="#1.1">1.1 Personal Data (or Data)</a></h5>
@@ -214,12 +216,14 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <p>Calle 43 # 1 - 348, Caldas - Colombia</p>
 <p>Owner contact email:diegoug@gmail.com</p>
 <p>&nbsp;</p>
+</body>
                     ]]>
                     </string>
 
     <string name="terms_and_conditions">
         <![CDATA[
-
+<body>
+<style>a {color:#000000;}</style>
 <h2>Table of Contents</h2>
 <h4><a href="#1">1. Content</a></h4>
 <h4><a href="#2">2. Claims of Violation</a></h4>
@@ -314,6 +318,7 @@ Recuerde que TODAS las instituciones prestadoras de salud, tienen la obligación
 <p>&nbsp;</p>
 <h2><a name="20"></a>20. QUESTIONS AND COMMENTS</h2>
 <p>Users who have any questions or concerns about the Terms and Conditions for the Mobile Application may contact the webmaster regarding this Mobile Application by writing to the following email: diegoug@gmail.com</p>
+</body>
         ]]>
     </string>
 
