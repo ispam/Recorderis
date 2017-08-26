@@ -105,7 +105,6 @@ public class BaseActivity extends AppCompatActivity {
             mEmail.setText(email);
             if (mSharedPreferences.getBoolean("first_time", true)){
                 mDBHelper.createNewUser(mUserProfile.getName(), email);
-                Log.d("BaseAct1", mUserProfile.getName() + " "+email);
 
                 mSharedPreferences.edit().putBoolean("first_time", false).commit();
             }
@@ -114,7 +113,6 @@ public class BaseActivity extends AppCompatActivity {
             mEmail.setText(mUserProfile.getEmail());
             if (mSharedPreferences.getBoolean("first_time", true)){
                 mDBHelper.createNewUser(mUserProfile.getName(), mUserProfile.getEmail());
-                Log.d("BaseAct2", mUserProfile.getName() + mUserProfile.getEmail());
 
                 mSharedPreferences.edit().putBoolean("first_time", false).commit();
             }

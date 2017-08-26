@@ -39,7 +39,7 @@
         ]]> </string>
     <string name="dialog_change">Cambiar</string>
     <string name="dialog_delete">Borrar</string>
-    <string name="dialog_yes">Yes</string>
+    <string name="dialog_yes">Si</string>
     <string name="dialog_no">No</string>
     <string name="dialog_confirmation">Confirmación</string>
     <string name="dialog_new_doc">Nuevo Documento</string>

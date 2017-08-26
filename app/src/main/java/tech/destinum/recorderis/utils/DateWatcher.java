@@ -47,7 +47,7 @@ public class DateWatcher implements TextWatcher {
 
                 if (mon > 12) mon = 12;
                 cal.set(Calendar.MONTH, mon - 1);
-                year = (year < 2017) ? 2017 : (year > 2040) ? 2040 : year;
+                year = (year < 2017) ? 2017 : (year > 2018) ? 2018 : year;
                 cal.set(Calendar.YEAR, year);
                 // ^ first set year for the line below to work correctly
                 //with leap years - otherwise, date e.g. 29/02/2012

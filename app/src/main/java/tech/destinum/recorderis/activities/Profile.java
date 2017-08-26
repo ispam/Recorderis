@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
     public String label;
     public int pos;
     public DateWatcher mDateWatcher;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +102,6 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
                     .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
-                            DBHelper mDBHelper = new DBHelper(v.getContext());
 
                             long user_id = mDBHelper.getLastUser();
 
