@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -27,6 +29,9 @@ import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.ProfileAdapter;
 import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.utils.DateWatcher;
+
+import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
 public class Profile extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
@@ -37,6 +42,9 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
     public RecyclerView mRecyclerView;
     public ScrollView mScrollView;
     public ImageView mAdd;
+    public String label;
+    public int pos;
+    public DateWatcher mDateWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +69,30 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
 
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AlertDialog.Builder add = new AlertDialog.Builder(v.getContext());
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.dialog_creation, null, true);
                 TextView title = (TextView) view.findViewById(R.id.dialog_tv_title);
                 TextView msg = (TextView) view.findViewById(R.id.dialog_tv_msg);
+                final EditText et = (EditText) view.findViewById(R.id.dialog_edt_date);
                 Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
                 spinner.setOnItemSelectedListener(Profile.this);
 
                 title.setText(R.string.dialog_new_doc);
                 msg.setText(R.string.dialog_choose);
 
-                String[] symbolsArray = {getString(R.string.symbol_soat), getString(R.string.symbol_rtm), getString(R.string.symbol_src), getString(R.string.symbol_str)
-                        , getString(R.string.symbol_tao), getString(R.string.symbol_ext)};
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.spinner_item, symbolsArray);
+                mDateWatcher = new DateWatcher(et);
+                et.addTextChangedListener(mDateWatcher);
+
+                final List<Document> list = mDBHelper.getAllDocuments();
+                String [] symbols = new String[list.size()];
+
+                for (int i = 0; i< list.size(); i++){
+                    symbols[i] = list.get(i).getSymbol();
+                }
+
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.spinner_item, symbols);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(dataAdapter);
 
@@ -84,10 +101,44 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
+                            DBHelper mDBHelper = new DBHelper(v.getContext());
+
+                            long user_id = mDBHelper.getLastUser();
+
+                            switch (pos){
+                                case 0:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), et.getText().toString(), getApplicationContext().getString(R.string.symbol_soat), user_id);
+                                    refresh();
+                                    break;
+                                case 1:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), et.getText().toString(), getApplicationContext().getString(R.string.symbol_rtm), user_id);
+                                    refresh();
+                                    break;
+                                case 2:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_src), et.getText().toString(), getApplicationContext().getString(R.string.symbol_src), user_id);
+                                    refresh();
+                                    break;
+                                case 3:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), et.getText().toString(), getApplicationContext().getString(R.string.symbol_str), user_id);
+                                    refresh();
+                                    break;
+                                case 4:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), et.getText().toString(), getApplicationContext().getString(R.string.symbol_tao), user_id);
+                                    refresh();
+                                    break;
+                                case 5:
+                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), et.getText().toString(), getApplicationContext().getString(R.string.symbol_ext), user_id);
+                                    refresh();
+                                    break;
+                            }
 
                             dialog.dismiss();
                         }
                     }).setView(view).show();
+            }
+
+            private void refresh() {
+                mProfileAdapter.refreshAdapter(mDBHelper.getAllDates());
             }
         });
     }
@@ -95,7 +146,8 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
-        String label = parent.getItemAtPosition(position).toString();
+        label = parent.getItemAtPosition(position).toString();
+        pos = position;
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "You selected: " + label,

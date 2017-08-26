@@ -227,7 +227,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<Document> getAllDocuments(){
         ArrayList<Document> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from dates", null);
+        Cursor cursor = db.rawQuery("select * from documents", null);
         while (cursor.moveToNext()){
             int _id = cursor.getInt(cursor.getColumnIndex("_id"));
             String name = cursor.getString(cursor.getColumnIndex("name"));
