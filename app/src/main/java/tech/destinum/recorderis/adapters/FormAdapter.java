@@ -48,7 +48,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
     private DBHelper mDBHelper;
     private ArrayList<Document> mDocuments;
 
-    public boolean zero, one, two, three, four, five;
+    public boolean zero, one, two, three, four;
 
     public FormAdapter(Context mContext, ArrayList<Document> mDocuments) {
         this.mContext = mContext;
@@ -142,27 +142,20 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     case 2:
 
                         two = false;
-                        mEditor.putString("src", nothing);
+                        mEditor.putString("str", nothing);
                         mEditor.commit();
 
                         break;
                     case 3:
 
                         three = false;
-                        mEditor.putString("str", nothing);
+                        mEditor.putString("to", nothing);
                         mEditor.commit();
 
                         break;
                     case 4:
 
                         four = false;
-                        mEditor.putString("to", nothing);
-                        mEditor.commit();
-
-                        break;
-                    case 5:
-
-                        five = false;
                         mEditor.putString("ext", nothing);
                         mEditor.commit();
 
@@ -248,30 +241,24 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                             mEditor.commit();
 
                             break;
+
                         case 2:
 
                             two = true;
-                            mEditor.putString("src", data);
+                            mEditor.putString("str", data);
                             mEditor.commit();
 
                             break;
                         case 3:
 
                             three = true;
-                            mEditor.putString("str", data);
+                            mEditor.putString("to", data);
                             mEditor.commit();
 
                             break;
                         case 4:
 
                             four = true;
-                            mEditor.putString("to", data);
-                            mEditor.commit();
-
-                            break;
-                        case 5:
-
-                            five = true;
                             mEditor.putString("ext", data);
                             mEditor.commit();
 
@@ -337,15 +324,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                         break;
 
-                    case 5:
-
-                        if (five == true){
-                            animation1();
-                        } else {
-                            animation2();
-                        }
-
-                        break;
                 }
             }
 

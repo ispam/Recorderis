@@ -83,10 +83,9 @@ public class Form extends AppCompatActivity {
         mArrayList = new ArrayList<>();
         mArrayList.add(new Document(getString(R.string.doc_soat), getString(R.string.symbol_soat), 0));
         mArrayList.add(new Document(getString(R.string.doc_rtm), getString(R.string.symbol_rtm), 1));
-        mArrayList.add(new Document(getString(R.string.doc_src), getString(R.string.symbol_src), 2));
-        mArrayList.add(new Document(getString(R.string.doc_str), getString(R.string.symbol_str), 3));
-        mArrayList.add(new Document(getString(R.string.doc_tao), getString(R.string.symbol_tao), 4));
-        mArrayList.add(new Document(getString(R.string.doc_ext), getString(R.string.symbol_ext), 5));
+        mArrayList.add(new Document(getString(R.string.doc_str), getString(R.string.symbol_str), 2));
+        mArrayList.add(new Document(getString(R.string.doc_tao), getString(R.string.symbol_tao), 3));
+        mArrayList.add(new Document(getString(R.string.doc_ext), getString(R.string.symbol_ext), 4));
 
         mAdapter = new FormAdapter(mContext, mArrayList);
 
@@ -124,43 +123,33 @@ public class Form extends AppCompatActivity {
                 if (soat != null && soat != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), soat, getApplicationContext().getString(R.string.symbol_soat), user_id);
                     createEvent(getString(R.string.doc_soat), 0);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_soat), 0, soat);
                 }
 
                 String rtm = mSP.getString("rtm", "");
                 if (rtm != null && rtm != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), rtm, getApplicationContext().getString(R.string.symbol_rtm), user_id);
                     createEvent(getString(R.string.doc_rtm), 1);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_rtm), 1, rtm);
-                }
-
-                String src = mSP.getString("src", "");
-                if (src != null && src != ""){
-                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_src), src, getApplicationContext().getString(R.string.symbol_src), user_id);
-                    createEvent(getString(R.string.doc_src), 2);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_src), 2, src);
                 }
 
                 String str = mSP.getString("str", "");
                 if (str != null && str != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), str, getApplicationContext().getString(R.string.symbol_str), user_id);
-                    createEvent(getString(R.string.doc_str), 3);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_str), 3, str);
+                    createEvent(getString(R.string.doc_str), 2);
                 }
 
                 String to = mSP.getString("to", "");
                 if (to != null && to != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), to, getApplicationContext().getString(R.string.symbol_tao), user_id);
-                    createEvent(getString(R.string.doc_tao), 4);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_tao), 4, to);
+                    createEvent(getString(R.string.doc_tao), 3);
                 }
 
                 String ext = mSP.getString("ext", "");
                 if (ext != null && ext != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), ext, getApplicationContext().getString(R.string.symbol_ext), user_id);
-                    createEvent(getString(R.string.doc_ext), 5);
-//                    createCalendarEvent(getApplicationContext().getString(R.string.doc_ext), 5, ext);
+                    createEvent(getString(R.string.doc_ext), 4);
                 }
+
+                mSP.edit().clear().commit();
 
                 Intent intent = new Intent(getApplicationContext(), Home.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);

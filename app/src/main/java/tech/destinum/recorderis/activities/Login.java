@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
 
     private Lock lock;
     private DBHelper mDBHelper;
+    private static final String LOGIN_PREFERENCES = "LOGIN_PREFERENCES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +82,10 @@ public class Login extends AppCompatActivity {
 
     private void goHomeScreen() {
         mDBHelper = new DBHelper(this);
-        SharedPreferences mSP = getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences mSP = getSharedPreferences(LOGIN_PREFERENCES, Context.MODE_PRIVATE);
         if (mSP.getBoolean("first_time", true)) {
             mDBHelper.createNewDocument(getString(R.string.doc_soat), getString(R.string.symbol_soat));
             mDBHelper.createNewDocument(getString(R.string.doc_rtm), getString(R.string.symbol_rtm));
-            mDBHelper.createNewDocument(getString(R.string.doc_src), getString(R.string.symbol_src));
             mDBHelper.createNewDocument(getString(R.string.doc_str), getString(R.string.symbol_str));
             mDBHelper.createNewDocument(getString(R.string.doc_tao), getString(R.string.symbol_tao));
             mDBHelper.createNewDocument(getString(R.string.doc_ext), getString(R.string.symbol_ext));

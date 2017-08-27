@@ -47,7 +47,6 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
     public int pos;
     public DateWatcher mDateWatcher;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
