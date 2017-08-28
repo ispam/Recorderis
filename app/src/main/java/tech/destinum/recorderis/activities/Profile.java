@@ -114,18 +114,14 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
                                     refresh();
                                     break;
                                 case 2:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_src), et.getText().toString(), getApplicationContext().getString(R.string.symbol_src), user_id);
-                                    refresh();
-                                    break;
-                                case 3:
                                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), et.getText().toString(), getApplicationContext().getString(R.string.symbol_str), user_id);
                                     refresh();
                                     break;
-                                case 4:
+                                case 3:
                                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), et.getText().toString(), getApplicationContext().getString(R.string.symbol_tao), user_id);
                                     refresh();
                                     break;
-                                case 5:
+                                case 4:
                                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), et.getText().toString(), getApplicationContext().getString(R.string.symbol_ext), user_id);
                                     refresh();
                                     break;

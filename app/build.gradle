@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 25
@@ -34,5 +39,8 @@ dependencies {
     compile 'com.auth0.android:auth0:1.0.0'
     compile 'com.auth0.android:lock:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
     testCompile 'junit:junit:4.12'
 }
