@@ -36,16 +36,16 @@ import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
 public class Profile extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-    public TextView mName;
-    public Context mContext;
-    public DBHelper mDBHelper;
-    public ProfileAdapter mProfileAdapter;
-    public RecyclerView mRecyclerView;
-    public ScrollView mScrollView;
-    public ImageView mAdd;
-    public String label;
-    public int pos;
-    public DateWatcher mDateWatcher;
+    private TextView mName;
+    private Context mContext;
+    private DBHelper mDBHelper;
+    private ProfileAdapter mProfileAdapter;
+    private RecyclerView mRecyclerView;
+    private ScrollView mScrollView;
+    private ImageView mAdd;
+    private String label;
+    private int pos;
+    private DateWatcher mDateWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,9 +144,29 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
         label = parent.getItemAtPosition(position).toString();
         pos = position;
 
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + label,
-                Toast.LENGTH_LONG).show();
+        switch (pos){
+            case 0:
+                Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + getString(R.string.doc_soat),
+                        Toast.LENGTH_LONG).show();
+                break;
+            case 1:
+                Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + getString(R.string.doc_rtm),
+                        Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + getString(R.string.doc_str),
+                        Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + getString(R.string.doc_tao),
+                        Toast.LENGTH_LONG).show();
+                break;
+            case 4:
+                Toast.makeText(parent.getContext(), getString(R.string.dialog_selection) + getString(R.string.doc_ext),
+                        Toast.LENGTH_LONG).show();
+                break;
+        }
+
     }
 
     @Override

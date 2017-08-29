@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,16 +27,23 @@ public class Settings extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.this, Home.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(Settings.this, (int) System.currentTimeMillis(), intent, 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(Settings.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 Notification notification = new Notification.Builder(Settings.this)
                         .setContentTitle("Recorderis")
-                        .setContentText("Recuerde renovar su Revision Tecnico Mecanica")
+                        .setContentText("Esta por vencerse un Documento, PILAS!")
                         .setSmallIcon(R.mipmap.ic_notification)
                         .setContentIntent(pendingIntent).build();
 
                 NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+                Notification.InboxStyle big = new Notification.InboxStyle();
+
+                big.setBigContentTitle("Recorderis");
+                big.setSummaryText("PILAS!! Su Revision Tecnico Mecanica esta próxima a vencerse!! El 25/Noviembre/2018");
+
+
 
                 notificationManager.notify(0, notification);
             }
