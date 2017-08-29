@@ -65,6 +65,14 @@
                 android:text="@string/app_version"
                 android:textSize="16sp"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_try"
+                android:text="HUE"
+                android:layout_below="@id/settings_version"
+                android:layout_centerHorizontal="true"/>
+
 
         </RelativeLayout>
 

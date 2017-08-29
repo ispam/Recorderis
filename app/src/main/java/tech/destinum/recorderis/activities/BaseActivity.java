@@ -180,6 +180,12 @@ public class BaseActivity extends AppCompatActivity {
 
                                 break;
 
+                            case R.id.nav_settings:
+                                intent = new Intent(BaseActivity.this, Settings.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
+                                break;
+
                             default:
                                 intent = new Intent(BaseActivity.this, Home.class);
                                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
