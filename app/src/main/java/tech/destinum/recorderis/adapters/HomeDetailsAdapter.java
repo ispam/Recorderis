@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.utils.WakefulReceiver;
 
 public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.ViewHolder> {
 
@@ -41,6 +42,9 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
 
     @Override
     public void onBindViewHolder(final HomeDetailsAdapter.ViewHolder holder, int position) {
+        WakefulReceiver wakefulReceiver = new WakefulReceiver();
+
+
         Date date = mDates.get(position);
         holder.mName.setText(date.getName());
 
@@ -51,6 +55,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             final long diff = d.getTime() - c.getTimeInMillis();
             holder.mDaysLeft.setText(String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
             holder.mProgressBar.setProgress(Math.round(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)));
+
 
         } catch (ParseException e){
             e.printStackTrace();
@@ -66,7 +71,7 @@ public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.
             int day  = calendar.get(Calendar.DAY_OF_MONTH);
 
             String month = calendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
-
+            wakefulReceiver.setAlarm(holder.mView.getContext() , date.getId());
             holder.mDate.setText(String.valueOf(day)+"/"+ month.substring(0,1).toUpperCase()+month.substring(1)+"/"+calendar.get(Calendar.YEAR));
 
         } catch (ParseException e){

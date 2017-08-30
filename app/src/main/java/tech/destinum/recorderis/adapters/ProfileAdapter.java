@@ -22,6 +22,7 @@ import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.utils.DateWatcher;
+import tech.destinum.recorderis.utils.WakefulReceiver;
 
 public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHolder> {
 
@@ -100,8 +101,12 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                                 if (edt.getText().equals("") || edt.getText().length() < 6){
                                     Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
                                 } else {
+
+                                    WakefulReceiver wakefulReceiver = new WakefulReceiver();
                                     mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
                                     refreshAdapter(mDBHelper.getAllDates());
+                                    wakefulReceiver.cancelAlarm(v.getContext(), date.getId());
+                                    wakefulReceiver.setAlarm(v.getContext(), date.getId());
                                     dialog.dismiss();
                                 }
 

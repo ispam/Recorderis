@@ -42,6 +42,7 @@ import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.FormAdapter;
 import tech.destinum.recorderis.pojo.Document;
 import tech.destinum.recorderis.utils.CredentialsManager;
+import tech.destinum.recorderis.utils.WakefulReceiver;
 
 import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 

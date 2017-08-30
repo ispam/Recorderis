@@ -43,6 +43,14 @@
                     android:scheme="https"/>
             </intent-filter>
         </activity>
+        <receiver android:name=".utils.WakefulReceiver"/>
+
+        <receiver android:name=".utils.BootReceiver"
+                  android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="8fddf44d6e0a8fb3cd48d762983124ff5529ce49"
