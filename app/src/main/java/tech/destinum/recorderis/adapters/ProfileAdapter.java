@@ -2,15 +2,12 @@ package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +19,6 @@ import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.utils.DateWatcher;
-import tech.destinum.recorderis.utils.WakefulReceiver;
 
 public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHolder> {
 
@@ -102,11 +98,8 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                                     Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
                                 } else {
 
-                                    WakefulReceiver wakefulReceiver = new WakefulReceiver();
                                     mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
                                     refreshAdapter(mDBHelper.getAllDates());
-                                    wakefulReceiver.cancelAlarm(v.getContext(), date.getId());
-                                    wakefulReceiver.setAlarm(v.getContext(), date.getId());
                                     dialog.dismiss();
                                 }
 

@@ -34,7 +34,7 @@
                 android:minHeight="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 android:layout_width="match_parent"
-                app:theme="@style/ToolBarStyle"
+                android:theme="@style/ToolBarStyle"
                 android:layout_height="?actionBarSize">
 
             </android.support.v7.widget.Toolbar>
