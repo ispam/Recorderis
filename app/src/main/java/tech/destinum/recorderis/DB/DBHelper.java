@@ -17,7 +17,7 @@ import tech.destinum.recorderis.pojo.User;
 public class DBHelper extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "recorderis";
-    private final static int DB_VERSION = 6;
+    private final static int DB_VERSION = 7;
 
     public final static String TABLE_USERS = "users";
     public final static String USERS_COLUMN_ID = "_id";
@@ -36,14 +36,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public final static String DATES_COLUMN_SYMBOL = "symbol";
     public final static String DATES_COLUMN_USER_ID = "user_id";
 
-    public final static String TABLE_EVENTS = "events";
-    public final static String EVENTS_COLUMN_ID = "_id";
-    public final static String EVENTS_COLUMN_TITLE = "title";
-    public final static String EVENTS_COLUMN_DESCRIPTION = "desc";
-    public final static String EVENTS_COLUMN_TIMEZONE = "timezone";
-    public final static String EVENTS_COLUMN_HOURSTART = "hourstart";
-    public final static String EVENTS_COLUMN_HOUREND = "hourdend";
-    public final static String EVENTS_COLUMN_DATE_ID = "date_id";
 
 
     public DBHelper(Context context) {
@@ -67,15 +59,6 @@ public class DBHelper extends SQLiteOpenHelper {
                         + DATES_COLUMN_SYMBOL + " TEXT)", TABLE_DATES, DATES_COLUMN_ID, DATES_COLUMN_NAME, DATES_COLUMN_DATE,
                 DATES_COLUMN_SYMBOL,  DATES_COLUMN_USER_ID);
 
-        String events = String.format("CREATE TABLE " + TABLE_EVENTS + "("
-                        + EVENTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + EVENTS_COLUMN_TITLE + " TEXT, "
-                        + EVENTS_COLUMN_DESCRIPTION + " TEXT, "
-                        + EVENTS_COLUMN_TIMEZONE + " TEXT, "
-                        + EVENTS_COLUMN_HOURSTART + " INTEGER, "
-                        + EVENTS_COLUMN_HOUREND + " INTEGER, "
-                        + EVENTS_COLUMN_DATE_ID + " LONG)", EVENTS_COLUMN_ID, EVENTS_COLUMN_TITLE, EVENTS_COLUMN_DESCRIPTION, EVENTS_COLUMN_TIMEZONE, EVENTS_COLUMN_HOURSTART,
-                EVENTS_COLUMN_HOUREND, EVENTS_COLUMN_DATE_ID);
 
         String documents = String.format("create table " + TABLE_DOCUMENTS + "("
                         + DOCUMENTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -86,7 +69,6 @@ public class DBHelper extends SQLiteOpenHelper {
             // Create Database
             db.execSQL(users);
             db.execSQL(dates);
-            db.execSQL(events);
             db.execSQL(documents);
 
         } catch (Exception e) {
@@ -99,7 +81,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DATES);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOCUMENTS);
         onCreate(db);
         // If you need to add a column
@@ -245,18 +226,6 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(DOCUMENTS_COLUMN_NAME, name);
         values.put(DOCUMENTS_COLUMN_SYMBOL, symbol);
         db.insertWithOnConflict(TABLE_DOCUMENTS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
-        db.close();
-    }
-    public void createNewEvent(String title, String desc, String timezone, int hourStart, int hourEnd, long date_id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(EVENTS_COLUMN_TITLE, title);
-        values.put(EVENTS_COLUMN_DESCRIPTION, desc);
-        values.put(EVENTS_COLUMN_TIMEZONE, timezone);
-        values.put(EVENTS_COLUMN_HOURSTART, hourStart);
-        values.put(EVENTS_COLUMN_HOUREND, hourEnd);
-        values.put(EVENTS_COLUMN_DATE_ID, date_id);
-        db.insertWithOnConflict(TABLE_EVENTS, null, values, SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
     }
 

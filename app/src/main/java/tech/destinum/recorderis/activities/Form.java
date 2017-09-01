@@ -1,29 +1,21 @@
 package tech.destinum.recorderis.activities;
 
-import android.app.AlarmManager;
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.os.SystemClock;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
