@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.SystemClock;
+import android.support.v4.content.WakefulBroadcastReceiver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -28,6 +29,7 @@ import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.FormAdapter;
 import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.utils.WakefulReceiver;
 
 import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
@@ -101,38 +103,38 @@ public class Form extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.confirmation:
-
+                WakefulReceiver wakefulReceiver = new WakefulReceiver();
                 SharedPreferences mSP = getSharedPreferences(FORM_PREFERENCES, Context.MODE_PRIVATE);
                 long user_id = mDBHelper.getLastUser();
 
                 String soat = mSP.getString("soat", "");
                 if (soat != null && soat != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), soat, getApplicationContext().getString(R.string.symbol_soat), user_id);
-                    scheduleNotification(soat, 0);
+                    wakefulReceiver.setAlarm(getApplicationContext(), soat, 1);
                 }
 
                 String rtm = mSP.getString("rtm", "");
                 if (rtm != null && rtm != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), rtm, getApplicationContext().getString(R.string.symbol_rtm), user_id);
-                    scheduleNotification(rtm, 1);
+                    wakefulReceiver.setAlarm(getApplicationContext(), rtm, 2);
                 }
 
                 String str = mSP.getString("str", "");
                 if (str != null && str != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), str, getApplicationContext().getString(R.string.symbol_str), user_id);
-                    scheduleNotification(str, 2);
+                    wakefulReceiver.setAlarm(getApplicationContext(), str, 3);
                 }
 
                 String to = mSP.getString("to", "");
                 if (to != null && to != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), to, getApplicationContext().getString(R.string.symbol_tao), user_id);
-                    scheduleNotification(to, 3);
+                    wakefulReceiver.setAlarm(getApplicationContext(), to, 4);
                 }
 
                 String ext = mSP.getString("ext", "");
                 if (ext != null && ext != ""){
                     mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), ext, getApplicationContext().getString(R.string.symbol_ext), user_id);
-                    scheduleNotification(ext, 4);
+                    wakefulReceiver.setAlarm(getApplicationContext(), ext, 5);
                 }
 
                 mSP.edit().clear().commit();
@@ -148,18 +150,6 @@ public class Form extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    public void scheduleNotification(String text, int notificationId) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
-        notificationIntent.addCategory("android.intent.category.DEFAULT");
-
-        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 5);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
     }
 }
 

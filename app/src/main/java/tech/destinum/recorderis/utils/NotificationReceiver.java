@@ -28,7 +28,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        Notification notification = builder.setContentTitle("Demo App Notification")
+        Notification notification = builder
                 .setContentTitle("Recorderis")
                 .setContentText("Esta por vencerse un Documento, PILAS!")
                 .setSmallIcon(R.mipmap.ic_notification)

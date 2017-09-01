@@ -19,6 +19,7 @@ import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.utils.DateWatcher;
+import tech.destinum.recorderis.utils.WakefulReceiver;
 
 public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHolder> {
 
@@ -63,6 +64,8 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                 mDateWatcher = new DateWatcher(edt);
                 edt.addTextChangedListener(mDateWatcher);
 
+                final WakefulReceiver wakefulReceiver = new WakefulReceiver();
+
                 dialog.setNegativeButton(R.string.cancel, null)
                         .setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
                             @Override
@@ -81,6 +84,7 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
 
+                                                wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
                                                 mDBHelper.deleteDate(date.getId());
                                                 refreshAdapter(mDBHelper.getAllDates());
                                                 dialog.dismiss();
@@ -98,7 +102,9 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
                                     Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
                                 } else {
 
+                                    wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
                                     mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
+                                    wakefulReceiver.setAlarm(v.getContext(), edt.getText().toString(), (int) date.getId());
                                     refreshAdapter(mDBHelper.getAllDates());
                                     dialog.dismiss();
                                 }

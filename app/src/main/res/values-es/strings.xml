@@ -3,6 +3,8 @@
     <string name="app_name">Recorderis</string>
     <string name="app_version">Versión 1.0</string>
 
+    <string name="not_msg">Esta por vencerse un Documento, PILAS!</string>
+
     <!-- Empty Redirection -->
     <string name="redirection_msg">No has ingresado nada todavía, por favor presiona el boton de agregar para hacerlo</string>
 

@@ -3,6 +3,8 @@
     <string name="app_name">Recorderis</string>
     <string name="app_version">Version 1.0</string>
 
+    <string name="not_msg">BEWARE! A document is close to expiring!</string>
+
     <!-- Empty Redirection -->
     <string name="redirection_msg">There\'s no information yet, please press the Add button to do so</string>
 
