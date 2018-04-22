@@ -24,23 +24,20 @@ public class Splash extends AppCompatActivity implements MediaPlayer.OnErrorList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        video_view = (VideoView) findViewById(R.id.video_view);
+        video_view =findViewById(R.id.video_view);
 
         try {
 
             Uri path = Uri.parse("android.resource://"+ getPackageName()+"/"+ R.raw.splash_screen);
             video_view.setVideoURI(path);
 
-            video_view.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
+            video_view.setOnCompletionListener(mp -> {
 
-                    Intent intent = new Intent(Splash.this, Login.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(Splash.this, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
 
-                }
             });
 
             video_view.start();

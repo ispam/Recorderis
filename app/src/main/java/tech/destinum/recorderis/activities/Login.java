@@ -59,21 +59,15 @@ public class Login extends AppCompatActivity {
                 .start(new BaseCallback<UserProfile, AuthenticationException>() {
                     @Override
                     public void onSuccess(final UserProfile payload) {
-                        Login.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(Login.this, R.string.automatic_login_success, Toast.LENGTH_SHORT).show();
-                                goHomeScreen();
-                            }
+                        Login.this.runOnUiThread(() -> {
+                            Toast.makeText(Login.this, R.string.automatic_login_success, Toast.LENGTH_SHORT).show();
+                            goHomeScreen();
                         });
                     }
 
                     @Override
                     public void onFailure(AuthenticationException error) {
-                        Login.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(Login.this, R.string.session_expired, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        Login.this.runOnUiThread(() -> Toast.makeText(Login.this, R.string.session_expired, Toast.LENGTH_SHORT).show());
 //                        CredentialsManager.deleteCredentials(getApplicationContext());
 //                        startActivity(lock.newIntent(Login.this));
                     }

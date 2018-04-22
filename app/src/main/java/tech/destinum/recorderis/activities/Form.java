@@ -47,18 +47,13 @@ public class Form extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(true);
         //for dismissing anywhere you touch
         View masterView = dialog.findViewById(R.id.hint);
-        masterView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        masterView.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_form);
+        mRecyclerView = findViewById(R.id.recycler_view_form);
 
         mArrayList = new ArrayList<>();
         mArrayList.add(new Document(getString(R.string.doc_soat), getString(R.string.symbol_soat), 0));

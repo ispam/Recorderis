@@ -66,21 +66,15 @@ public class BaseActivity extends AppCompatActivity {
                 .start(new BaseCallback<UserProfile, AuthenticationException>() {
                     @Override
                     public void onSuccess(final UserProfile payload) {
-                        BaseActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                mUserProfile = payload;
-                                refreshScreenInformation();
-                            }
+                        BaseActivity.this.runOnUiThread(() -> {
+                            mUserProfile = payload;
+                            refreshScreenInformation();
                         });
                     }
 
                     @Override
                     public void onFailure(AuthenticationException error) {
-                        BaseActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(BaseActivity.this, R.string.profile_request_failed, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        BaseActivity.this.runOnUiThread(() -> Toast.makeText(BaseActivity.this, R.string.profile_request_failed, Toast.LENGTH_SHORT).show());
                     }
                 });
 
@@ -126,9 +120,9 @@ public class BaseActivity extends AppCompatActivity {
     //Set up Navigation Drawer
     private void setupNavDrawer() {
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        mNavigationView= (NavigationView) findViewById(R.id.navigation_view);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mToolbar = findViewById(R.id.toolbar_actionbar);
+        mNavigationView= findViewById(R.id.navigation_view);
         mMenu = mNavigationView.getMenu();
 
         MenuItem about = mMenu.findItem(R.id.about);
@@ -137,60 +131,54 @@ public class BaseActivity extends AppCompatActivity {
         about.setTitle(s);
 
         View hView =  mNavigationView.getHeaderView(0);
-        mImageProfile = (ImageView) hView.findViewById(R.id.image_profile);
-        mName = (TextView) hView.findViewById(R.id.nav_name);
-        mEmail = (TextView) hView.findViewById(R.id.nav_email);
+        mImageProfile = hView.findViewById(R.id.image_profile);
+        mName = hView.findViewById(R.id.nav_name);
+        mEmail = hView.findViewById(R.id.nav_email);
 
         setSupportActionBar(mToolbar);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.setDrawerListener(mToggle);
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
-                mDrawerLayout.closeDrawers();
+        mNavigationView.setNavigationItemSelectedListener(item -> {
+            mDrawerLayout.closeDrawers();
 
-                item.setChecked(true);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        switch (item.getItemId()){
+            item.setChecked(true);
+            new Handler().postDelayed(() -> {
+                switch (item.getItemId()){
 
-                            case R.id.nav_home:
-                                Intent intent = new Intent(BaseActivity.this, Home.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    case R.id.nav_home:
+                        Intent intent = new Intent(BaseActivity.this, Home.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-                                break;
+                        break;
 
-                            case R.id.nav_privacy_policy:
-                                intent = new Intent(BaseActivity.this, Policy.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    case R.id.nav_privacy_policy:
+                        intent = new Intent(BaseActivity.this, Policy.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-                                break;
+                        break;
 
-                            case R.id.nav_terms:
-                                intent = new Intent(BaseActivity.this, Terms.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    case R.id.nav_terms:
+                        intent = new Intent(BaseActivity.this, Terms.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-                                break;
+                        break;
 
-                            case R.id.nav_profile:
-                                intent = new Intent(BaseActivity.this, Profile.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    case R.id.nav_profile:
+                        intent = new Intent(BaseActivity.this, Profile.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-                                break;
+                        break;
 
 
-                            default:
-                                intent = new Intent(BaseActivity.this, Home.class);
-                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    default:
+                        intent = new Intent(BaseActivity.this, Home.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-                                break;
-                        }
-                    }
-                }, 225);
-                return true;
-            }
+                        break;
+                }
+            }, 225);
+            return true;
         });
 
         setNavigationViewCheckedItem();
@@ -244,9 +232,8 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }

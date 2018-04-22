@@ -13,7 +13,7 @@
         android:smallScreens="true"/>
 
     <data
-        android:host="@string/auth0_domain"
+        android:host="ispam.auth0.com"
         android:pathPrefix="/android/tech.destinum.recorderis/callback"
         android:scheme="https"/>
 

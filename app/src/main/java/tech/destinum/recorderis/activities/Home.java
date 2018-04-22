@@ -38,19 +38,14 @@ public class Home extends BaseActivity {
         super.onCreateDrawer();
 
         mDBHelper = new DBHelper(this);
-        mRecyclerViewDetails = (RecyclerView) findViewById(R.id.recycler_view_details);
-        mLayout = (ConstraintLayout) findViewById(R.id.cl_empty_redirection);
-        mAdd = (ImageView) findViewById(R.id.home_button);
-        mMSG = (TextView) findViewById(R.id.redirection_msg);
+        mRecyclerViewDetails =findViewById(R.id.recycler_view_details);
+        mLayout = findViewById(R.id.cl_empty_redirection);
+        mAdd = findViewById(R.id.home_button);
+        mMSG = findViewById(R.id.redirection_msg);
 
         mMSG.setText(R.string.redirection_msg);
 
-        mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates(), new HomeDetailsAdapter.clickCallback() {
-            @Override
-            public void onItemClick(int position) {
-                Log.d("Details", String.valueOf(position));
-            }
-        });
+        mDetailsAdapter = new HomeDetailsAdapter(mContext, mDBHelper.getAllDates(), position -> Log.d("Details", String.valueOf(position)));
 
         mRecyclerViewDetails.setAdapter(mDetailsAdapter);
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
@@ -78,14 +73,9 @@ public class Home extends BaseActivity {
             mLayout.setVisibility(View.VISIBLE);
             mRecyclerViewDetails.setVisibility(View.GONE);
 
-            mAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-
-                    Intent intent = new Intent(Home.this, Selection.class);
-                    startActivity(intent);
-
-                }
+            mAdd.setOnClickListener(v -> {
+                Intent intent = new Intent(Home.this, Selection.class);
+                startActivity(intent);
             });
 
         } else {

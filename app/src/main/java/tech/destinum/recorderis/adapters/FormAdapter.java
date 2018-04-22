@@ -161,6 +161,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 
                         break;
                 }
+                View view = v.getRootView();
+                if (view != null) {
+                    InputMethodManager inputManager = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
             }
         });
 

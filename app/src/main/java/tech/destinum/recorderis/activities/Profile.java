@@ -54,10 +54,10 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
         super.onCreateDrawer();
 
         mDBHelper = new DBHelper(this);
-        mName = (TextView) findViewById(R.id.format_profile_name);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_profile);
-        mScrollView = (ScrollView) findViewById(R.id.scroll_view);
-        mAdd = (ImageView) findViewById(R.id.profile_button);
+        mName = findViewById(R.id.format_profile_name);
+        mRecyclerView = findViewById(R.id.recycler_view_profile);
+        mScrollView = findViewById(R.id.scroll_view);
+        mAdd = findViewById(R.id.profile_button);
 
         SharedPreferences mSP = getSharedPreferences(BaseActivity.PREFERENCES, Context.MODE_PRIVATE);
         String name = mSP.getString("name", "");
@@ -74,10 +74,10 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
                 AlertDialog.Builder add = new AlertDialog.Builder(v.getContext());
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.dialog_creation, null, true);
-                TextView title = (TextView) view.findViewById(R.id.dialog_tv_title);
-                TextView msg = (TextView) view.findViewById(R.id.dialog_tv_msg);
-                final EditText et = (EditText) view.findViewById(R.id.dialog_edt_date);
-                Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
+                TextView title = view.findViewById(R.id.dialog_tv_title);
+                TextView msg = view.findViewById(R.id.dialog_tv_msg);
+                final EditText et = view.findViewById(R.id.dialog_edt_date);
+                Spinner spinner = view.findViewById(R.id.spinner);
                 spinner.setOnItemSelectedListener(Profile.this);
 
                 title.setText(R.string.dialog_new_doc);
@@ -98,37 +98,34 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
                 spinner.setAdapter(dataAdapter);
 
                 add.setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    .setPositiveButton(R.string.add, (dialog, which) -> {
 
-                            long user_id = mDBHelper.getLastUser();
+                        long user_id = mDBHelper.getLastUser();
 
-                            switch (pos){
-                                case 0:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), et.getText().toString(), getApplicationContext().getString(R.string.symbol_soat), user_id);
-                                    refresh();
-                                    break;
-                                case 1:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), et.getText().toString(), getApplicationContext().getString(R.string.symbol_rtm), user_id);
-                                    refresh();
-                                    break;
-                                case 2:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), et.getText().toString(), getApplicationContext().getString(R.string.symbol_str), user_id);
-                                    refresh();
-                                    break;
-                                case 3:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), et.getText().toString(), getApplicationContext().getString(R.string.symbol_tao), user_id);
-                                    refresh();
-                                    break;
-                                case 4:
-                                    mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), et.getText().toString(), getApplicationContext().getString(R.string.symbol_ext), user_id);
-                                    refresh();
-                                    break;
-                            }
-
-                            dialog.dismiss();
+                        switch (pos){
+                            case 0:
+                                mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_soat), et.getText().toString(), getApplicationContext().getString(R.string.symbol_soat), user_id);
+                                refresh();
+                                break;
+                            case 1:
+                                mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_rtm), et.getText().toString(), getApplicationContext().getString(R.string.symbol_rtm), user_id);
+                                refresh();
+                                break;
+                            case 2:
+                                mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_str), et.getText().toString(), getApplicationContext().getString(R.string.symbol_str), user_id);
+                                refresh();
+                                break;
+                            case 3:
+                                mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_tao), et.getText().toString(), getApplicationContext().getString(R.string.symbol_tao), user_id);
+                                refresh();
+                                break;
+                            case 4:
+                                mDBHelper.createNewDate(getApplicationContext().getString(R.string.doc_ext), et.getText().toString(), getApplicationContext().getString(R.string.symbol_ext), user_id);
+                                refresh();
+                                break;
                         }
+
+                        dialog.dismiss();
                     }).setView(view).show();
             }
 

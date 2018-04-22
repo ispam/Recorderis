@@ -16,7 +16,7 @@ public class Policy extends BaseActivity {
         setContentView(R.layout.activity_policy);
         super.onCreateDrawer();
 
-        mRelativeLayout = (RelativeLayout) findViewById(R.id.policy);
+        mRelativeLayout = findViewById(R.id.policy);
 
         final WebView view = new WebView(this);
 

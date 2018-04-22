@@ -61,7 +61,6 @@
     <string name="doc_str">Seguro Todo Riesgo</string>
     <string name="doc_soat">SOAT</string>
     <string name="doc_tao">Tarjeta de Operación</string>
-    <string name="doc_imp">Impuesto de Rodamiento</string>
     <string name="doc_ext">Extintor</string>
 
     <string name="symbol_soat">SOAT</string>

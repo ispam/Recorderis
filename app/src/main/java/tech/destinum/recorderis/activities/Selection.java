@@ -25,7 +25,7 @@ public class Selection extends BaseActivity {
         setContentView(R.layout.activity_selection);
         super.onCreateDrawer();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_selection);
+        mRecyclerView = findViewById(R.id.recycler_view_selection);
 
 //        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED
 //                && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
