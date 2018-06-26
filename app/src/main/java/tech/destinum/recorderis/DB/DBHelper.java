@@ -7,12 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //import tech.destinum.recorderis.pojo.Date;
-import tech.destinum.recorderis.pojo.Date;
-import tech.destinum.recorderis.pojo.Document;
-import tech.destinum.recorderis.pojo.User;
+import tech.destinum.recorderis.Data.Entities.Date;
+import tech.destinum.recorderis.Data.Entities.Document;
+import tech.destinum.recorderis.Data.Entities.User;
 
 public class DBHelper extends SQLiteOpenHelper {
 

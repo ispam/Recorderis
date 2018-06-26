@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import tech.destinum.recorderis.R;
-import tech.destinum.recorderis.pojo.Date;
+import tech.destinum.recorderis.Data.Entities.Date;
 
 public class HomeDetailsAdapter extends RecyclerView.Adapter<HomeDetailsAdapter.ViewHolder> {
 

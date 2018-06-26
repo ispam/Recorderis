@@ -1,25 +1,17 @@
 package tech.destinum.recorderis.adapters;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
-import tech.destinum.recorderis.activities.Home;
-import tech.destinum.recorderis.pojo.Date;
-import tech.destinum.recorderis.utils.LinearLayoutPagerManager;
+import tech.destinum.recorderis.Data.Entities.Date;
 import tech.destinum.recorderis.utils.OnSwipeTouchListener;
 
 public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.ViewHolder> {

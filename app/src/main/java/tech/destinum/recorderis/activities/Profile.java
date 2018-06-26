@@ -1,16 +1,11 @@
 package tech.destinum.recorderis.activities;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,17 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.ProfileAdapter;
-import tech.destinum.recorderis.pojo.Date;
-import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.Data.Entities.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
-
-import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
 public class Profile extends BaseActivity implements AdapterView.OnItemSelectedListener {
 

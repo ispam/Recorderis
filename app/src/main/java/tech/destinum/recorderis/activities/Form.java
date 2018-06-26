@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.FormAdapter;
-import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.Data.Entities.Document;
 import tech.destinum.recorderis.utils.WakefulReceiver;
 
 import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;

@@ -1,18 +1,12 @@
 package tech.destinum.recorderis.adapters;
 
 import android.animation.ValueAnimator;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,20 +20,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.TimeZone;
 
 import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
-import tech.destinum.recorderis.activities.Form;
-import tech.destinum.recorderis.pojo.Date;
-import tech.destinum.recorderis.pojo.Document;
+import tech.destinum.recorderis.Data.Entities.Document;
 import tech.destinum.recorderis.utils.DateWatcher;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
 

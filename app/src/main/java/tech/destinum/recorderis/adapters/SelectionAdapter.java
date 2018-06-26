@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.activities.Form;
-import tech.destinum.recorderis.pojo.Category;
+import tech.destinum.recorderis.Data.Entities.Category;
 
 public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.ViewHolder> {
 

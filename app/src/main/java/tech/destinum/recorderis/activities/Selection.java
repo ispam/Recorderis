@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.adapters.SelectionAdapter;
-import tech.destinum.recorderis.pojo.Category;
+import tech.destinum.recorderis.Data.Entities.Category;
 
 public class Selection extends BaseActivity {
 
@@ -42,9 +42,9 @@ public class Selection extends BaseActivity {
                 R.drawable.publi640blanco};
 
         mCategoryArrayList = new ArrayList<>();
-        mCategoryArrayList.add(new Category(getString(R.string.pri_serv), getString(R.string.exp_pri_serv), covers[1]));
-        mCategoryArrayList.add(new Category(getString(R.string.pub_serv), getString(R.string.exp_pub_serv), covers[2]));
-        mCategoryArrayList.add(new Category(getString(R.string.motos), getString(R.string.exp_motos), covers[0]));
+        mCategoryArrayList.add(new Category(1, getString(R.string.pri_serv), getString(R.string.exp_pri_serv), covers[1]));
+        mCategoryArrayList.add(new Category(2, getString(R.string.pub_serv), getString(R.string.exp_pub_serv), covers[2]));
+        mCategoryArrayList.add(new Category(3, getString(R.string.motos), getString(R.string.exp_motos), covers[0]));
         mAdapter = new SelectionAdapter(mContext, mCategoryArrayList);
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
