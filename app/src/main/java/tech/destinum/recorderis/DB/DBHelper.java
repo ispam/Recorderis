@@ -123,20 +123,20 @@ public class DBHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public ArrayList<User> getAllUsers(){
-        ArrayList<User> list = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS , null);
-        while (cursor.moveToNext()){
-            long id = cursor.getLong(cursor.getColumnIndex("_id"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
-            String email = cursor.getString(cursor.getColumnIndex("email"));
-            list.add(new User(name, email, id));
-        }
-        cursor.close();
-        db.close();
-        return list;
-    }
+//    public ArrayList<User> getAllUsers(){
+//        ArrayList<User> list = new ArrayList<>();
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS , null);
+//        while (cursor.moveToNext()){
+//            long id = cursor.getLong(cursor.getColumnIndex("_id"));
+//            String name = cursor.getString(cursor.getColumnIndex("name"));
+//            String email = cursor.getString(cursor.getColumnIndex("email"));
+//            list.add(new User(name, email, id));
+//        }
+//        cursor.close();
+//        db.close();
+//        return list;
+//    }
 
     public void createNewDate(String name, String date, String symbol, long user_id){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -212,7 +212,7 @@ public class DBHelper extends SQLiteOpenHelper {
             int _id = cursor.getInt(cursor.getColumnIndex("_id"));
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String symbol = cursor.getString(cursor.getColumnIndex("symbol"));
-            list.add(new Document(name, symbol, _id));
+            list.add(new Document(_id, name, symbol));
         }
         cursor.close();
         db.close();

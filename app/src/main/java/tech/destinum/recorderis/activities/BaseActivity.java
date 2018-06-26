@@ -94,8 +94,8 @@ public class BaseActivity extends AppCompatActivity {
         mSharedPreferences.edit().putString("name", mUserProfile.getName()).commit();
 
         if (gotEmail.equals(true)){
-
             String email = mSharedPreferences.getString("email", "");
+
             mEmail.setText(email);
             if (mSharedPreferences.getBoolean("first_time", true)){
                 mDBHelper.createNewUser(mUserProfile.getName(), email);
