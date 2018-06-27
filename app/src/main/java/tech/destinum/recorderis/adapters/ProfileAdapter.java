@@ -66,53 +66,53 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
 
                 final WakefulReceiver wakefulReceiver = new WakefulReceiver();
 
-                dialog.setNegativeButton(R.string.cancel, null)
-                        .setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                AlertDialog.Builder confirmation = new AlertDialog.Builder(v.getContext());
-                                LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                View view = inflater.inflate(R.layout.dialog_confirmation, null, true);
-                                TextView title = (TextView) view.findViewById(R.id.dialog_tv_title);
-                                TextView msg = (TextView) view.findViewById(R.id.dialog_tv_msg);
-                                title.setText(v.getContext().getResources().getString(R.string.dialog_confirmation));
-                                msg.setText(Html.fromHtml(v.getContext().getResources().getString(R.string.dialog_confirmation_msg))+date.getSymbol() +" : "+ date.getDate());
-
-                                confirmation.setNegativeButton(R.string.dialog_no, null)
-                                        .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-
-                                                wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
-                                                mDBHelper.deleteDate(date.getId());
-                                                refreshAdapter(mDBHelper.getAllDates());
-                                                dialog.dismiss();
-
-                                            }
-                                        }).setView(view).show();
-
-                            }
-                        })
-                        .setPositiveButton(R.string.dialog_change, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                if (edt.getText().equals("") || edt.getText().length() < 6){
-                                    Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
-                                } else {
-
-                                    wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
-                                    mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
-                                    wakefulReceiver.setAlarm(v.getContext(), edt.getText().toString(), (int) date.getId());
-                                    refreshAdapter(mDBHelper.getAllDates());
-                                    dialog.dismiss();
-                                }
-
-
-                            }
-                        });
-                dialog.setView(dialogView).show();
+//                dialog.setNegativeButton(R.string.cancel, null)
+//                        .setNeutralButton(R.string.dialog_delete, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                AlertDialog.Builder confirmation = new AlertDialog.Builder(v.getContext());
+//                                LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                                View view = inflater.inflate(R.layout.dialog_confirmation, null, true);
+//                                TextView title = (TextView) view.findViewById(R.id.dialog_tv_title);
+//                                TextView msg = (TextView) view.findViewById(R.id.dialog_tv_msg);
+//                                title.setText(v.getContext().getResources().getString(R.string.dialog_confirmation));
+//                                msg.setText(Html.fromHtml(v.getContext().getResources().getString(R.string.dialog_confirmation_msg))+date.getSymbol() +" : "+ date.getDate());
+//
+//                                confirmation.setNegativeButton(R.string.dialog_no, null)
+//                                        .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                                wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
+//                                                mDBHelper.deleteDate(date.getId());
+//                                                refreshAdapter(mDBHelper.getAllDates());
+//                                                dialog.dismiss();
+//
+//                                            }
+//                                        }).setView(view).show();
+//
+//                            }
+//                        })
+//                        .setPositiveButton(R.string.dialog_change, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                if (edt.getText().equals("") || edt.getText().length() < 6){
+//                                    Toast.makeText(v.getContext(), R.string.need_date, Toast.LENGTH_SHORT).show();
+//                                } else {
+//
+//                                    wakefulReceiver.cancelAlarm(v.getContext(), (int)date.getId());
+//                                    mDBHelper.updateDate(date.getName(), edt.getText().toString(), date.getSymbol(), date.getUser_id(), date.getId());
+//                                    wakefulReceiver.setAlarm(v.getContext(), edt.getText().toString(), (int) date.getId());
+//                                    refreshAdapter(mDBHelper.getAllDates());
+//                                    dialog.dismiss();
+//                                }
+//
+//
+//                            }
+//                        });
+//                dialog.setView(dialogView).show();
 
             }
         });

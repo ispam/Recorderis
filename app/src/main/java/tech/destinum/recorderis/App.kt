@@ -18,5 +18,7 @@ open class App: Application() {
                 .appModule(AppModule(this))
                 .build()
 
+        graph.inject(this)
+
     }
 }

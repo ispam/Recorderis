@@ -25,7 +25,6 @@ import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.utils.CredentialsManager;
 
-import static tech.destinum.recorderis.adapters.FormAdapter.FORM_PREFERENCES;
 
 public class Login extends AppCompatActivity {
 

@@ -178,7 +178,7 @@ public class DBHelper extends SQLiteOpenHelper {
             String date = cursor.getString(cursor.getColumnIndex("date"));
             String symbol = cursor.getString(cursor.getColumnIndex("symbol"));
             long id = cursor.getLong(cursor.getColumnIndex("_id"));
-            list.add(new Date(user_id, name, symbol, date, id));
+            list.add(new Date(name, symbol, date, user_id));
         }
         cursor.close();
         db.close();
