@@ -2,6 +2,7 @@ package tech.destinum.recorderis.activities
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -12,7 +13,7 @@ import tech.destinum.recorderis.R
 import tech.destinum.recorderis.adapters.SelectionAdapter
 import tech.destinum.recorderis.Data.Entities.Category
 
-class Selection : BaseActivity() {
+class Selection : AppCompatActivity() {
 
     private val mRecyclerView by lazy { findViewById(R.id.recycler_view_selection) as RecyclerView }
     private val mContext: Context? = null
@@ -21,7 +22,6 @@ class Selection : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selection)
-        super.onCreateDrawer()
 
         //        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED
         //                && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {

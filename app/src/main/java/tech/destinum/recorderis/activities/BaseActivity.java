@@ -56,62 +56,62 @@ public class BaseActivity extends AppCompatActivity {
         //Instantiate Navigation Drawer
         setupNavDrawer();
 
-        Fabric.with(this, new Crashlytics());
-
-        //AuthO
-        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
-        // The process to reclaim an UserProfile is preceded by an Authentication call.
-        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
-        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
-                .start(new BaseCallback<UserProfile, AuthenticationException>() {
-                    @Override
-                    public void onSuccess(final UserProfile payload) {
-                        BaseActivity.this.runOnUiThread(() -> {
-                            mUserProfile = payload;
-                            refreshScreenInformation();
-                        });
-                    }
-
-                    @Override
-                    public void onFailure(AuthenticationException error) {
-                        BaseActivity.this.runOnUiThread(() -> Toast.makeText(BaseActivity.this, R.string.profile_request_failed, Toast.LENGTH_SHORT).show());
-                    }
-                });
+//        Fabric.with(this, new Crashlytics());
+//
+//        //AuthO
+//        mAuth0 = new Auth0(getString(R.string.auth0_client_id), getString(R.string.auth0_domain));
+//        // The process to reclaim an UserProfile is preceded by an Authentication call.
+//        AuthenticationAPIClient aClient = new AuthenticationAPIClient(mAuth0);
+//        aClient.tokenInfo(CredentialsManager.getCredentials(this).getIdToken())
+//                .start(new BaseCallback<UserProfile, AuthenticationException>() {
+//                    @Override
+//                    public void onSuccess(final UserProfile payload) {
+//                        BaseActivity.this.runOnUiThread(() -> {
+//                            mUserProfile = payload;
+//                            refreshScreenInformation();
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onFailure(AuthenticationException error) {
+//                        BaseActivity.this.runOnUiThread(() -> Toast.makeText(BaseActivity.this, R.string.profile_request_failed, Toast.LENGTH_SHORT).show());
+//                    }
+//                });
 
     }
 
 
     private void refreshScreenInformation() {
-        mDBHelper = new DBHelper(getApplicationContext());
-
-        if (mUserProfile.getPictureURL() != null) {
-            Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
-        } else {
-            Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
-        }
-        SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
-        mName.setText(mUserProfile.getName());
-        mSharedPreferences.edit().putString("name", mUserProfile.getName()).commit();
-
-        if (gotEmail.equals(true)){
-            String email = mSharedPreferences.getString("email", "");
-
-            mEmail.setText(email);
-            if (mSharedPreferences.getBoolean("first_time", true)){
-                mDBHelper.createNewUser(mUserProfile.getName(), email);
-
-                mSharedPreferences.edit().putBoolean("first_time", false).commit();
-            }
-
-        } else {
-            mEmail.setText(mUserProfile.getEmail());
-            if (mSharedPreferences.getBoolean("first_time", true)){
-                mDBHelper.createNewUser(mUserProfile.getName(), mUserProfile.getEmail());
-
-                mSharedPreferences.edit().putBoolean("first_time", false).commit();
-            }
-
-        }
+//        mDBHelper = new DBHelper(getApplicationContext());
+//
+//        if (mUserProfile.getPictureURL() != null) {
+//            Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
+//        } else {
+//            Picasso.with(getApplicationContext()).load(mUserProfile.getPictureURL()).into(mImageProfile);
+//        }
+//        SharedPreferences mSharedPreferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+//        mName.setText(mUserProfile.getName());
+//        mSharedPreferences.edit().putString("name", mUserProfile.getName()).commit();
+//
+//        if (gotEmail.equals(true)){
+//            String email = mSharedPreferences.getString("email", "");
+//
+//            mEmail.setText(email);
+//            if (mSharedPreferences.getBoolean("first_time", true)){
+//                mDBHelper.createNewUser(mUserProfile.getName(), email);
+//
+//                mSharedPreferences.edit().putBoolean("first_time", false).commit();
+//            }
+//
+//        } else {
+//            mEmail.setText(mUserProfile.getEmail());
+//            if (mSharedPreferences.getBoolean("first_time", true)){
+//                mDBHelper.createNewUser(mUserProfile.getName(), mUserProfile.getEmail());
+//
+//                mSharedPreferences.edit().putBoolean("first_time", false).commit();
+//            }
+//
+//        }
 
 
     }
@@ -123,12 +123,12 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToolbar = findViewById(R.id.toolbar_actionbar);
         mNavigationView= findViewById(R.id.navigation_view);
-        mMenu = mNavigationView.getMenu();
-
-        MenuItem about = mMenu.findItem(R.id.about);
-        SpannableString s =  new SpannableString(about.getTitle());
-        s.setSpan(new TextAppearanceSpan(this, R.style.BlackTextColor), 0, s.length(), 0);
-        about.setTitle(s);
+//        mMenu = mNavigationView.getMenu();
+//
+//        MenuItem about = mMenu.findItem(R.id.about);
+//        SpannableString s =  new SpannableString(about.getTitle());
+//        s.setSpan(new TextAppearanceSpan(this, R.style.BlackTextColor), 0, s.length(), 0);
+//        about.setTitle(s);
 
         View hView =  mNavigationView.getHeaderView(0);
         mImageProfile = hView.findViewById(R.id.image_profile);
