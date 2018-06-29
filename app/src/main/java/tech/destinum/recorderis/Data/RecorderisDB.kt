@@ -7,10 +7,8 @@ import tech.destinum.recorderis.Data.Entities.Category
 import tech.destinum.recorderis.Data.Entities.Date
 import tech.destinum.recorderis.Data.Entities.Document
 
-@Database(entities = arrayOf(User::class, Document::class, Category::class, Date::class), version = 1)
+@Database(entities = arrayOf(Document::class, Category::class, Date::class), version = 1, exportSchema = false)
 abstract class RecorderisDB : RoomDatabase(){
-
-    abstract fun getUserDao(): UserDAO
 
     abstract fun getDateDao(): DateDAO
 }

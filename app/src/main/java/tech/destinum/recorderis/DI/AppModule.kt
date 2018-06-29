@@ -15,7 +15,7 @@ class AppModule(val app: App) {
     fun provideApp() = app
 
     @Provides @Singleton
-    fun getDB(context: App): RecorderisDB = Room.databaseBuilder(context.applicationContext,
+    fun getDB(app: App): RecorderisDB = Room.databaseBuilder(app,
             RecorderisDB::class.java,
             "recorderis.db")
             .build()

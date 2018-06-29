@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.Data.Entities.Date;
 import tech.destinum.recorderis.utils.OnSwipeTouchListener;
@@ -17,7 +16,6 @@ import tech.destinum.recorderis.utils.OnSwipeTouchListener;
 public class HomeSymbolsAdapter extends RecyclerView.Adapter<HomeSymbolsAdapter.ViewHolder> {
 
     private Context mContext;
-    private DBHelper mDBHelper;
     private ArrayList<Date> mDatesList;
     private clickCallback mClickCallback;
     private OnSwipeTouchListener onSwipeTouchListener;

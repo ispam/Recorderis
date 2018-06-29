@@ -31,7 +31,6 @@ import com.auth0.android.callback.BaseCallback;
 import com.auth0.android.result.UserProfile;
 import com.squareup.picasso.Picasso;
 
-import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.utils.CredentialsManager;
 
@@ -48,7 +47,6 @@ public class BaseActivity extends AppCompatActivity {
     private TextView mName, mEmail;
     private Auth0 mAuth0;
     private UserProfile mUserProfile;
-    private DBHelper mDBHelper;
 
     public static final String PREFERENCES = "Preferences";
 

@@ -20,10 +20,10 @@ import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import tech.destinum.recorderis.App
+import tech.destinum.recorderis.Data.Entities.Date
 
 import java.util.ArrayList
 
-import tech.destinum.recorderis.DB.DBHelper
 import tech.destinum.recorderis.R
 import tech.destinum.recorderis.adapters.FormAdapter
 import tech.destinum.recorderis.Data.Entities.Document
@@ -120,7 +120,7 @@ class Form : AppCompatActivity() {
                 val soat = mSP.getString("soat", "")
                 if (soat != null && soat != "") {
 
-                    mDisposable.add(dateVM.createDate(this.getString(R.string.doc_soat), this.getString(R.string.symbol_soat),soat)
+                    mDisposable.add(dateVM.createDate(Date(this.getString(R.string.doc_soat), this.getString(R.string.symbol_soat),soat))
                             .subscribeOn(Schedulers.io())
                             .subscribe())
 
@@ -128,35 +128,31 @@ class Form : AppCompatActivity() {
 
                 val rtm = mSP.getString("rtm", "")
                 if (rtm != null && rtm != "") {
-//                    dateVM.createDate(this.getString(R.string.doc_rtm), this.getString(R.string.symbol_rtm),rtm)
 //                    mDBHelper.createNewDate(applicationContext.getString(R.string.doc_rtm), rtm, applicationContext.getString(R.string.symbol_rtm), 1)
-                    mDisposable.add(dateVM.createDate(this.getString(R.string.doc_rtm), this.getString(R.string.symbol_rtm),rtm)
+                    mDisposable.add(dateVM.createDate(Date(this.getString(R.string.doc_rtm), this.getString(R.string.symbol_rtm),rtm))
                             .subscribeOn(Schedulers.io())
                             .subscribe())
                 }
 
                 val str = mSP.getString("str", "")
                 if (str != null && str != "") {
-//                    dateVM.createDate(this.getString(R.string.doc_str), this.getString(R.string.symbol_str),str)
-                    mDisposable.add(dateVM.createDate(this.getString(R.string.doc_str), this.getString(R.string.symbol_str),str)
+                    mDisposable.add(dateVM.createDate(Date(this.getString(R.string.doc_str), this.getString(R.string.symbol_str),str))
                             .subscribeOn(Schedulers.io())
                             .subscribe())
                 }
 
                 val to = mSP.getString("to", "")
                 if (to != null && to != "") {
-//                    dateVM.createDate(this.getString(R.string.doc_tao), this.getString(R.string.symbol_tao),to)
 //                    wakefulReceiver.setAlarm(applicationContext, to, 4)
-                    mDisposable.add(dateVM.createDate(this.getString(R.string.doc_tao), this.getString(R.string.symbol_tao),to)
+                    mDisposable.add(dateVM.createDate(Date(this.getString(R.string.doc_tao), this.getString(R.string.symbol_tao),to))
                             .subscribeOn(Schedulers.io())
                             .subscribe())
                 }
 
                 val ext = mSP.getString("ext", "")
                 if (ext != null && ext != "") {
-//                    dateVM.createDate(this.getString(R.string.doc_ext), this.getString(R.string.symbol_ext),ext)
 //                    wakefulReceiver.setAlarm(applicationContext, ext, 5)
-                    mDisposable.add(dateVM.createDate(this.getString(R.string.doc_ext), this.getString(R.string.symbol_ext),ext)
+                    mDisposable.add(dateVM.createDate(Date(this.getString(R.string.doc_ext), this.getString(R.string.symbol_ext),ext))
                             .subscribeOn(Schedulers.io())
                             .subscribe())
                 }

@@ -22,13 +22,11 @@ import android.widget.Toast
 
 import java.util.ArrayList
 
-import tech.destinum.recorderis.DB.DBHelper
 import tech.destinum.recorderis.R
 import tech.destinum.recorderis.Data.Entities.Document
 import tech.destinum.recorderis.utils.DateWatcher
 
 class FormAdapter(private val mDocuments: ArrayList<Document>?) : RecyclerView.Adapter<FormAdapter.ViewHolder>() {
-    private var mDBHelper: DBHelper? = null
 
     var zero: Boolean = false
     var one: Boolean = false
@@ -42,7 +40,6 @@ class FormAdapter(private val mDocuments: ArrayList<Document>?) : RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val document = mDocuments!![position]
-        mDBHelper = DBHelper(holder.mCardView.context)
 
         holder.mTitle.text = document.name
         holder.mTitleExpanded.text = document.name

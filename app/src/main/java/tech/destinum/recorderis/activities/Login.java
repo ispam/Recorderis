@@ -21,7 +21,6 @@ import com.auth0.android.result.UserProfile;
 import java.util.HashMap;
 import java.util.Map;
 
-import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.utils.CredentialsManager;
 
@@ -29,7 +28,6 @@ import tech.destinum.recorderis.utils.CredentialsManager;
 public class Login extends AppCompatActivity {
 
     private Lock lock;
-    private DBHelper mDBHelper;
     private static final String LOGIN_PREFERENCES = "LOGIN_PREFERENCES";
 
     @Override
@@ -74,14 +72,13 @@ public class Login extends AppCompatActivity {
     }
 
     private void goHomeScreen() {
-        mDBHelper = new DBHelper(this);
         SharedPreferences mSP = getSharedPreferences(LOGIN_PREFERENCES, Context.MODE_PRIVATE);
         if (mSP.getBoolean("first_time", true)) {
-            mDBHelper.createNewDocument(getString(R.string.doc_soat), getString(R.string.symbol_soat));
-            mDBHelper.createNewDocument(getString(R.string.doc_rtm), getString(R.string.symbol_rtm));
-            mDBHelper.createNewDocument(getString(R.string.doc_str), getString(R.string.symbol_str));
-            mDBHelper.createNewDocument(getString(R.string.doc_tao), getString(R.string.symbol_tao));
-            mDBHelper.createNewDocument(getString(R.string.doc_ext), getString(R.string.symbol_ext));
+//            mDBHelper.createNewDocument(getString(R.string.doc_soat), getString(R.string.symbol_soat));
+//            mDBHelper.createNewDocument(getString(R.string.doc_rtm), getString(R.string.symbol_rtm));
+//            mDBHelper.createNewDocument(getString(R.string.doc_str), getString(R.string.symbol_str));
+//            mDBHelper.createNewDocument(getString(R.string.doc_tao), getString(R.string.symbol_tao));
+//            mDBHelper.createNewDocument(getString(R.string.doc_ext), getString(R.string.symbol_ext));
 
             Intent intent = new Intent(getApplicationContext(), Selection.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

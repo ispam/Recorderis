@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class DateViewModel @Inject constructor(val dB: RecorderisDB){
 
-    fun createDate(name: String, symbol: String, date: String): Completable {
-        return Completable.fromAction{ dB.getDateDao().newDate(Date(name, symbol, date))}
+    fun createDate(date: Date): Completable {
+        return Completable.fromAction{ dB.getDateDao().newDate(date)}
     }
 
 }

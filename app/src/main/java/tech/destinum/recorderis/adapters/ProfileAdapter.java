@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import tech.destinum.recorderis.DB.DBHelper;
 import tech.destinum.recorderis.R;
 import tech.destinum.recorderis.Data.Entities.Date;
 import tech.destinum.recorderis.utils.DateWatcher;
@@ -23,14 +22,10 @@ import tech.destinum.recorderis.utils.WakefulReceiver;
 
 public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHolder> {
 
-    private Context mContext;
     private ArrayList<Date> mDates;
-    private DBHelper mDBHelper;
     private DateWatcher mDateWatcher;
-    private ProfileAdapter mAdapter;
 
-    public ProfileAdapter(Context mContext, ArrayList<Date> mDates){
-        this.mContext = mContext;
+    public ProfileAdapter( ArrayList<Date> mDates){
         this.mDates = mDates;
     }
 
@@ -50,7 +45,6 @@ public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.ViewHol
             @Override
             public void onClick(final View v) {
 
-                mDBHelper = new DBHelper(v.getContext());
                 final AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
 
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
