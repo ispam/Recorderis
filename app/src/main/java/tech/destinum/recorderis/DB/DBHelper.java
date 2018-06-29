@@ -11,7 +11,6 @@ import java.util.ArrayList;
 //import tech.destinum.recorderis.pojo.Date;
 import tech.destinum.recorderis.Data.Entities.Date;
 import tech.destinum.recorderis.Data.Entities.Document;
-import tech.destinum.recorderis.Data.Entities.User;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -178,7 +177,7 @@ public class DBHelper extends SQLiteOpenHelper {
             String date = cursor.getString(cursor.getColumnIndex("date"));
             String symbol = cursor.getString(cursor.getColumnIndex("symbol"));
             long id = cursor.getLong(cursor.getColumnIndex("_id"));
-            list.add(new Date(name, symbol, date, user_id));
+            list.add(new Date(name, symbol, date));
         }
         cursor.close();
         db.close();

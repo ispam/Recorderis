@@ -42,7 +42,7 @@ class Selection : AppCompatActivity() {
         mRecyclerView.itemAnimator = DefaultItemAnimator()
         mRecyclerView.setHasFixedSize(true)
 
-        mRecyclerView.adapter = SelectionAdapter(mContext, mCategoryArrayList)
+        mRecyclerView.adapter = SelectionAdapter(mCategoryArrayList)
         mRecyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
 
         //        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
