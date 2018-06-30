@@ -20,7 +20,7 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        supportFragmentManager
+        this.supportFragmentManager
                 .beginTransaction()
                 .add(R.id.frame_layout, HomeFragment())
                 .commit()
@@ -32,17 +32,20 @@ class Home : AppCompatActivity() {
                 R.id.action_home -> {
                     fragment = HomeFragment()
                     Toast.makeText(this, "Action Home", Toast.LENGTH_SHORT).show()
+
                 }
                 R.id.action_profile -> {
                     fragment = ProfileFragment()
                     Toast.makeText(this, "Action Profile", Toast.LENGTH_SHORT).show()
+
                 }
                 R.id.action_info -> {
                     fragment = AboutFragment()
                     Toast.makeText(this, "Action Info", Toast.LENGTH_SHORT).show()
+
                 }
             }
-            supportFragmentManager
+            this.supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.frame_layout, fragment)
                     .commit()

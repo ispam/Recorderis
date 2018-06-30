@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 import tech.destinum.recorderis.R
 import tech.destinum.recorderis.Data.Entities.Date
 
-class HomeDetailsAdapter(private val mDates: ArrayList<Date>?) : RecyclerView.Adapter<HomeDetailsAdapter.ViewHolder>() {
+class HomeDetailsAdapter(private val mDates: List<Date>?) : RecyclerView.Adapter<HomeDetailsAdapter.ViewHolder>() {
     interface clickCallback {
         fun onItemClick(position: Int)
     }
@@ -37,16 +37,16 @@ class HomeDetailsAdapter(private val mDates: ArrayList<Date>?) : RecyclerView.Ad
         return mDates?.size ?: 0
     }
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ViewHolder(private val mView: View) : RecyclerView.ViewHolder(mView) {
 
         private val mName = mView.findViewById(R.id.format_home_name) as TextView
         private var mDaysLeft = mView.findViewById(R.id.format_home_days_left) as TextView
         private var mDays = mView.findViewById(R.id.format_home_days) as TextView
         private var mDate = mView.findViewById(R.id.format_home_date) as TextView
         private var mProgressBar = mView.findViewById(R.id.progressBar) as ProgressBar
-        private var mInfoName = mView.findViewById(R.id.tv_info_name) as TextView
-        private var mFront = mView.findViewById(R.id.cl_front) as ConstraintLayout
-        private var mBack = mView.findViewById(R.id.cl_back) as ConstraintLayout
+//        private var mInfoName = mView.findViewById(R.id.tv_info_name) as TextView
+//        private var mFront = mView.findViewById(R.id.cl_front) as ConstraintLayout
+//        private var mBack = mView.findViewById(R.id.cl_back) as ConstraintLayout
 
 
          fun bindInfo(date: Date){

@@ -12,4 +12,5 @@ class DateViewModel @Inject constructor(val dB: RecorderisDB){
         return Completable.fromAction{ dB.getDateDao().newDate(date)}
     }
 
+    fun getAllDates(): Flowable<List<Date>> = dB.getDateDao().getAll()
 }
