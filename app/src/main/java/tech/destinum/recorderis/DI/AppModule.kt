@@ -6,6 +6,7 @@ import dagger.Provides
 import tech.destinum.recorderis.App
 import tech.destinum.recorderis.Data.RecorderisDB
 import tech.destinum.recorderis.Data.ViewModels.DateViewModel
+import tech.destinum.recorderis.Data.ViewModels.DocumentViewModel
 import javax.inject.Singleton
 
 @Module
@@ -21,8 +22,10 @@ class AppModule(val app: App) {
             .build()
 
     @Provides @Singleton
-    fun provideDateVM(db: RecorderisDB): DateViewModel {
-        return DateViewModel(db)
-    }
+    fun provideDateVM(db: RecorderisDB): DateViewModel = DateViewModel(db)
+
+
+    @Provides @Singleton
+    fun provideDocumentVM(db: RecorderisDB):DocumentViewModel = DocumentViewModel(db)
 
 }

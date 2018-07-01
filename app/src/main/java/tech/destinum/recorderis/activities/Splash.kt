@@ -29,7 +29,7 @@ class Splash : AppCompatActivity(), MediaPlayer.OnErrorListener {
 
             video_view.setOnCompletionListener { mp ->
 
-                val intent = Intent(this@Splash, Login::class.java)
+                val intent = Intent(this@Splash, Home::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 finish()
@@ -51,35 +51,35 @@ class Splash : AppCompatActivity(), MediaPlayer.OnErrorListener {
         when (what) {
             100 -> {
                 video_view.stopPlayback()
-                val inn = Intent(this@Splash, Login::class.java)
+                val inn = Intent(this@Splash, Home::class.java)
                 startActivity(inn)
             }
             1 -> {
                 Log.i("My Error ", "handled here")
                 video_view.stopPlayback()
-                val inn2 = Intent(this@Splash, Login::class.java)
+                val inn2 = Intent(this@Splash, Home::class.java)
                 startActivity(inn2)
             }
             800 -> {
                 video_view.stopPlayback()
-                val inn3 = Intent(this@Splash, Login::class.java)
+                val inn3 = Intent(this@Splash, Home::class.java)
                 startActivity(inn3)
             }
             701 -> {
                 video_view.stopPlayback()
-                val inn4 = Intent(this@Splash, Login::class.java)
+                val inn4 = Intent(this@Splash, Home::class.java)
                 startActivity(inn4)
             }
             700 -> {
                 video_view.stopPlayback()
 
                 Toast.makeText(applicationContext, "Bad Media format ", Toast.LENGTH_SHORT).show()
-                val inn5 = Intent(this@Splash, Login::class.java)
+                val inn5 = Intent(this@Splash, Home::class.java)
                 startActivity(inn5)
             }
             -38 -> {
                 video_view.stopPlayback()
-                val inn6 = Intent(this@Splash, Login::class.java)
+                val inn6 = Intent(this@Splash, Home::class.java)
                 startActivity(inn6)
             }
         }

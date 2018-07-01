@@ -78,11 +78,11 @@ class Form : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.recycler_view_form)
 
         mArrayList = ArrayList()
-        mArrayList!!.add(Document(1, getString(R.string.doc_soat), getString(R.string.symbol_soat)))
-        mArrayList!!.add(Document(2, getString(R.string.doc_rtm), getString(R.string.symbol_rtm)))
-        mArrayList!!.add(Document(3, getString(R.string.doc_str), getString(R.string.symbol_str)))
-        mArrayList!!.add(Document(4, getString(R.string.doc_tao), getString(R.string.symbol_tao)))
-        mArrayList!!.add(Document(5, getString(R.string.doc_ext), getString(R.string.symbol_ext)))
+        mArrayList!!.add(Document(getString(R.string.doc_soat), getString(R.string.symbol_soat)))
+        mArrayList!!.add(Document(getString(R.string.doc_rtm), getString(R.string.symbol_rtm)))
+        mArrayList!!.add(Document(getString(R.string.doc_str), getString(R.string.symbol_str)))
+        mArrayList!!.add(Document(getString(R.string.doc_tao), getString(R.string.symbol_tao)))
+        mArrayList!!.add(Document(getString(R.string.doc_ext), getString(R.string.symbol_ext)))
 
 
         mRecyclerView!!.itemAnimator = DefaultItemAnimator()

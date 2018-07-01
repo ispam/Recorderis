@@ -42,7 +42,6 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
         setContentView(R.layout.activity_profile);
         super.onCreateDrawer();
 
-        mName = findViewById(R.id.format_profile_name);
         mRecyclerView = findViewById(R.id.recycler_view_profile);
         mScrollView = findViewById(R.id.scroll_view);
         mAdd = findViewById(R.id.profile_button);
@@ -59,7 +58,7 @@ public class Profile extends BaseActivity implements AdapterView.OnItemSelectedL
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog.Builder add = new AlertDialog.Builder(v.getContext());
+
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.dialog_creation, null, true);
                 TextView title = view.findViewById(R.id.dialog_tv_title);

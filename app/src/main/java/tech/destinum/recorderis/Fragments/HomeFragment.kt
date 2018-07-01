@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -70,11 +71,9 @@ class HomeFragment : Fragment() {
 //        get() = stream_picker_list <-- ID of RV
 
         mRecyclerViewDetails.layoutManager = LinearLayoutManager(HomeFragment@ this.requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        mRecyclerViewDetails.adapter = HomeDetailsAdapter(mDBHelper!!.allDates)
 
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(mRecyclerViewDetails)
-
 
         mDisposable.add(mDateVM.getAllDates()
                 .subscribeOn(Schedulers.io())
@@ -83,67 +82,44 @@ class HomeFragment : Fragment() {
                         { list ->
                             run {
                                 mRecyclerViewDetails.adapter = HomeDetailsAdapter(list)
-                                if (list.size > 1) {
-                                    val parent = view.findViewById<View>(R.id.rl_position)
 
-                                    val mSnackbar = Snackbar.make(parent, R.string.snack_hint, Snackbar.LENGTH_LONG)
-                                    // get snackbar view
-                                    val mView = mSnackbar.view
-                                    // get textview inside snackbar view
-                                    val mSnackTV = mView.findViewById<View>(android.support.design.R.id.snackbar_text) as TextView
-                                    mSnackTV.textAlignment = View.TEXT_ALIGNMENT_CENTER
-                                    mSnackbar.show()
-                                }
-                                if (list.isEmpty()) {
-                                    mLayout.visibility = View.VISIBLE
-                                    mRecyclerViewDetails.visibility = View.GONE
+                                when {
+                                    list.isNotEmpty() -> {
+                                        val parent = view.findViewById<View>(R.id.cl_fragment_home)
 
-                                    mAdd.setOnClickListener { v ->
-                                        val intent = Intent(v.context, Selection::class.java)
-                                        startActivity(intent)
+                                        val mSnackbar = Snackbar.make(parent, R.string.snack_hint, Snackbar.LENGTH_LONG)
+                                        // get snackbar view
+                                        val mView = mSnackbar.view
+                                        // get textview inside snackbar view
+//                                        val params = mView.layoutParams as ConstraintLayout.LayoutParams
+//                                        params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, 56)
+//                                        mSnackbar.apply { view.layoutParams = params }
+                                        val mSnackTV = mView.findViewById<View>(android.support.design.R.id.snackbar_text) as TextView
+                                        mSnackTV.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                                        mSnackbar.show()
+//                                        Snackbar.make(parent, R.string.snack_hint, Snackbar.LENGTH_LONG).apply {view.layoutParams = (view.layoutParams as CoordinatorLayout.LayoutParams).apply {setMargins(leftMargin, topMargin, rightMargin, 56)}}.show()
                                     }
+                                    list.isEmpty() -> {
+                                        mLayout.visibility = View.VISIBLE
+                                        mRecyclerViewDetails.visibility = View.GONE
 
-                                } else {
-                                    mLayout.visibility = View.GONE
-                                    mRecyclerViewDetails.visibility = View.VISIBLE
+                                        mAdd.setOnClickListener { v ->
+                                            val intent = Intent(v.context, Selection::class.java)
+                                            startActivity(intent)
+                                        }
+                                    }
+                                    else -> {
+                                        mLayout.visibility = View.GONE
+                                        mRecyclerViewDetails.visibility = View.VISIBLE
+                                    }
                                 }
-
                             }
                         },
                         { throwable -> Log.e(TAG, "${throwable.message}") },
                         { Log.d(TAG, "completed") }
                 ))
 
-//        if (mDBHelper!!.allDates.size > 1) {
-//            val parent = view.findViewById<View>(R.id.rl_position)
-//
-//            val mSnackbar = Snackbar.make(parent, R.string.snack_hint, Snackbar.LENGTH_LONG)
-//            // get snackbar view
-//            val mView = mSnackbar.view
-//            // get textview inside snackbar view
-//            val mSnackTV = mView.findViewById<View>(android.support.design.R.id.snackbar_text) as TextView
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-//                mSnackTV.textAlignment = View.TEXT_ALIGNMENT_CENTER
-//            else
-//                mSnackTV.gravity = Gravity.CENTER_HORIZONTAL
-//            mSnackbar.show()
-//        }
-//
-//        if (mDBHelper!!.allDates.size == 0) {
-//            mLayout.visibility = View.VISIBLE
-//            mRecyclerViewDetails.visibility = View.GONE
-//
-//            mAdd.setOnClickListener { v ->
-//                val intent = Intent(v.context, Selection::class.java)
-//                startActivity(intent)
-//            }
-//
-//        } else {
-//            mLayout.visibility = View.GONE
-//            mRecyclerViewDetails.visibility = View.VISIBLE
-//        }
-
-
         return view
     }
+
 }

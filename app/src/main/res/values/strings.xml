@@ -63,12 +63,30 @@
     <string name="doc_tao">Operation Card</string>
     <string name="doc_ext">Fire Extinguisher</string>
 
+    <string-array name="documents">
+        <item>Technical Mechanical Review</item>
+        <item>Civil Liability Insurance</item>
+        <item>All Risk Insurance</item>
+        <item>SOAT</item>
+        <item>Operation Card</item>
+        <item>Fire Extinguisher</item>
+    </string-array>
+
     <string name="symbol_soat">SOAT</string>
     <string name="symbol_rtm">TMR</string>
     <string name="symbol_src">CLI</string>
     <string name="symbol_str">ARI</string>
     <string name="symbol_tao">OC</string>
     <string name="symbol_ext">FE</string>
+
+    <string-array name="symbols">
+        <item>SOAT</item>
+        <item>TMR</item>
+        <item>CLI</item>
+        <item>ARI</item>
+        <item>OC</item>
+        <item>FE</item>
+    </string-array>
 
     <!--Links About Page-->
     <string name="privacy_policy_link">Privacy Policy</string>

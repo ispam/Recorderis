@@ -27,18 +27,6 @@
 
 
 
-            <android.support.v7.widget.Toolbar
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/toolbar_actionbar"
-                android:minHeight="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                android:layout_width="match_parent"
-                android:theme="@style/ToolBarStyle"
-                android:layout_height="?actionBarSize">
-
-            </android.support.v7.widget.Toolbar>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,54 +38,31 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin">
 
-            <ImageView
-                android:id="@+id/format_profile_img"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:srcCompat="@drawable/foto320"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"/>
-
-                <TextView
-                    android:id="@+id/format_profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Pepito Perez Petro"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/format_profile_img"/>
-
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view_profile"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/format_profile_name">
+                    app:layout_constraintRight_toRightOf="parent">
 
                 </android.support.v7.widget.RecyclerView>
 
-                <include
-                    layout="@layout/profile_button"
+                <ImageView
+                    android:id="@+id/profile_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@id/recycler_view_profile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.508"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recycler_view_profile"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/add_circle"/>
 
             </android.support.constraint.ConstraintLayout>
 

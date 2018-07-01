@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "documents")
-data class Document(@PrimaryKey(autoGenerate = true) @ColumnInfo(name = "document_id")val id: Int,
-               @ColumnInfo(name = "doc_name") val name: String,
-               @ColumnInfo(name = "doc_symbol") val symbol: String)
+data class Document(@ColumnInfo(name = "doc_name") var name: String,
+               @ColumnInfo(name = "doc_symbol") var symbol: String){
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "document_id")
+    var id: Int? = null
+}
